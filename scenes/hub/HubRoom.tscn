@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=24 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
 [ext_resource type="TileSet" uid="uid://d2gypambi5nse" path="res://assets/tilesets/BlackWall.tres" id="2_hb6ud"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="4_tqygv"]
 [ext_resource type="Texture2D" uid="uid://bc0c3hy2bfhbf" path="res://assets/tilesets/sink.png" id="5_dp14r"]
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rqk7i"]
+light_mode = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
 texture = ExtResource("2_nglky")
@@ -67,8 +70,35 @@ sources/0 = SubResource("TileSetAtlasSource_4kahi")
 sources/1 = SubResource("TileSetAtlasSource_hb6ud")
 sources/2 = SubResource("TileSetAtlasSource_rqk7i")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i0gu1"]
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e1xmp"]
+polygon = PackedVector2Array(96, 128, 96, 190, 127, 190, 127, 128)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r48qa"]
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fevrt"]
+polygon = PackedVector2Array(199, 132, 184, 132, 173, 138, 164, 148, 161, 163, 166, 177, 176, 184, 189, 189, 202, 187, 212, 180, 218, 172, 220, 158, 218, 143, 208, 135)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oawfl"]
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k0xi1"]
+polygon = PackedVector2Array(257, 129, 288, 129, 288, 192, 257, 192)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_nglky"]
 radius = 15.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kahi"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hb6ud"]
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rqk7i"]
+polygon = PackedVector2Array(121.569, -47.0584, 98.0394, -39.2153, 98.0393, -19.6075, 74.5099, -19.6076, 66.6669, -43.137, -78.4312, -43.1375, -58.8239, 94.1174, -66.667, 94.1174, -94.1176, -23.5298, -113.725, -23.5298, -121.568, -43.1377, -137.255, -47.0593, -137.255, -90.1966, 117.647, -86.2741)
 
 [node name="HubRoom" type="Node2D"]
 
@@ -81,8 +111,29 @@ tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAA
 tile_set = ExtResource("2_hb6ud")
 
 [node name="Decoration" type="TileMapLayer" parent="."]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_rqk7i")
 tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAIAAUAAAAAAAEAAAADAAQAAAAAAAEAADADAAUAAAAAAAAAADAFAAQAAQAAAAAAAAAFAAUAAQAAAAEAAAAGAAQAAQABAAAAAAAGAAUAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_i0gu1")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Decoration"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_i0gu1")
+occluder = SubResource("OccluderPolygon2D_e1xmp")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Decoration"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_r48qa")
+occluder = SubResource("OccluderPolygon2D_fevrt")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="Decoration"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_oawfl")
+occluder = SubResource("OccluderPolygon2D_k0xi1")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.227598, 0.315798, 0.34795, 1)
@@ -96,9 +147,10 @@ zoom = Vector2(3, 3)
 limit_smoothed = true
 
 [node name="PointLight2D" type="PointLight2D" parent="TestingBody"]
-position = Vector2(-1.52588e-05, -1.52588e-05)
-scale = Vector2(1.11328, 1.11328)
+position = Vector2(-5.72205e-06, 2)
+scale = Vector2(0.397461, 0.491211)
 color = Color(0.983597, 0.947411, 0.93843, 1)
+range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("4_tqygv")
 
@@ -106,7 +158,16 @@ texture = ExtResource("4_tqygv")
 shape = SubResource("CircleShape2D_nglky")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_4kahi")
 position = Vector2(13, 160)
 rotation = -1.5708
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("8_4kahi")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_hb6ud")
+occluder = SubResource("OccluderPolygon2D_rqk7i")
