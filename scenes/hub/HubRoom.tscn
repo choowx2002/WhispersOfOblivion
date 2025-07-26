@@ -1,14 +1,13 @@
-[gd_scene load_steps=32 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=17 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="Texture2D" uid="uid://dpcac52pildg2" path="res://assets/tilesets/Mahogany_Planks_basecolor 1.png" id="2_5j0dm"]
 [ext_resource type="Texture2D" uid="uid://dpslue7foc7k5" path="res://assets/tilesets/lobbysofa.png" id="2_nglky"]
 [ext_resource type="Texture2D" uid="uid://bfn54bmh4j7jg" path="res://assets/tilesets/Mahogany_Planks_wall.png" id="2_y2y4c"]
 [ext_resource type="Texture2D" uid="uid://up6s1w46t4k4" path="res://assets/tilesets/table.png" id="3_tqygv"]
-[ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/hub/testing_body.gd" id="4_nglky"]
-[ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="4_tqygv"]
 [ext_resource type="Texture2D" uid="uid://bc0c3hy2bfhbf" path="res://assets/tilesets/sink.png" id="5_dp14r"]
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
-[ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://player/Player_walk.png" id="8_hb6ud"]
+[ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="8_hb6ud"]
+[ext_resource type="PackedScene" uid="uid://b8yfxaixcchsv" path="res://scenes/Item/collect_item.tscn" id="12_e1xmp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2y4c"]
 texture = ExtResource("2_5j0dm")
@@ -90,101 +89,6 @@ sources/0 = SubResource("TileSetAtlasSource_4kahi")
 sources/1 = SubResource("TileSetAtlasSource_hb6ud")
 sources/2 = SubResource("TileSetAtlasSource_rqk7i")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nglky"]
-radius = 15.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqk7i"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0gu1"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1xmp"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r48qa"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fevrt"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oawfl"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k0xi1"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_svha4"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqw0j"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_so866"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y8m6m"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nyixv"]
-atlas = ExtResource("8_hb6ud")
-region = Rect2(352, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_heyhg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rqk7i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i0gu1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e1xmp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r48qa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fevrt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oawfl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k0xi1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_svha4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqw0j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_so866")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y8m6m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nyixv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="HubRoom" type="Node2D"]
 
 [node name="Ground" type="TileMapLayer" parent="."]
@@ -202,34 +106,35 @@ tile_set = SubResource("TileSet_i0gu1")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.227598, 0.315798, 0.34795, 1)
 
-[node name="TestingBody" type="CharacterBody2D" parent="."]
-position = Vector2(144, 91)
-script = ExtResource("4_nglky")
-
-[node name="Camera2D" type="Camera2D" parent="TestingBody"]
-zoom = Vector2(3, 3)
-limit_left = -32
-limit_top = -32
-limit_right = 416
-limit_bottom = 351
-limit_smoothed = true
-
-[node name="PointLight2D" type="PointLight2D" parent="TestingBody"]
-position = Vector2(-1.52588e-05, -1.52588e-05)
-scale = Vector2(1.11328, 1.11328)
-color = Color(0.983597, 0.947411, 0.93843, 1)
-shadow_enabled = true
-texture = ExtResource("4_tqygv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestingBody"]
-shape = SubResource("CircleShape2D_nglky")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TestingBody"]
-sprite_frames = SubResource("SpriteFrames_heyhg")
-autoplay = "default"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="closet" type="Sprite2D" parent="."]
 position = Vector2(13, 160)
 rotation = -1.5708
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("8_4kahi")
+
+[node name="collect item" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(266, 90)
+
+[node name="TestingBody" parent="." instance=ExtResource("8_hb6ud")]
+position = Vector2(124, 89)
+
+[node name="collect item2" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(190, 43)
+
+[node name="collect item3" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(337, 153)
+
+[node name="collect item4" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(323, 36)
+
+[node name="collect item5" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(312, 260)
+
+[node name="collect item6" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(246, 259)
+
+[node name="collect item7" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(148, 260)
+
+[node name="collect item8" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(81, 238)
