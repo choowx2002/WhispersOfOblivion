@@ -6,9 +6,10 @@ extends CharacterBody2D
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 
+	look_at(get_global_mouse_position())
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-
+ 
 	# 如果有输入就归一化方向，避免对角线更快
 	if input_vector != Vector2.ZERO:
 		input_vector = input_vector.normalized()
