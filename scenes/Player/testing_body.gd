@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-# run animation
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
-# player movement base speed（frame/sec）
-@export var move_speed := 100
-# declare if player ded
-var is_dead: bool = false
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D # run animation
+@export var move_speed := 100 # player movement base speed（frame/sec）
+var is_dead: bool = false # declare if player ded
+
+func _ready():
+	connect("body_entered", Callable(self, "touch_enemy"))
 
 func _physics_process(delta):
 	# run dead animation
@@ -31,10 +31,8 @@ func _physics_process(delta):
 	
 	# Move and animate
 	if input_vector.length() > 0:
-		# normalized movement speed
-		input_vector = input_vector.normalized()
-		# Calculate and apply movement
-		velocity = input_vector * move_speed * speed_multiplier
+		input_vector = input_vector.normalized() # normalized movement speed
+		velocity = input_vector * move_speed * speed_multiplier # Calculate and apply movement
 		
 		# Run moving animation
 		if anim_sprite.animation != "move":
@@ -44,3 +42,16 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		anim_sprite.play("idle")
 	move_and_slide()
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	print("Hurtbox touched:", area.name)
+	if is_dead:
+		return
+	if area.get_parent().is_in_group("Enemy"):  # check if enemy parent is in group
+		die()
+
+func die() -> void:
+	is_dead = true
+	velocity = Vector2.ZERO
+	anim_sprite.play("died")
+	print("Player died.")

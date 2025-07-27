@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=18 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="Texture2D" uid="uid://dpcac52pildg2" path="res://assets/tilesets/Mahogany_Planks_basecolor 1.png" id="2_5j0dm"]
 [ext_resource type="Texture2D" uid="uid://dpslue7foc7k5" path="res://assets/tilesets/lobbysofa.png" id="2_nglky"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bc0c3hy2bfhbf" path="res://assets/tilesets/sink.png" id="5_dp14r"]
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="8_hb6ud"]
+[ext_resource type="PackedScene" uid="uid://dx0mwwmn1t1ed" path="res://scenes/Enemy/testing_enemy.tscn" id="9_hb6ud"]
 [ext_resource type="PackedScene" uid="uid://b8yfxaixcchsv" path="res://scenes/Item/collect_item.tscn" id="12_e1xmp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2y4c"]
@@ -112,11 +113,14 @@ rotation = -1.5708
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("8_4kahi")
 
+[node name="testing_enemy" parent="." instance=ExtResource("9_hb6ud")]
+position = Vector2(71, 36)
+
 [node name="collect item" parent="." instance=ExtResource("12_e1xmp")]
 position = Vector2(266, 90)
 
 [node name="TestingBody" parent="." instance=ExtResource("8_hb6ud")]
-position = Vector2(124, 89)
+position = Vector2(128, 109)
 
 [node name="collect item2" parent="." instance=ExtResource("12_e1xmp")]
 position = Vector2(190, 43)

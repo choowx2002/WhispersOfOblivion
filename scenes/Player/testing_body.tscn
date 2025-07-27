@@ -1,13 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://30xtrcpogkl8"]
+[gd_scene load_steps=28 format=3 uid="uid://30xtrcpogkl8"]
 
-[ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/hub/testing_body.gd" id="1_ci0fc"]
+[ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/Player/testing_body.gd" id="1_ci0fc"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="2_6sdiv"]
 [ext_resource type="Texture2D" uid="uid://dnofk5jr5j8hc" path="res://player/Player_death.png" id="3_53u1h"]
 [ext_resource type="Texture2D" uid="uid://xg8mihf7opnk" path="res://player/Player_stand.png" id="4_vgoth"]
 [ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://player/Player_walk.png" id="5_tfrc8"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fon1v"]
-radius = 15.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_heyhg"]
 atlas = ExtResource("3_53u1h")
@@ -163,9 +160,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fon1v"]
+radius = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci0fc"]
+size = Vector2(30, 30)
+
 [node name="TestingBody" type="CharacterBody2D" groups=["player"]]
 position = Vector2(144, 91)
 script = ExtResource("1_ci0fc")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1, 0.828125)
+color = Color(0.983597, 0.947411, 0.93843, 1)
+shadow_enabled = true
+texture = ExtResource("2_6sdiv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tsc7x")
+animation = &"move"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fon1v")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_ci0fc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
@@ -175,17 +197,4 @@ limit_right = 416
 limit_bottom = 351
 limit_smoothed = true
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-1.52588e-05, -1.52588e-05)
-scale = Vector2(1.11328, 1.11328)
-color = Color(0.983597, 0.947411, 0.93843, 1)
-shadow_enabled = true
-texture = ExtResource("2_6sdiv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_fon1v")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_tsc7x")
-animation = &"move"
-autoplay = "idle"
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
