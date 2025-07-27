@@ -15,9 +15,9 @@ func _on_body_entered(body):
 	else:
 		set_process(true)
 
-func _process(delta):
-	if Input.is_action_just_pressed("interact"):
-		_collect()
+#func _process(delta):
+	#if Input.is_action_just_pressed("interact"):
+		#_collect()
 
 func _collect():
 	print("player collec item")

@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=4 uid="uid://daqcqikrg7ipn"]
+[gd_scene load_steps=15 format=4 uid="uid://daqcqikrg7ipn"]
 
-[ext_resource type="Texture2D" uid="uid://cxsjmyr8ayubd" path="res://assets/tilesets/Lattia4.jpg" id="1_da8cg"]
 [ext_resource type="Script" uid="uid://c4uuegk0hkmxw" path="res://scenes/mazes/w_maze.gd" id="1_gp22u"]
 [ext_resource type="Texture2D" uid="uid://dqf76cv36enha" path="res://assets/tilesets/Lattia5.jpg" id="2_5mt6p"]
 [ext_resource type="TileSet" uid="uid://d2gypambi5nse" path="res://assets/tilesets/BlackWall.tres" id="2_ceaqs"]
@@ -11,23 +10,14 @@
 [ext_resource type="Script" uid="uid://biaqvw0hcdgkq" path="res://scenes/mazes/collectible_item.gd" id="8_mbxff"]
 [ext_resource type="Texture2D" uid="uid://kancbj08u2pr" path="res://assets/tilesets/Lattia2.jpg" id="9_gp22u"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mt6p"]
-resource_name = "MazeFloor"
-texture = ExtResource("1_da8cg")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hux61"]
+resource_name = "floor"
 texture = ExtResource("2_5mt6p")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_hux61"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_5mt6p")
 sources/1 = SubResource("TileSetAtlasSource_hux61")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hux61"]
@@ -38,7 +28,7 @@ radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx813"]
 
-[node name="NMaze" type="Node2D"]
+[node name="WMaze" type="Node2D"]
 script = ExtResource("1_gp22u")
 
 [node name="Ground" type="TileMapLayer" parent="."]
