@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=38 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
 [ext_resource type="TileSet" uid="uid://d2gypambi5nse" path="res://assets/tilesets/BlackWall.tres" id="2_hb6ud"]
@@ -9,10 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="9_hb6ud"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kahi"]
-light_mode = 2
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
+resource_name = "sofa"
 texture = ExtResource("2_nglky")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -29,6 +27,7 @@ texture_region_size = Vector2i(32, 32)
 1:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hb6ud"]
+resource_name = "table"
 texture = ExtResource("3_tqygv")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -57,6 +56,7 @@ texture_region_size = Vector2i(32, 32)
 3:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqk7i"]
+resource_name = "table"
 texture = ExtResource("5_dp14r")
 texture_region_size = Vector2i(32, 16)
 0:0/0 = 0
@@ -87,9 +87,6 @@ light_mode = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fevrt"]
 polygon = PackedVector2Array(257, 129, 288, 129, 288, 192, 256, 192)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oawfl"]
-light_mode = 2
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k0xi1"]
 light_mode = 2
@@ -171,26 +168,17 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_sqw0j"]
 radius = 104.551
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rqk7i"]
-light_mode = 2
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e1xmp"]
 light_mode = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r48qa"]
 polygon = PackedVector2Array(-141.177, -89.7437, -141.177, -44.8718, -125.49, -44.8718, -117.647, -25.6411, -90.1961, -25.6411, -66.6667, 96.1538, -58.8235, 83.3333, -82.353, -38.4617, 70.5882, -44.8718, 70.5882, -19.231, 101.961, -19.231, 101.961, -38.4617, 121.569, -44.8718, 121.569, -83.3335)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fevrt"]
-light_mode = 2
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_svha4"]
 light_mode = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sqw0j"]
 polygon = PackedVector2Array(-133.333, -88.8889, 120, -88.8889, 120, -48.8889, 102.222, -44.4444, 97.7777, -22.2222, 66.6666, -22.2222, 66.6666, -48.8889, -75.5557, -48.8889, -53.3334, 84.4445, -71.1112, 93.3333, -93.3334, -22.2222, -120, -26.6667, -120, -44.4444, -133.333, -48.8889)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_so866"]
-light_mode = 2
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y8m6m"]
 light_mode = 2
@@ -211,7 +199,6 @@ tile_set = ExtResource("2_hb6ud")
 [node name="Decoration" type="TileMapLayer" parent="."]
 light_mask = 2
 visibility_layer = 2
-material = SubResource("CanvasItemMaterial_4kahi")
 tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAIAAUAAAAAAAEAAAADAAQAAAAAAAEAADADAAUAAAAAAAAAADAFAAQAAQAAAAAAAAAFAAUAAQAAAAEAAAAGAAQAAQABAAAAAAAGAAUAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_i0gu1")
 
@@ -236,12 +223,12 @@ material = SubResource("CanvasItemMaterial_r48qa")
 occluder = SubResource("OccluderPolygon2D_fevrt")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.227598, 0.315798, 0.34795, 1)
 
 [node name="DoorSpriteWest" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-material = SubResource("CanvasItemMaterial_oawfl")
 position = Vector2(13, 160)
 rotation = -1.5708
 scale = Vector2(0.255, 0.255)
@@ -307,7 +294,6 @@ texture = ExtResource("4_tqygv")
 [node name="DoorSpriteEast" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-material = SubResource("CanvasItemMaterial_rqk7i")
 position = Vector2(372, 160)
 rotation = 1.5708
 scale = Vector2(0.255, 0.255)
@@ -323,7 +309,6 @@ occluder_light_mask = 3
 [node name="DoorSpriteNorth" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-material = SubResource("CanvasItemMaterial_fevrt")
 position = Vector2(190, 13)
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("8_4kahi")
@@ -338,7 +323,6 @@ occluder_light_mask = 3
 [node name="DoorSpriteSouth" type="Sprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-material = SubResource("CanvasItemMaterial_so866")
 position = Vector2(190, 307)
 rotation = -3.14159
 scale = Vector2(0.255, 0.255)
