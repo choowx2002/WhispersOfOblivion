@@ -1,20 +1,36 @@
-[gd_scene load_steps=45 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=18 format=4 uid="uid://xw4nmpgg832t"]
 
-[ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
-[ext_resource type="TileSet" uid="uid://d2gypambi5nse" path="res://assets/tilesets/BlackWall.tres" id="2_hb6ud"]
+[ext_resource type="Texture2D" uid="uid://dpcac52pildg2" path="res://assets/tilesets/Mahogany_Planks_basecolor 1.png" id="2_5j0dm"]
 [ext_resource type="Texture2D" uid="uid://dpslue7foc7k5" path="res://assets/tilesets/lobbysofa.png" id="2_nglky"]
+[ext_resource type="Texture2D" uid="uid://bfn54bmh4j7jg" path="res://assets/tilesets/Mahogany_Planks_wall.png" id="2_y2y4c"]
 [ext_resource type="Texture2D" uid="uid://up6s1w46t4k4" path="res://assets/tilesets/table.png" id="3_tqygv"]
 [ext_resource type="Texture2D" uid="uid://bc0c3hy2bfhbf" path="res://assets/tilesets/sink.png" id="5_dp14r"]
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
-
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="8_hb6ud"]
 [ext_resource type="PackedScene" uid="uid://dx0mwwmn1t1ed" path="res://scenes/Enemy/testing_enemy.tscn" id="9_hb6ud"]
 [ext_resource type="PackedScene" uid="uid://b8yfxaixcchsv" path="res://scenes/Item/collect_item.tscn" id="12_e1xmp"]
-[ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="9_hb6ud"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2y4c"]
+texture = ExtResource("2_5j0dm")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kahi"]
-light_mode = 2
+[sub_resource type="TileSet" id="TileSet_5j0dm"]
+tile_size = Vector2i(32, 32)
+sources/6 = SubResource("TileSetAtlasSource_y2y4c")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nglky"]
+texture = ExtResource("2_y2y4c")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_tqygv"]
+tile_size = Vector2i(32, 32)
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_nglky")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
 texture = ExtResource("2_nglky")
@@ -74,311 +90,55 @@ sources/0 = SubResource("TileSetAtlasSource_4kahi")
 sources/1 = SubResource("TileSetAtlasSource_hb6ud")
 sources/2 = SubResource("TileSetAtlasSource_rqk7i")
 
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hb6ud"]
-light_mode = 2
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rqk7i"]
-polygon = PackedVector2Array(95, 127, 126, 128, 127, 191, 96, 191)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i0gu1"]
-light_mode = 2
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e1xmp"]
-polygon = PackedVector2Array(181, 133, 196, 132, 210, 137, 219, 148, 222, 163, 217, 175, 206, 186, 187, 189, 175, 184, 167, 177, 162, 162, 166, 145)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r48qa"]
-light_mode = 2
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fevrt"]
-polygon = PackedVector2Array(257, 129, 288, 129, 288, 192, 256, 192)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nglky"]
-radius = 15.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oawfl"]
-light_mode = 2
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k0xi1"]
-light_mode = 2
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_svha4"]
-polygon = PackedVector2Array(121.569, -90.1956, 121.569, -47.0584, 98.0394, -43.1369, 98.0393, -19.6075, 70.5883, -19.6076, 66.6669, -43.137, -78.4312, -43.1375, -58.8238, 86.2743, -66.667, 94.1174, -94.1176, -23.5298, -117.647, -23.5298, -113.725, -47.0592, -137.255, -43.1378, -133.333, -94.1181)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqk7i"]
-atlas = ExtResource("9_hb6ud")
-region = Rect2(6, 80, 314, 314)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0gu1"]
-atlas = ExtResource("9_hb6ud")
-region = Rect2(320, 80, 314, 314)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1xmp"]
-atlas = ExtResource("9_hb6ud")
-region = Rect2(634, 80, 314, 314)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r48qa"]
-atlas = ExtResource("9_hb6ud")
-region = Rect2(6, 394, 314, 314)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fevrt"]
-atlas = ExtResource("9_hb6ud")
-region = Rect2(320, 394, 314, 314)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oawfl"]
-atlas = ExtResource("9_hb6ud")
-region = Rect2(634, 394, 314, 314)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k0xi1"]
-atlas = ExtResource("9_hb6ud")
-region = Rect2(6, 708, 314, 314)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_svha4"]
-atlas = ExtResource("9_hb6ud")
-region = Rect2(320, 708, 314, 314)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqw0j"]
-atlas = ExtResource("9_hb6ud")
-region = Rect2(634, 708, 314, 314)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_svha4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rqk7i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i0gu1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e1xmp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r48qa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fevrt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oawfl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k0xi1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_svha4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqw0j")
-}],
-"loop": true,
-"name": &"Fire",
-"speed": 15.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sqw0j"]
-radius = 104.551
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rqk7i"]
-light_mode = 2
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e1xmp"]
-light_mode = 2
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r48qa"]
-polygon = PackedVector2Array(-141.177, -89.7437, -141.177, -44.8718, -125.49, -44.8718, -117.647, -25.6411, -90.1961, -25.6411, -66.6667, 96.1538, -58.8235, 83.3333, -82.353, -38.4617, 70.5882, -44.8718, 70.5882, -19.231, 101.961, -19.231, 101.961, -38.4617, 121.569, -44.8718, 121.569, -83.3335)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fevrt"]
-light_mode = 2
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_svha4"]
-light_mode = 2
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sqw0j"]
-polygon = PackedVector2Array(-133.333, -88.8889, 120, -88.8889, 120, -48.8889, 102.222, -44.4444, 97.7777, -22.2222, 66.6666, -22.2222, 66.6666, -48.8889, -75.5557, -48.8889, -53.3334, 84.4445, -71.1112, 93.3333, -93.3334, -22.2222, -120, -26.6667, -120, -44.4444, -133.333, -48.8889)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_so866"]
-light_mode = 2
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y8m6m"]
-light_mode = 2
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nyixv"]
-polygon = PackedVector2Array(-93.3334, -17.7778, -120, -17.7778, -120, -44.4445, -137.778, -44.4445, -137.778, -88.8889, 120, -84.4445, 124.444, -40, 106.667, -35.5557, 97.7778, -17.7778, 71.1111, -17.7778, 71.1111, -44.4445, -80, -44.4445, -57.7778, 88.8888, -66.6667, 93.3333)
-
 [node name="HubRoom" type="Node2D"]
 
 [node name="Ground" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAABgAAAAAAAAAAAAEABgAAAAAAAAAAAAIABgAAAAAAAAAAAAMABgAAAAAAAAAAAAQABgAAAAAAAAAAAAUABgAAAAAAAAAAAAYABgAAAAAAAAAAAAcABgAAAAAAAAAAAAgABgAAAAAAAAAAAAkABgAAAAAAAAAAAAoABgAAAAAAAAABAAAABgAAAAAAAAABAAEABgAAAAAAAAABAAIABgAAAAAAAAABAAMABgAAAAAAAAABAAQABgAAAAAAAAABAAUABgAAAAAAAAABAAYABgAAAAAAAAABAAcABgAAAAAAAAABAAgABgAAAAAAAAABAAkABgAAAAAAAAABAAoABgAAAAAAAAACAAAABgAAAAAAAAACAAEABgAAAAAAAAACAAIABgAAAAAAAAACAAMABgAAAAAAAAACAAQABgAAAAAAAAACAAUABgAAAAAAAAACAAYABgAAAAAAAAACAAcABgAAAAAAAAACAAgABgAAAAAAAAACAAkABgAAAAAAAAACAAoABgAAAAAAAAADAAAABgAAAAAAAAADAAEABgAAAAAAAAADAAIABgAAAAAAAAADAAMABgAAAAAAAAADAAQABgAAAAAAAAADAAUABgAAAAAAAAADAAYABgAAAAAAAAADAAcABgAAAAAAAAADAAgABgAAAAAAAAADAAkABgAAAAAAAAADAAoABgAAAAAAAAAEAAAABgAAAAAAAAAEAAEABgAAAAAAAAAEAAIABgAAAAAAAAAEAAMABgAAAAAAAAAEAAQABgAAAAAAAAAEAAUABgAAAAAAAAAEAAYABgAAAAAAAAAEAAcABgAAAAAAAAAEAAgABgAAAAAAAAAEAAkABgAAAAAAAAAEAAoABgAAAAAAAAAFAAAABgAAAAAAAAAFAAEABgAAAAAAAAAFAAIABgAAAAAAAAAFAAMABgAAAAAAAAAFAAQABgAAAAAAAAAFAAUABgAAAAAAAAAFAAYABgAAAAAAAAAFAAcABgAAAAAAAAAFAAgABgAAAAAAAAAFAAkABgAAAAAAAAAFAAoABgAAAAAAAAAGAAAABgAAAAAAAAAGAAEABgAAAAAAAAAGAAIABgAAAAAAAAAGAAMABgAAAAAAAAAGAAQABgAAAAAAAAAGAAUABgAAAAAAAAAGAAYABgAAAAAAAAAGAAcABgAAAAAAAAAGAAgABgAAAAAAAAAGAAkABgAAAAAAAAAGAAoABgAAAAAAAAAHAAAABgAAAAAAAAAHAAEABgAAAAAAAAAHAAIABgAAAAAAAAAHAAMABgAAAAAAAAAHAAQABgAAAAAAAAAHAAUABgAAAAAAAAAHAAYABgAAAAAAAAAHAAcABgAAAAAAAAAHAAgABgAAAAAAAAAHAAkABgAAAAAAAAAHAAoABgAAAAAAAAAIAAAABgAAAAAAAAAIAAEABgAAAAAAAAAIAAIABgAAAAAAAAAIAAMABgAAAAAAAAAIAAQABgAAAAAAAAAIAAUABgAAAAAAAAAIAAYABgAAAAAAAAAIAAcABgAAAAAAAAAIAAgABgAAAAAAAAAIAAkABgAAAAAAAAAIAAoABgAAAAAAAAAJAAAABgAAAAAAAAAJAAEABgAAAAAAAAAJAAIABgAAAAAAAAAJAAMABgAAAAAAAAAJAAQABgAAAAAAAAAJAAUABgAAAAAAAAAJAAYABgAAAAAAAAAJAAcABgAAAAAAAAAJAAgABgAAAAAAAAAJAAkABgAAAAAAAAAJAAoABgAAAAAAAAAKAAAABgAAAAAAAAAKAAIABgAAAAAAAAAKAAMABgAAAAAAAAAKAAQABgAAAAAAAAAKAAUABgAAAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAAAAAAKAAgABgAAAAAAAAAKAAkABgAAAAAAAAAKAAoABgAAAAAAAAALAAAABgAAAAAAAAALAAEABgAAAAAAAAALAAIABgAAAAAAAAALAAMABgAAAAAAAAALAAQABgAAAAAAAAALAAUABgAAAAAAAAALAAYABgAAAAAAAAALAAcABgAAAAAAAAALAAgABgAAAAAAAAALAAkABgAAAAAAAAALAAoABgAAAAAAAAAMAAQABgAAAAAAAAAMAAUABgAAAAAAAAAMAAYABgAAAAAAAAAMAAcABgAAAAAAAAAMAAgABgAAAAAAAAAMAAkABgAAAAAAAAAMAAoABgAAAAAAAAAKAAEABgAAAAAAAAA=")
-tile_set = ExtResource("1_4kahi")
+tile_map_data = PackedByteArray("AAAAAAAABgAAAAAAAAAAAAEABgAAAAAAAAAAAAIABgAAAAAAAAAAAAMABgAAAAAAAAAAAAQABgAAAAAAAAAAAAUABgAAAAAAAAAAAAYABgAAAAAAAAAAAAcABgAAAAAAAAAAAAgABgAAAAAAAAAAAAkABgAAAAAAAAAAAAoABgAAAAAAAAABAAAABgAAAAAAAAABAAEABgAAAAAAAAABAAIABgAAAAAAAAABAAMABgAAAAAAAAABAAQABgAAAAAAAAABAAUABgAAAAAAAAABAAYABgAAAAAAAAABAAcABgAAAAAAAAABAAgABgAAAAAAAAABAAkABgAAAAAAAAABAAoABgAAAAAAAAACAAAABgAAAAAAAAACAAEABgAAAAAAAAACAAIABgAAAAAAAAACAAMABgAAAAAAAAACAAQABgAAAAAAAAACAAUABgAAAAAAAAACAAYABgAAAAAAAAACAAcABgAAAAAAAAACAAgABgAAAAAAAAACAAkABgAAAAAAAAACAAoABgAAAAAAAAADAAAABgAAAAAAAAADAAEABgAAAAAAAAADAAIABgAAAAAAAAADAAMABgAAAAAAAAADAAQABgAAAAAAAAADAAUABgAAAAAAAAADAAYABgAAAAAAAAADAAcABgAAAAAAAAADAAgABgAAAAAAAAADAAkABgAAAAAAAAADAAoABgAAAAAAAAAEAAAABgAAAAAAAAAEAAEABgAAAAAAAAAEAAIABgAAAAAAAAAEAAMABgAAAAAAAAAEAAQABgAAAAAAAAAEAAUABgAAAAAAAAAEAAYABgAAAAAAAAAEAAcABgAAAAAAAAAEAAgABgAAAAAAAAAEAAkABgAAAAAAAAAEAAoABgAAAAAAAAAFAAAABgAAAAAAAAAFAAEABgAAAAAAAAAFAAIABgAAAAAAAAAFAAMABgAAAAAAAAAFAAQABgAAAAAAAAAFAAUABgAAAAAAAAAFAAYABgAAAAAAAAAFAAcABgAAAAAAAAAFAAgABgAAAAAAAAAFAAkABgAAAAAAAAAFAAoABgAAAAAAAAAGAAAABgAAAAAAAAAGAAEABgAAAAAAAAAGAAIABgAAAAAAAAAGAAMABgAAAAAAAAAGAAQABgAAAAAAAAAGAAUABgAAAAAAAAAGAAYABgAAAAAAAAAGAAcABgAAAAAAAAAGAAgABgAAAAAAAAAGAAkABgAAAAAAAAAGAAoABgAAAAAAAAAHAAAABgAAAAAAAAAHAAEABgAAAAAAAAAHAAIABgAAAAAAAAAHAAMABgAAAAAAAAAHAAQABgAAAAAAAAAHAAUABgAAAAAAAAAHAAYABgAAAAAAAAAHAAcABgAAAAAAAAAHAAgABgAAAAAAAAAHAAkABgAAAAAAAAAHAAoABgAAAAAAAAAIAAAABgAAAAAAAAAIAAEABgAAAAAAAAAIAAIABgAAAAAAAAAIAAMABgAAAAAAAAAIAAQABgAAAAAAAAAIAAUABgAAAAAAAAAIAAYABgAAAAAAAAAIAAcABgAAAAAAAAAIAAgABgAAAAAAAAAIAAkABgAAAAAAAAAIAAoABgAAAAAAAAAJAAAABgAAAAAAAAAJAAEABgAAAAAAAAAJAAIABgAAAAAAAAAJAAMABgAAAAAAAAAJAAQABgAAAAAAAAAJAAUABgAAAAAAAAAJAAYABgAAAAAAAAAJAAcABgAAAAAAAAAJAAgABgAAAAAAAAAJAAkABgAAAAAAAAAJAAoABgAAAAAAAAAKAAAABgAAAAAAAAAKAAEABgAAAAAAAAAKAAIABgAAAAAAAAAKAAMABgAAAAAAAAAKAAQABgAAAAAAAAAKAAUABgAAAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAAAAAAKAAgABgAAAAAAAAAKAAkABgAAAAAAAAAKAAoABgAAAAAAAAALAAAABgAAAAAAAAALAAEABgAAAAAAAAALAAIABgAAAAAAAAALAAMABgAAAAAAAAALAAQABgAAAAAAAAALAAUABgAAAAAAAAALAAYABgAAAAAAAAALAAcABgAAAAAAAAALAAgABgAAAAAAAAALAAkABgAAAAAAAAALAAoABgAAAAAAAAAMAAQABgAAAAAAAAAMAAUABgAAAAAAAAAMAAYABgAAAAAAAAAMAAcABgAAAAAAAAAMAAgABgAAAAAAAAAMAAkABgAAAAAAAAAMAAoABgAAAAAAAAA=")
+tile_set = SubResource("TileSet_5j0dm")
 
 [node name="Wall" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAAMAP//AAAAAAAAAAALAP//AAAAAAAAAAAKAP//AAAAAAAAAAAJAP//AAAAAAAAAAAIAP//AAAAAAAAAAAHAP//AAAAAAAAAAAGAP//AAAAAAAAAAAFAP//AAAAAAAAAAAEAP//AAAAAAAAAAADAP//AAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAADAAoAAAAAAAAAAAACAAoAAAAAAAAAAAABAAoAAAAAAAAAAAAAAAoAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAA=")
-tile_set = ExtResource("2_hb6ud")
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAAMAP//AAAAAAAAAAALAP//AAAAAAAAAAAKAP//AAAAAAAAAAAJAP//AAAAAAAAAAAIAP//AAAAAAAAAAAHAP//AAAAAAAAAAAGAP//AAAAAAAAAAAFAP//AAAAAAAAAAAEAP//AAAAAAAAAAADAP//AAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAADAAoAAAAAAAAAAAACAAoAAAAAAAAAAAABAAoAAAAAAAAAAAAAAAoAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAD/////AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_tqygv")
 
 [node name="Decoration" type="TileMapLayer" parent="."]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_4kahi")
 tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAIAAUAAAAAAAEAAAADAAQAAAAAAAEAADADAAUAAAAAAAAAADAFAAQAAQAAAAAAAAAFAAUAAQAAAAEAAAAGAAQAAQABAAAAAAAGAAUAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_i0gu1")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Decoration"]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_hb6ud")
-occluder = SubResource("OccluderPolygon2D_rqk7i")
-occluder_light_mask = 3
-
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Decoration"]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_i0gu1")
-occluder = SubResource("OccluderPolygon2D_e1xmp")
-occluder_light_mask = 3
-
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="Decoration"]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_r48qa")
-occluder = SubResource("OccluderPolygon2D_fevrt")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.227598, 0.315798, 0.34795, 1)
 
-
-[node name="TestingBody" type="CharacterBody2D" parent="."]
-position = Vector2(144, 91)
-script = ExtResource("4_nglky")
-
-[node name="Camera2D" type="Camera2D" parent="TestingBody"]
-zoom = Vector2(3, 3)
-limit_smoothed = true
-
-[node name="PointLight2D" type="PointLight2D" parent="TestingBody"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(-1.52588e-05, -1.52588e-05)
-scale = Vector2(1.11328, 1.11328)
-color = Color(0.983597, 0.947411, 0.93843, 1)
-range_item_cull_mask = 3
-shadow_enabled = true
-texture = ExtResource("4_tqygv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestingBody"]
-shape = SubResource("CircleShape2D_nglky")
-
-[node name="DoorSpriteWest" type="Sprite2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_oawfl")
-
+[node name="closet" type="Sprite2D" parent="."]
 position = Vector2(13, 160)
 rotation = -1.5708
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("8_4kahi")
 
+[node name="testing_enemy" parent="." instance=ExtResource("9_hb6ud")]
+position = Vector2(71, 36)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorSpriteWest"]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_k0xi1")
-occluder = SubResource("OccluderPolygon2D_svha4")
-occluder_light_mask = 3
+[node name="collect item" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(266, 90)
 
-[node name="AnimatedFireSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(370, 119)
-scale = Vector2(0.0962892, 0.0935262)
-sprite_frames = SubResource("SpriteFrames_svha4")
-animation = &"Fire"
-autoplay = "Fire"
-frame_progress = 0.304858
+[node name="TestingBody" parent="." instance=ExtResource("8_hb6ud")]
+position = Vector2(128, 109)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedFireSprite2D"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(42.7609, -3.38268)
-shape = SubResource("CircleShape2D_sqw0j")
+[node name="collect item2" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(190, 43)
 
-[node name="PointLight2D" type="PointLight2D" parent="AnimatedFireSprite2D"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(47.7076, 14.753)
-scale = Vector2(2.5, 2.5)
-color = Color(7.70092e-07, 0.979606, 0.980695, 1)
-range_item_cull_mask = 3
-shadow_enabled = true
-texture = ExtResource("4_tqygv")
+[node name="collect item3" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(337, 153)
 
-[node name="AnimatedFireSprite2D2" type="AnimatedSprite2D" parent="."]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(369, 200)
-scale = Vector2(0.095, 0.094)
-sprite_frames = SubResource("SpriteFrames_svha4")
-animation = &"Fire"
-autoplay = "Fire"
-frame_progress = 0.565663
+[node name="collect item4" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(323, 36)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedFireSprite2D2"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(21.0527, 42.5531)
-shape = SubResource("CircleShape2D_sqw0j")
+[node name="collect item5" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(312, 260)
 
-[node name="PointLight2D" type="PointLight2D" parent="AnimatedFireSprite2D2"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(21.0527, 53.1916)
-scale = Vector2(2.5, 2.5)
-color = Color(0, 0.980392, 0.980392, 1)
-range_item_cull_mask = 3
-shadow_enabled = true
-texture = ExtResource("4_tqygv")
+[node name="collect item6" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(246, 259)
 
-[node name="DoorSpriteEast" type="Sprite2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_rqk7i")
-position = Vector2(372, 160)
-rotation = 1.5708
-scale = Vector2(0.255, 0.255)
-texture = ExtResource("8_4kahi")
+[node name="collect item7" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(148, 260)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorSpriteEast"]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_e1xmp")
-occluder = SubResource("OccluderPolygon2D_r48qa")
-occluder_light_mask = 3
-
-[node name="DoorSpriteNorth" type="Sprite2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_fevrt")
-position = Vector2(190, 13)
-scale = Vector2(0.255, 0.255)
-texture = ExtResource("8_4kahi")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorSpriteNorth"]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_svha4")
-occluder = SubResource("OccluderPolygon2D_sqw0j")
-occluder_light_mask = 3
-
-[node name="DoorSpriteSouth" type="Sprite2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_so866")
-position = Vector2(190, 307)
-rotation = -3.14159
-scale = Vector2(0.255, 0.255)
-texture = ExtResource("8_4kahi")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorSpriteSouth"]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_y8m6m")
-occluder = SubResource("OccluderPolygon2D_nyixv")
-occluder_light_mask = 3
+[node name="collect item8" parent="." instance=ExtResource("12_e1xmp")]
+position = Vector2(81, 238)
