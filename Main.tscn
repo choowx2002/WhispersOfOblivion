@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8lkpbpmk7khv"]
+
+[ext_resource type="PackedScene" uid="uid://c2s8yfmhv2s7m" path="res://Players/player.tscn" id="1_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://d134hjv3nfo71" path="res://Monster.tscn" id="2_r0du0"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_uu6xs")]
+position = Vector2(568, 328)
+
+[node name="Monster" parent="." instance=ExtResource("2_r0du0")]
+position = Vector2(284, 132)
+speed = 150.0
+player_path = NodePath("../Player")
