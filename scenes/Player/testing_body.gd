@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D # run animation
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D# run animation
 @export var move_speed := 100 # player movement base speed（frame/sec）
 var is_dead: bool = false # declare if player ded
 
@@ -40,7 +40,8 @@ func _physics_process(delta):
 	else:
 		# run idle animation when vector = 0 (idle)
 		velocity = Vector2.ZERO
-		anim_sprite.play("idle")
+		if anim_sprite:
+			anim_sprite.play("idle")
 	move_and_slide()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:

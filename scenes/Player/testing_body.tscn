@@ -167,7 +167,6 @@ radius = 15.0
 size = Vector2(30, 30)
 
 [node name="TestingBody" type="CharacterBody2D" groups=["player"]]
-position = Vector2(144, 91)
 script = ExtResource("1_ci0fc")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -178,8 +177,8 @@ texture = ExtResource("2_6sdiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tsc7x")
-animation = &"move"
-autoplay = "idle"
+animation = &"idle"
+frame_progress = 0.0221566
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fon1v")
@@ -191,10 +190,6 @@ shape = SubResource("RectangleShape2D_ci0fc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-limit_left = -32
-limit_top = -32
-limit_right = 416
-limit_bottom = 351
 limit_smoothed = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

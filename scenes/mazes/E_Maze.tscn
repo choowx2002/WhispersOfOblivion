@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_ni5gm"]
 [ext_resource type="Script" uid="uid://cnj6x368wx414" path="res://scenes/mazes/e_maze.gd" id="1_vrddb"]
 [ext_resource type="TileSet" uid="uid://3ip1jes7nnmf" path="res://assets/tilesets/Cave.tres" id="2_1n4lv"]
-[ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/hub/testing_body.gd" id="3_ags5e"]
+[ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/Player/testing_body.gd" id="3_ags5e"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="4_vrddb"]
 [ext_resource type="Script" uid="uid://biaqvw0hcdgkq" path="res://scenes/mazes/collectible_item.gd" id="5_gwn0b"]
 [ext_resource type="Texture2D" uid="uid://kancbj08u2pr" path="res://assets/tilesets/Lattia2.jpg" id="6_ssd4l"]
