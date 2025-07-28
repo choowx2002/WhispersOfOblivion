@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=40 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
 [ext_resource type="TileSet" uid="uid://d2gypambi5nse" path="res://assets/tilesets/BlackWall.tres" id="2_hb6ud"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bc0c3hy2bfhbf" path="res://assets/tilesets/sink.png" id="5_dp14r"]
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="9_hb6ud"]
+[ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="9_rqk7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
 resource_name = "sofa"
@@ -70,20 +71,11 @@ sources/0 = SubResource("TileSetAtlasSource_4kahi")
 sources/1 = SubResource("TileSetAtlasSource_hb6ud")
 sources/2 = SubResource("TileSetAtlasSource_rqk7i")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hb6ud"]
-light_mode = 2
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rqk7i"]
 polygon = PackedVector2Array(95, 127, 126, 128, 127, 191, 96, 191)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i0gu1"]
-light_mode = 2
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e1xmp"]
 polygon = PackedVector2Array(181, 133, 196, 132, 210, 137, 219, 148, 222, 163, 217, 175, 206, 186, 187, 189, 175, 184, 167, 177, 162, 162, 166, 145)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r48qa"]
-light_mode = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fevrt"]
 polygon = PackedVector2Array(257, 129, 288, 129, 288, 192, 256, 192)
@@ -205,21 +197,18 @@ tile_set = SubResource("TileSet_i0gu1")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Decoration"]
 light_mask = 2
 visibility_layer = 2
-material = SubResource("CanvasItemMaterial_hb6ud")
 occluder = SubResource("OccluderPolygon2D_rqk7i")
 occluder_light_mask = 3
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Decoration"]
 light_mask = 2
 visibility_layer = 2
-material = SubResource("CanvasItemMaterial_i0gu1")
 occluder = SubResource("OccluderPolygon2D_e1xmp")
 occluder_light_mask = 3
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="Decoration"]
 light_mask = 2
 visibility_layer = 2
-material = SubResource("CanvasItemMaterial_r48qa")
 occluder = SubResource("OccluderPolygon2D_fevrt")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -264,6 +253,9 @@ color = Color(7.70092e-07, 0.979606, 0.980695, 1)
 range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("4_tqygv")
+
+[node name="TestingBody" parent="AnimatedFireSprite2D" instance=ExtResource("9_rqk7i")]
+position = Vector2(-2180.93, 256.613)
 
 [node name="AnimatedFireSprite2D2" type="AnimatedSprite2D" parent="."]
 light_mask = 3
