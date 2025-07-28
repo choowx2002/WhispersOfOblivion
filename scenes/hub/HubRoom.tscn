@@ -4,11 +4,14 @@
 [ext_resource type="TileSet" uid="uid://d2gypambi5nse" path="res://assets/tilesets/BlackWall.tres" id="2_hb6ud"]
 [ext_resource type="Texture2D" uid="uid://dpslue7foc7k5" path="res://assets/tilesets/lobbysofa.png" id="2_nglky"]
 [ext_resource type="Texture2D" uid="uid://up6s1w46t4k4" path="res://assets/tilesets/table.png" id="3_tqygv"]
-[ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/hub/testing_body.gd" id="4_nglky"]
-[ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="4_tqygv"]
 [ext_resource type="Texture2D" uid="uid://bc0c3hy2bfhbf" path="res://assets/tilesets/sink.png" id="5_dp14r"]
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
+
+[ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="8_hb6ud"]
+[ext_resource type="PackedScene" uid="uid://dx0mwwmn1t1ed" path="res://scenes/Enemy/testing_enemy.tscn" id="9_hb6ud"]
+[ext_resource type="PackedScene" uid="uid://b8yfxaixcchsv" path="res://scenes/Item/collect_item.tscn" id="12_e1xmp"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="9_hb6ud"]
+
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kahi"]
 light_mode = 2
@@ -70,6 +73,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4kahi")
 sources/1 = SubResource("TileSetAtlasSource_hb6ud")
 sources/2 = SubResource("TileSetAtlasSource_rqk7i")
+
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hb6ud"]
 light_mode = 2
@@ -242,6 +246,7 @@ occluder = SubResource("OccluderPolygon2D_fevrt")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.227598, 0.315798, 0.34795, 1)
 
+
 [node name="TestingBody" type="CharacterBody2D" parent="."]
 position = Vector2(144, 91)
 script = ExtResource("4_nglky")
@@ -267,10 +272,12 @@ shape = SubResource("CircleShape2D_nglky")
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_oawfl")
+
 position = Vector2(13, 160)
 rotation = -1.5708
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("8_4kahi")
+
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="DoorSpriteWest"]
 light_mask = 2
