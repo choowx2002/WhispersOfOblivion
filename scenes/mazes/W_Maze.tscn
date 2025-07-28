@@ -62,7 +62,11 @@ collision_mask = 5
 script = ExtResource("5_4m21u")
 
 [node name="Camera2D" type="Camera2D" parent="TestingBody"]
-zoom = Vector2(3, 3)
+zoom = Vector2(5, 5)
+limit_left = 0
+limit_top = 0
+limit_right = 1950
+limit_bottom = 1950
 limit_smoothed = true
 
 [node name="PointLight2D" type="PointLight2D" parent="TestingBody"]
@@ -95,5 +99,8 @@ position = Vector2(64, 1896)
 
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
 position = Vector2(1824, -1831)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]

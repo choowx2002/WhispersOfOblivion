@@ -1,6 +1,7 @@
-[gd_scene load_steps=40 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=42 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
+[ext_resource type="Script" uid="uid://bxihib6imi8yc" path="res://scenes/hub/hub_room.gd" id="1_oawfl"]
 [ext_resource type="TileSet" uid="uid://d2gypambi5nse" path="res://assets/tilesets/BlackWall.tres" id="2_hb6ud"]
 [ext_resource type="Texture2D" uid="uid://dpslue7foc7k5" path="res://assets/tilesets/lobbysofa.png" id="2_nglky"]
 [ext_resource type="Texture2D" uid="uid://up6s1w46t4k4" path="res://assets/tilesets/table.png" id="3_tqygv"]
@@ -9,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="9_hb6ud"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="9_rqk7i"]
+[ext_resource type="Texture2D" uid="uid://dki0ec7cklwne" path="res://assets/images/torch_only.png" id="10_rqk7i"]
+[ext_resource type="Script" uid="uid://21fvpujg03l" path="res://scenes/hub/WDoor.gd" id="11_i0gu1"]
+[ext_resource type="Script" uid="uid://dbfijmlv17hds" path="res://scenes/hub/south_door.gd" id="12_e1xmp"]
+[ext_resource type="Script" uid="uid://d2j1hfhgwa7ls" path="res://scenes/hub/east_door.gd" id="12_r48qa"]
+[ext_resource type="Script" uid="uid://cyh8c3pqm40yu" path="res://scenes/hub/north_door.gd" id="13_fevrt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
 resource_name = "sofa"
@@ -70,21 +76,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4kahi")
 sources/1 = SubResource("TileSetAtlasSource_hb6ud")
 sources/2 = SubResource("TileSetAtlasSource_rqk7i")
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rqk7i"]
-polygon = PackedVector2Array(95, 127, 126, 128, 127, 191, 96, 191)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e1xmp"]
-polygon = PackedVector2Array(181, 133, 196, 132, 210, 137, 219, 148, 222, 163, 217, 175, 206, 186, 187, 189, 175, 184, 167, 177, 162, 162, 166, 145)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fevrt"]
-polygon = PackedVector2Array(257, 129, 288, 129, 288, 192, 256, 192)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k0xi1"]
-light_mode = 2
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_svha4"]
-polygon = PackedVector2Array(121.569, -90.1956, 121.569, -47.0584, 98.0394, -43.1369, 98.0393, -19.6075, 70.5883, -19.6076, 66.6669, -43.137, -78.4312, -43.1375, -58.8238, 86.2743, -66.667, 94.1174, -94.1176, -23.5298, -117.647, -23.5298, -113.725, -47.0592, -137.255, -43.1378, -133.333, -94.1181)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqk7i"]
 atlas = ExtResource("9_hb6ud")
@@ -157,8 +148,14 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sqw0j"]
-radius = 104.551
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k0xi1"]
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_svha4"]
+polygon = PackedVector2Array(121.569, -90.1956, 121.569, -47.0584, 98.0394, -43.1369, 98.0393, -19.6075, 70.5883, -19.6076, 66.6669, -43.137, -78.4312, -43.1375, -58.8238, 86.2743, -66.667, 94.1174, -94.1176, -23.5298, -117.647, -23.5298, -113.725, -47.0592, -137.255, -43.1378, -133.333, -94.1181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1xmp"]
+size = Vector2(28, 60)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e1xmp"]
 light_mode = 2
@@ -166,11 +163,17 @@ light_mode = 2
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r48qa"]
 polygon = PackedVector2Array(-141.177, -89.7437, -141.177, -44.8718, -125.49, -44.8718, -117.647, -25.6411, -90.1961, -25.6411, -66.6667, 96.1538, -58.8235, 83.3333, -82.353, -38.4617, 70.5882, -44.8718, 70.5882, -19.231, 101.961, -19.231, 101.961, -38.4617, 121.569, -44.8718, 121.569, -83.3335)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0gu1"]
+size = Vector2(27, 62)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_svha4"]
 light_mode = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sqw0j"]
 polygon = PackedVector2Array(-133.333, -88.8889, 120, -88.8889, 120, -48.8889, 102.222, -44.4444, 97.7777, -22.2222, 66.6666, -22.2222, 66.6666, -48.8889, -75.5557, -48.8889, -53.3334, 84.4445, -71.1112, 93.3333, -93.3334, -22.2222, -120, -26.6667, -120, -44.4444, -133.333, -48.8889)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r48qa"]
+size = Vector2(66, 20)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y8m6m"]
 light_mode = 2
@@ -178,7 +181,11 @@ light_mode = 2
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nyixv"]
 polygon = PackedVector2Array(-93.3334, -17.7778, -120, -17.7778, -120, -44.4445, -137.778, -44.4445, -137.778, -88.8889, 120, -84.4445, 124.444, -40, 106.667, -35.5557, 97.7778, -17.7778, 71.1111, -17.7778, 71.1111, -44.4445, -80, -44.4445, -57.7778, 88.8888, -66.6667, 93.3333)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fevrt"]
+size = Vector2(62, 20)
+
 [node name="HubRoom" type="Node2D"]
+script = ExtResource("1_oawfl")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAABgAAAAAAAAAAAAEABgAAAAAAAAAAAAIABgAAAAAAAAAAAAMABgAAAAAAAAAAAAQABgAAAAAAAAAAAAUABgAAAAAAAAAAAAYABgAAAAAAAAAAAAcABgAAAAAAAAAAAAgABgAAAAAAAAAAAAkABgAAAAAAAAAAAAoABgAAAAAAAAABAAAABgAAAAAAAAABAAEABgAAAAAAAAABAAIABgAAAAAAAAABAAMABgAAAAAAAAABAAQABgAAAAAAAAABAAUABgAAAAAAAAABAAYABgAAAAAAAAABAAcABgAAAAAAAAABAAgABgAAAAAAAAABAAkABgAAAAAAAAABAAoABgAAAAAAAAACAAAABgAAAAAAAAACAAEABgAAAAAAAAACAAIABgAAAAAAAAACAAMABgAAAAAAAAACAAQABgAAAAAAAAACAAUABgAAAAAAAAACAAYABgAAAAAAAAACAAcABgAAAAAAAAACAAgABgAAAAAAAAACAAkABgAAAAAAAAACAAoABgAAAAAAAAADAAAABgAAAAAAAAADAAEABgAAAAAAAAADAAIABgAAAAAAAAADAAMABgAAAAAAAAADAAQABgAAAAAAAAADAAUABgAAAAAAAAADAAYABgAAAAAAAAADAAcABgAAAAAAAAADAAgABgAAAAAAAAADAAkABgAAAAAAAAADAAoABgAAAAAAAAAEAAAABgAAAAAAAAAEAAEABgAAAAAAAAAEAAIABgAAAAAAAAAEAAMABgAAAAAAAAAEAAQABgAAAAAAAAAEAAUABgAAAAAAAAAEAAYABgAAAAAAAAAEAAcABgAAAAAAAAAEAAgABgAAAAAAAAAEAAkABgAAAAAAAAAEAAoABgAAAAAAAAAFAAAABgAAAAAAAAAFAAEABgAAAAAAAAAFAAIABgAAAAAAAAAFAAMABgAAAAAAAAAFAAQABgAAAAAAAAAFAAUABgAAAAAAAAAFAAYABgAAAAAAAAAFAAcABgAAAAAAAAAFAAgABgAAAAAAAAAFAAkABgAAAAAAAAAFAAoABgAAAAAAAAAGAAAABgAAAAAAAAAGAAEABgAAAAAAAAAGAAIABgAAAAAAAAAGAAMABgAAAAAAAAAGAAQABgAAAAAAAAAGAAUABgAAAAAAAAAGAAYABgAAAAAAAAAGAAcABgAAAAAAAAAGAAgABgAAAAAAAAAGAAkABgAAAAAAAAAGAAoABgAAAAAAAAAHAAAABgAAAAAAAAAHAAEABgAAAAAAAAAHAAIABgAAAAAAAAAHAAMABgAAAAAAAAAHAAQABgAAAAAAAAAHAAUABgAAAAAAAAAHAAYABgAAAAAAAAAHAAcABgAAAAAAAAAHAAgABgAAAAAAAAAHAAkABgAAAAAAAAAHAAoABgAAAAAAAAAIAAAABgAAAAAAAAAIAAEABgAAAAAAAAAIAAIABgAAAAAAAAAIAAMABgAAAAAAAAAIAAQABgAAAAAAAAAIAAUABgAAAAAAAAAIAAYABgAAAAAAAAAIAAcABgAAAAAAAAAIAAgABgAAAAAAAAAIAAkABgAAAAAAAAAIAAoABgAAAAAAAAAJAAAABgAAAAAAAAAJAAEABgAAAAAAAAAJAAIABgAAAAAAAAAJAAMABgAAAAAAAAAJAAQABgAAAAAAAAAJAAUABgAAAAAAAAAJAAYABgAAAAAAAAAJAAcABgAAAAAAAAAJAAgABgAAAAAAAAAJAAkABgAAAAAAAAAJAAoABgAAAAAAAAAKAAAABgAAAAAAAAAKAAIABgAAAAAAAAAKAAMABgAAAAAAAAAKAAQABgAAAAAAAAAKAAUABgAAAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAAAAAAKAAgABgAAAAAAAAAKAAkABgAAAAAAAAAKAAoABgAAAAAAAAALAAAABgAAAAAAAAALAAEABgAAAAAAAAALAAIABgAAAAAAAAALAAMABgAAAAAAAAALAAQABgAAAAAAAAALAAUABgAAAAAAAAALAAYABgAAAAAAAAALAAcABgAAAAAAAAALAAgABgAAAAAAAAALAAkABgAAAAAAAAALAAoABgAAAAAAAAAMAAQABgAAAAAAAAAMAAUABgAAAAAAAAAMAAYABgAAAAAAAAAMAAcABgAAAAAAAAAMAAgABgAAAAAAAAAMAAkABgAAAAAAAAAMAAoABgAAAAAAAAAKAAEABgAAAAAAAAA=")
@@ -189,91 +196,31 @@ tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAA
 tile_set = ExtResource("2_hb6ud")
 
 [node name="Decoration" type="TileMapLayer" parent="."]
-light_mask = 2
 visibility_layer = 2
 tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAIAAUAAAAAAAEAAAADAAQAAAAAAAEAADADAAUAAAAAAAAAADAFAAQAAQAAAAAAAAAFAAUAAQAAAAEAAAAGAAQAAQABAAAAAAAGAAUAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_i0gu1")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Decoration"]
-light_mask = 2
-visibility_layer = 2
-occluder = SubResource("OccluderPolygon2D_rqk7i")
-occluder_light_mask = 3
+[node name="TestingBody" parent="." instance=ExtResource("9_rqk7i")]
+position = Vector2(160, 143)
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Decoration"]
-light_mask = 2
-visibility_layer = 2
-occluder = SubResource("OccluderPolygon2D_e1xmp")
-occluder_light_mask = 3
+[node name="Torch" type="Sprite2D" parent="."]
+position = Vector2(385, 115)
+rotation = -1.56656
+scale = Vector2(0.376371, 0.376371)
+texture = ExtResource("10_rqk7i")
 
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="Decoration"]
-light_mask = 2
-visibility_layer = 2
-occluder = SubResource("OccluderPolygon2D_fevrt")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.227598, 0.315798, 0.34795, 1)
-
-[node name="DoorSpriteWest" type="Sprite2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(13, 160)
-rotation = -1.5708
-scale = Vector2(0.255, 0.255)
-texture = ExtResource("8_4kahi")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorSpriteWest"]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_k0xi1")
-occluder = SubResource("OccluderPolygon2D_svha4")
-occluder_light_mask = 3
-
-[node name="AnimatedFireSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(370, 119)
-scale = Vector2(0.0962892, 0.0935262)
-sprite_frames = SubResource("SpriteFrames_svha4")
-animation = &"Fire"
-autoplay = "Fire"
-frame_progress = 0.304858
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedFireSprite2D"]
+[node name="Torch" type="AnimatedSprite2D" parent="Torch"]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(42.7609, -3.38268)
-shape = SubResource("CircleShape2D_sqw0j")
-
-[node name="PointLight2D" type="PointLight2D" parent="AnimatedFireSprite2D"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(47.7076, 14.753)
-scale = Vector2(2.5, 2.5)
-color = Color(7.70092e-07, 0.979606, 0.980695, 1)
-range_item_cull_mask = 3
-shadow_enabled = true
-texture = ExtResource("4_tqygv")
-
-[node name="TestingBody" parent="AnimatedFireSprite2D" instance=ExtResource("9_rqk7i")]
-position = Vector2(-2180.93, 256.613)
-
-[node name="AnimatedFireSprite2D2" type="AnimatedSprite2D" parent="."]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(369, 200)
-scale = Vector2(0.095, 0.094)
+position = Vector2(-0.112671, -26.5693)
+rotation = 1.56656
+scale = Vector2(0.0848708, 0.0839774)
 sprite_frames = SubResource("SpriteFrames_svha4")
 animation = &"Fire"
 autoplay = "Fire"
 frame_progress = 0.565663
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedFireSprite2D2"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(21.0527, 42.5531)
-shape = SubResource("CircleShape2D_sqw0j")
-
-[node name="PointLight2D" type="PointLight2D" parent="AnimatedFireSprite2D2"]
+[node name="PointLight2D" type="PointLight2D" parent="Torch/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1916)
@@ -282,47 +229,302 @@ color = Color(0, 0.980392, 0.980392, 1)
 range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("4_tqygv")
+texture_scale = 5.61
 
-[node name="DoorSpriteEast" type="Sprite2D" parent="."]
+[node name="Torch2" type="Sprite2D" parent="."]
+position = Vector2(386, 201)
+rotation = -1.56656
+scale = Vector2(0.376371, 0.376371)
+texture = ExtResource("10_rqk7i")
+
+[node name="Torch" type="AnimatedSprite2D" parent="Torch2"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-0.112671, -26.5693)
+rotation = 1.56656
+scale = Vector2(0.0848708, 0.0839774)
+sprite_frames = SubResource("SpriteFrames_svha4")
+animation = &"Fire"
+autoplay = "Fire"
+frame_progress = 0.565663
+
+[node name="PointLight2D" type="PointLight2D" parent="Torch2/Torch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(21.0527, 53.1916)
+scale = Vector2(2.5, 2.5)
+color = Color(0, 0.980392, 0.980392, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_tqygv")
+texture_scale = 5.61
+
+[node name="Torch3" type="Sprite2D" parent="."]
+position = Vector2(140, -5.96046e-08)
+rotation = 3.14159
+scale = Vector2(0.376371, 0.376371)
+texture = ExtResource("10_rqk7i")
+
+[node name="Torch" type="AnimatedSprite2D" parent="Torch3"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-0.112671, -26.5693)
+rotation = 1.56656
+scale = Vector2(0.0848708, 0.0839774)
+sprite_frames = SubResource("SpriteFrames_svha4")
+animation = &"Fire"
+autoplay = "Fire"
+frame_progress = 0.565663
+
+[node name="PointLight2D" type="PointLight2D" parent="Torch3/Torch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(21.0527, 53.1916)
+scale = Vector2(2.5, 2.5)
+color = Color(0, 0.980392, 0.980392, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_tqygv")
+texture_scale = 5.61
+
+[node name="Torch4" type="Sprite2D" parent="."]
+position = Vector2(1.43051e-06, 112)
+rotation = 1.5708
+scale = Vector2(0.376371, 0.376371)
+texture = ExtResource("10_rqk7i")
+
+[node name="Torch" type="AnimatedSprite2D" parent="Torch4"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-0.112671, -26.5693)
+rotation = 1.56656
+scale = Vector2(0.0848708, 0.0839774)
+sprite_frames = SubResource("SpriteFrames_svha4")
+animation = &"Fire"
+autoplay = "Fire"
+frame_progress = 0.565663
+
+[node name="PointLight2D" type="PointLight2D" parent="Torch4/Torch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(21.0527, 53.1916)
+scale = Vector2(2.5, 2.5)
+color = Color(0, 0.980392, 0.980392, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_tqygv")
+texture_scale = 5.61
+
+[node name="Torch5" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, 206)
+rotation = 1.5708
+scale = Vector2(0.376371, 0.376371)
+texture = ExtResource("10_rqk7i")
+
+[node name="Torch" type="AnimatedSprite2D" parent="Torch5"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-0.112671, -26.5693)
+rotation = 1.56656
+scale = Vector2(0.0848708, 0.0839774)
+sprite_frames = SubResource("SpriteFrames_svha4")
+animation = &"Fire"
+autoplay = "Fire"
+frame_progress = 0.565663
+
+[node name="PointLight2D" type="PointLight2D" parent="Torch5/Torch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(21.0527, 53.1916)
+scale = Vector2(2.5, 2.5)
+color = Color(0, 0.980392, 0.980392, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_tqygv")
+texture_scale = 5.61
+
+[node name="Torch6" type="Sprite2D" parent="."]
+position = Vector2(234, -1.19209e-07)
+rotation = -3.14159
+scale = Vector2(0.376371, 0.376371)
+texture = ExtResource("10_rqk7i")
+
+[node name="Torch" type="AnimatedSprite2D" parent="Torch6"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-0.112671, -26.5693)
+rotation = 1.56656
+scale = Vector2(0.0848708, 0.0839774)
+sprite_frames = SubResource("SpriteFrames_svha4")
+animation = &"Fire"
+autoplay = "Fire"
+frame_progress = 0.565663
+
+[node name="PointLight2D" type="PointLight2D" parent="Torch6/Torch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(21.0527, 53.1916)
+scale = Vector2(2.5, 2.5)
+color = Color(0, 0.980392, 0.980392, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_tqygv")
+texture_scale = 5.61
+
+[node name="Torch7" type="Sprite2D" parent="."]
+position = Vector2(243, 320)
+scale = Vector2(0.376371, 0.376371)
+texture = ExtResource("10_rqk7i")
+
+[node name="Torch" type="AnimatedSprite2D" parent="Torch7"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-0.112671, -26.5693)
+rotation = 1.56656
+scale = Vector2(0.0848708, 0.0839774)
+sprite_frames = SubResource("SpriteFrames_svha4")
+animation = &"Fire"
+autoplay = "Fire"
+frame_progress = 0.565663
+
+[node name="PointLight2D" type="PointLight2D" parent="Torch7/Torch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(21.0527, 53.1916)
+scale = Vector2(2.5, 2.5)
+color = Color(0, 0.980392, 0.980392, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_tqygv")
+texture_scale = 5.61
+
+[node name="Torch8" type="Sprite2D" parent="."]
+position = Vector2(148, 320)
+scale = Vector2(0.376371, 0.376371)
+texture = ExtResource("10_rqk7i")
+
+[node name="Torch" type="AnimatedSprite2D" parent="Torch8"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-0.112671, -26.5693)
+rotation = 1.56656
+scale = Vector2(0.0848708, 0.0839774)
+sprite_frames = SubResource("SpriteFrames_svha4")
+animation = &"Fire"
+autoplay = "Fire"
+frame_progress = 0.565663
+
+[node name="PointLight2D" type="PointLight2D" parent="Torch8/Torch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(21.0527, 53.1916)
+scale = Vector2(2.5, 2.5)
+color = Color(0, 0.980392, 0.980392, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_tqygv")
+texture_scale = 5.61
+
+[node name="WestDoor" type="Area2D" parent="."]
+position = Vector2(11, 158)
+script = ExtResource("11_i0gu1")
+
+[node name="DoorSpriteWest" type="Sprite2D" parent="WestDoor"]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(372, 160)
+position = Vector2(6.82121e-12, 3.8147e-06)
+rotation = -1.5708
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("8_4kahi")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="WestDoor/DoorSpriteWest"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_k0xi1")
+occluder = SubResource("OccluderPolygon2D_svha4")
+occluder_light_mask = 3
+
+[node name="WArea" type="CollisionShape2D" parent="WestDoor"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_e1xmp")
+
+[node name="EastDoor" type="Area2D" parent="."]
+position = Vector2(368, 160)
+script = ExtResource("12_r48qa")
+
+[node name="DoorSpriteEast" type="Sprite2D" parent="EastDoor"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(3.05176e-05, 0)
 rotation = 1.5708
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("8_4kahi")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorSpriteEast"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="EastDoor/DoorSpriteEast"]
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_e1xmp")
 occluder = SubResource("OccluderPolygon2D_r48qa")
 occluder_light_mask = 3
 
-[node name="DoorSpriteNorth" type="Sprite2D" parent="."]
+[node name="EArea" type="CollisionShape2D" parent="EastDoor"]
+position = Vector2(3.5, -2)
+shape = SubResource("RectangleShape2D_i0gu1")
+
+[node name="NorthDoor" type="Area2D" parent="."]
+position = Vector2(192, 12)
+script = ExtResource("13_fevrt")
+
+[node name="DoorSpriteNorth" type="Sprite2D" parent="NorthDoor"]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(190, 13)
+position = Vector2(1.52588e-05, 9.53674e-07)
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("8_4kahi")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorSpriteNorth"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="NorthDoor/DoorSpriteNorth"]
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_svha4")
 occluder = SubResource("OccluderPolygon2D_sqw0j")
 occluder_light_mask = 3
 
-[node name="DoorSpriteSouth" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NorthDoor"]
+position = Vector2(-2, -5)
+shape = SubResource("RectangleShape2D_r48qa")
+
+[node name="SouthDoor" type="Area2D" parent="."]
+position = Vector2(192, 304)
+script = ExtResource("12_e1xmp")
+
+[node name="DoorSpriteSouth" type="Sprite2D" parent="SouthDoor"]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(190, 307)
+position = Vector2(1.90735e-06, 0)
 rotation = -3.14159
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("8_4kahi")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorSpriteSouth"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="SouthDoor/DoorSpriteSouth"]
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_y8m6m")
 occluder = SubResource("OccluderPolygon2D_nyixv")
 occluder_light_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SouthDoor"]
+position = Vector2(3, 8)
+shape = SubResource("RectangleShape2D_fevrt")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-1.52588e-05, -3.05176e-05)
+color = Color(0.110731, 0.1209, 0.122923, 1)
+
+[connection signal="body_entered" from="WestDoor" to="WestDoor" method="_on_body_entered"]
+[connection signal="body_exited" from="WestDoor" to="WestDoor" method="_on_body_exited"]
+[connection signal="body_entered" from="EastDoor" to="EastDoor" method="_on_body_entered"]
+[connection signal="body_exited" from="EastDoor" to="EastDoor" method="_on_body_exited"]
+[connection signal="body_entered" from="NorthDoor" to="NorthDoor" method="_on_body_entered"]
+[connection signal="body_exited" from="NorthDoor" to="NorthDoor" method="_on_body_exited"]
+[connection signal="body_entered" from="SouthDoor" to="SouthDoor" method="_on_body_entered"]
+[connection signal="body_exited" from="SouthDoor" to="SouthDoor" method="_on_body_exited"]
