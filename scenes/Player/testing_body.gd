@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D # run animation
+var anim_sprite: AnimatedSprite2D # run animation
 @export var move_speed := 100 # player movement base speed（frame/sec）
 var is_dead: bool = false # declare if player ded
 
 func _ready():
+	anim_sprite = get_node("AnimatedSprite2D")
 	connect("body_entered", Callable(self, "touch_enemy"))
 
 func _physics_process(delta):

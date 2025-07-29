@@ -1,22 +1,18 @@
-[gd_scene load_steps=13 format=4 uid="uid://nv6v05v7me5t"]
+[gd_scene load_steps=11 format=4 uid="uid://nv6v05v7me5t"]
 
 [ext_resource type="TileSet" uid="uid://3ip1jes7nnmf" path="res://assets/tilesets/Cave.tres" id="1_euhjs"]
 [ext_resource type="Script" uid="uid://hrqd67f8757u" path="res://scenes/mazes/n_maze.gd" id="1_mbjul"]
-[ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/Player/testing_body.gd" id="2_gktfw"]
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="2_mbjul"]
-[ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="3_c46j2"]
 [ext_resource type="Script" uid="uid://biaqvw0hcdgkq" path="res://scenes/mazes/collectible_item.gd" id="5_hinnl"]
 [ext_resource type="Texture2D" uid="uid://kancbj08u2pr" path="res://assets/tilesets/Lattia2.jpg" id="6_5fxal"]
 [ext_resource type="Script" uid="uid://dad66ef8pqoqq" path="res://scenes/mazes/escape_gate.gd" id="7_urqrk"]
 [ext_resource type="Texture2D" uid="uid://p5v663is4fxb" path="res://assets/tilesets/keepdoors_lion_bw_gt.png" id="8_mbjul"]
+[ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="8_urqrk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_urqrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d118t"]
 size = Vector2(7.25, 32)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_uktxc"]
-radius = 15.0
 
 [node name="NMaze" type="Node2D"]
 script = ExtResource("1_mbjul")
@@ -67,30 +63,9 @@ position = Vector2(588, -106)
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
 position = Vector2(1733, -1801)
 
-[node name="TestingBody" type="CharacterBody2D" parent="."]
-position = Vector2(929, 161)
-collision_mask = 5
-script = ExtResource("2_gktfw")
-
-[node name="Camera2D" type="Camera2D" parent="TestingBody"]
-zoom = Vector2(5, 5)
-limit_smoothed = true
-
-[node name="PointLight2D" type="PointLight2D" parent="TestingBody"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(-1.52588e-05, -1.52588e-05)
-scale = Vector2(1.11328, 1.11328)
-blend_mode = 2
-range_item_cull_mask = 3
-shadow_enabled = true
-texture = ExtResource("3_c46j2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestingBody"]
-shape = SubResource("CircleShape2D_uktxc")
+[node name="TestingBody" parent="." instance=ExtResource("8_urqrk")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]
