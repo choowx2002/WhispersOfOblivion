@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=45 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
 [ext_resource type="Script" uid="uid://bxihib6imi8yc" path="res://scenes/hub/hub_room.gd" id="1_oawfl"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cyh8c3pqm40yu" path="res://scenes/hub/north_door.gd" id="13_fevrt"]
 [ext_resource type="PackedScene" uid="uid://b8yfxaixcchsv" path="res://scenes/Item/collect_item.tscn" id="13_svha4"]
 [ext_resource type="PackedScene" uid="uid://dx0mwwmn1t1ed" path="res://scenes/Enemy/testing_enemy.tscn" id="16_k0xi1"]
+[ext_resource type="AudioStream" uid="uid://3r8k4o8taqxl" path="res://assets/sounds/horrorBGM1.mp3" id="18_sqw0j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
 resource_name = "sofa"
@@ -528,6 +529,11 @@ position = Vector2(156, 235)
 [node name="collect item" parent="." instance=ExtResource("13_svha4")]
 position = Vector2(238, 219)
 rotation = -1.5708
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_sqw0j")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="body_entered" from="WestDoor" to="WestDoor" method="_on_body_entered"]
 [connection signal="body_exited" from="WestDoor" to="WestDoor" method="_on_body_exited"]
