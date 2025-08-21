@@ -52,9 +52,6 @@ rotation = -1.5708
 scale = Vector2(0.082, 0.082)
 texture = ExtResource("4_5mt6p")
 
-[node name="TestingBody" parent="." instance=ExtResource("6_krb2h")]
-position = Vector2(139, 349)
-
 [node name="CollectableItem" type="Area2D" parent="."]
 position = Vector2(51, 353)
 script = ExtResource("8_mbxff")
@@ -73,7 +70,10 @@ position = Vector2(64, 1896)
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
 position = Vector2(1824, -1831)
 
+[node name="TestingBody" parent="." instance=ExtResource("6_krb2h")]
+position = Vector2(139, 349)
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
+color = Color(0.0941176, 0.0156863, 0.27451, 1)
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]

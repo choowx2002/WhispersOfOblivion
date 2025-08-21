@@ -16,5 +16,5 @@ func _ready():
 	if playerCamera:
 		playerCamera.limit_left = 0
 		playerCamera.limit_top = 0
-		playerCamera.limit_right = 1920
-		playerCamera.limit_bottom = 1920
+		playerCamera.limit_right = 1952
+		playerCamera.limit_bottom = 1952
