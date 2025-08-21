@@ -176,8 +176,7 @@ texture = ExtResource("2_6sdiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tsc7x")
-animation = &"idle"
-frame_progress = 0.0221566
+animation = &"died"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fon1v")
@@ -188,7 +187,7 @@ shape = SubResource("CircleShape2D_fon1v")
 shape = SubResource("RectangleShape2D_ci0fc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(5, 5)
 limit_smoothed = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

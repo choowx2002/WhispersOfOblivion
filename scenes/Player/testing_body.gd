@@ -6,7 +6,7 @@ var is_dead: bool = false # declare if player ded
 
 func _ready():
 	anim_sprite = get_node("AnimatedSprite2D")
-	connect("body_entered", Callable(self, "touch_enemy"))
+	#connect("body_entered", Callable(self, "touch_enemy"))
 
 func _physics_process(delta):
 	# run dead animation

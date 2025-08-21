@@ -44,4 +44,5 @@ position = Vector2(1, -1817)
 [node name="TestingBody" parent="." instance=ExtResource("6_aorba")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)

@@ -66,6 +66,7 @@ position = Vector2(1733, -1801)
 [node name="TestingBody" parent="." instance=ExtResource("8_urqrk")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]
