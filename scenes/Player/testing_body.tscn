@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://30xtrcpogkl8"]
+[gd_scene load_steps=29 format=3 uid="uid://30xtrcpogkl8"]
 
 [ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/Player/testing_body.gd" id="1_ci0fc"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="2_6sdiv"]
 [ext_resource type="Texture2D" uid="uid://dnofk5jr5j8hc" path="res://player/Player_death.png" id="3_53u1h"]
 [ext_resource type="Texture2D" uid="uid://xg8mihf7opnk" path="res://player/Player_stand.png" id="4_vgoth"]
 [ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://player/Player_walk.png" id="5_tfrc8"]
+[ext_resource type="PackedScene" uid="uid://dl06t3wrycntm" path="res://scenes/ui/heart_container.tscn" id="6_6sdiv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_heyhg"]
 atlas = ExtResource("3_53u1h")
@@ -189,5 +190,9 @@ shape = SubResource("RectangleShape2D_ci0fc")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 limit_smoothed = true
+
+[node name="HeartBar" type="CanvasLayer" parent="."]
+
+[node name="HeartContainer" parent="HeartBar" instance=ExtResource("6_6sdiv")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

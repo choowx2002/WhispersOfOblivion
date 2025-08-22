@@ -205,6 +205,8 @@ tile_set = SubResource("TileSet_i0gu1")
 
 [node name="TestingBody" parent="." instance=ExtResource("9_rqk7i")]
 position = Vector2(160, 143)
+move_speed = 100
+maxHealth = 3.0
 
 [node name="Torch" type="Sprite2D" parent="."]
 position = Vector2(385, 115)
@@ -538,6 +540,11 @@ autoplay = true
 
 [node name="testing_enemy2" parent="." instance=ExtResource("16_k0xi1")]
 position = Vector2(210, 82)
+
+[node name="MainRespawnPoint" type="Node2D" parent="."]
+
+[node name="Respawn" type="Marker2D" parent="MainRespawnPoint"]
+position = Vector2(173, 111)
 
 [connection signal="body_entered" from="WestDoor" to="WestDoor" method="_on_body_entered"]
 [connection signal="body_exited" from="WestDoor" to="WestDoor" method="_on_body_exited"]

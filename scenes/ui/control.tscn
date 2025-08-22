@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://difr2g2072fpv"]
+
+[ext_resource type="Texture2D" uid="uid://bn5thylxfql0c" path="res://assets/ui/FreeHorrorUi.png" id="1_yo0lp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bchhi"]
+texture = ExtResource("1_yo0lp")
+region_rect = Rect2(69.5308, 137.877, 52.8927, 13.3825)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3k0e"]
+texture = ExtResource("1_yo0lp")
+region_rect = Rect2(5.62218, 138.324, 53.0606, 15.2943)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yo0lp"]
+texture = ExtResource("1_yo0lp")
+region_rect = Rect2(69.453, 170.452, 53.1819, 14.4617)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ettb2"]
+texture = ExtResource("1_yo0lp")
+region_rect = Rect2(5.60267, 170.179, 52.2488, 15.3947)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m5bgy"]
+texture = ExtResource("1_yo0lp")
+region_rect = Rect2(70.1701, 202.057, 52.2236, 14.0197)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bwyrb"]
+texture = ExtResource("1_yo0lp")
+region_rect = Rect2(6.21062, 202.241, 52.3422, 12.8289)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Menu"]
+layout_mode = 2
+texture = ExtResource("1_yo0lp")
+region_rect = Rect2(127.957, 130.629, 62.4517, 75.5155)
+
+[node name="Play Button" type="Button" parent="Menu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.281
+anchor_top = 0.258
+anchor_right = 0.747
+anchor_bottom = 0.406
+offset_left = 0.191986
+offset_top = -0.12001
+offset_right = 0.303955
+offset_bottom = 0.159973
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_bchhi")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bchhi")
+theme_override_styles/normal = SubResource("StyleBoxTexture_p3k0e")
+
+[node name="Setting Button" type="Button" parent="Menu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.286
+anchor_top = 0.455
+anchor_right = 0.743
+anchor_bottom = 0.598
+offset_left = 0.35199
+offset_top = -0.200012
+offset_right = 0.375977
+offset_bottom = 0.279968
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_yo0lp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yo0lp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ettb2")
+
+[node name="Exit Button" type="Button" parent="Menu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.297
+anchor_top = 0.639
+anchor_right = 0.734
+anchor_bottom = 0.766
+offset_left = -0.0960083
+offset_top = 0.039978
+offset_right = 0.287964
+offset_bottom = -0.240021
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_m5bgy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m5bgy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bwyrb")
