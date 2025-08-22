@@ -56,4 +56,12 @@ func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
 	anim_sprite.play("died")
+	await anim_sprite.animation_finished
+	respawn()
 	print("Player died.")
+
+func respawn():
+	global_position = get_tree().current_scene.gameRespawnPoint
+	anim_sprite.play("idle")
+	is_dead = false
+	set_physics_process(true)

@@ -106,7 +106,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_51cou")
 }],
-"loop": true,
+"loop": false,
 "name": &"died",
 "speed": 5.0
 }, {
@@ -161,10 +161,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fon1v"]
-radius = 15.0
+radius = 13.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci0fc"]
-size = Vector2(30, 30)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ci0fc"]
+radius = 13.0
 
 [node name="TestingBody" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ci0fc")
@@ -179,14 +179,17 @@ sprite_frames = SubResource("SpriteFrames_tsc7x")
 animation = &"died"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 0)
 shape = SubResource("CircleShape2D_fon1v")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("RectangleShape2D_ci0fc")
+position = Vector2(-5, 0)
+shape = SubResource("CircleShape2D_ci0fc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3, 0)
 zoom = Vector2(5, 5)
 limit_smoothed = true
 

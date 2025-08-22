@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://crd5lcv7j77gr"]
+
+[ext_resource type="Texture2D" uid="uid://dl1uey1jaahox" path="res://assets/images/sawblade_half_blood_gt.png" id="1_0e6kd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6il5p"]
+radius = 4.0
+height = 8.0
+
+[node name="Trap" type="CharacterBody2D" groups=["Enemy"]]
+
+[node name="EldritchEntityAwaken" type="Sprite2D" parent="."]
+modulate = Color(0.394376, 0.421589, 0.433153, 1)
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("1_0e6kd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6il5p")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-5, -14, -6, -13, -6, 11, -6, 12, -4, 12, -1, 11, 1, 9, 3, 7, 4, 6, 5, 4, 6, 1, 6, -1, 6, -3, 6, -5, 5, -7, 4, -9, 3, -10, 1, -12, -1, -13)

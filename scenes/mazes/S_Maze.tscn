@@ -42,6 +42,7 @@ position = Vector2(1241, -767)
 position = Vector2(1, -1817)
 
 [node name="TestingBody" parent="." instance=ExtResource("6_aorba")]
+position = Vector2(88, 216)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
+color = Color(0.0350194, 0.036488, 0.120756, 1)
