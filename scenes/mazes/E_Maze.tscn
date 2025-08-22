@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bofn4oclsqw83"]
+[gd_scene load_steps=27 format=4 uid="uid://bofn4oclsqw83"]
 
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_ni5gm"]
 [ext_resource type="Script" uid="uid://cnj6x368wx414" path="res://scenes/mazes/e_maze.gd" id="1_vrddb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://0hfwlgyec2ex" path="res://scenes/mazes/testing_body_2.gd" id="10_gwn0b"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="11_ofleh"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="11_ssd4l"]
+[ext_resource type="PackedScene" uid="uid://dx0mwwmn1t1ed" path="res://scenes/Enemy/testing_enemy.tscn" id="12_ofleh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75xqg"]
 
@@ -191,5 +192,8 @@ position = Vector2(145, 351)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.094081, 0.0145065, 0.273307, 1)
+
+[node name="testing_enemy" parent="." instance=ExtResource("12_ofleh")]
+position = Vector2(158, 234)
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]
