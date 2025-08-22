@@ -4,5 +4,4 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body.name == "TestingBody":
-		print("player escape")
-		get_tree().change_scene_to_file("res://scenes/hub/HubRoom.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/hub/HubRoom.tscn")

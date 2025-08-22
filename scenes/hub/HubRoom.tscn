@@ -26,15 +26,9 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/modulate = Color(0.466181, 0.466181, 0.466181, 1)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:0/0 = 0
 0:1/0 = 0
 0:1/0/modulate = Color(0.466181, 0.466181, 0.466181, 1)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hb6ud"]
 resource_name = "table"
@@ -46,24 +40,12 @@ texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 1:0/0/modulate = Color(0.686935, 0.651908, 0.621676, 1)
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -12.108, -7.00988, -10.8334, -2.23041, -8.92166, 2.23042, -6.69125, 6.37262, -2.86768, 10.1962, -0.31863, 11.4707, 4.46083, 12.7452, 8.60303, 13.3825, 13.3825, 12.7452, 16, -16, 16)
-2:0/0 = 0
-3:0/0 = 0
 0:1/0 = 0
 0:1/0/modulate = Color(0.686935, 0.651908, 0.621676, 1)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.0639, -16, -11.4707, -7.96577, -10.5148, -3.50494, -7.00988, 0, -4.46083, 3.82357, 0.955894, 7.64714, 7.64714, 11.4707, 16, 12.4266, 16, -16)
 1:1/0 = 0
 1:1/0/modulate = Color(0.686935, 0.651908, 0.621676, 1)
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 12.108, -12.4266, 12.108, -9.55892, 11.7893, -3.50494, 9.55892, -0.63726, 7.96577, 4.1422, 5.09809, 10.1962, -2.86768, 13.0639, -9.87755, 13.7011, -16, -16, -16)
-2:1/0 = 0
-3:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqk7i"]
 resource_name = "table"
@@ -71,7 +53,6 @@ texture = ExtResource("5_dp14r")
 texture_region_size = Vector2i(32, 16)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.7452, -5.09809, -9.24297, -7.83121, 7.33195, -7.50113, 11.7893, -4.46083, 16, -1.59315, 16, 7.64714, -16, 7.64714, -16, -0.955891)
-1:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_i0gu1"]
 tile_size = Vector2i(32, 32)
@@ -191,7 +172,7 @@ size = Vector2(62, 20)
 script = ExtResource("1_oawfl")
 
 [node name="Ground" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAABgAAAAAAAAAAAAEABgAAAAAAAAAAAAIABgAAAAAAAAAAAAMABgAAAAAAAAAAAAQABgAAAAAAAAAAAAUABgAAAAAAAAAAAAYABgAAAAAAAAAAAAcABgAAAAAAAAAAAAgABgAAAAAAAAAAAAkABgAAAAAAAAAAAAoABgAAAAAAAAABAAAABgAAAAAAAAABAAEABgAAAAAAAAABAAIABgAAAAAAAAABAAMABgAAAAAAAAABAAQABgAAAAAAAAABAAUABgAAAAAAAAABAAYABgAAAAAAAAABAAcABgAAAAAAAAABAAgABgAAAAAAAAABAAkABgAAAAAAAAABAAoABgAAAAAAAAACAAAABgAAAAAAAAACAAEABgAAAAAAAAACAAIABgAAAAAAAAACAAMABgAAAAAAAAACAAQABgAAAAAAAAACAAUABgAAAAAAAAACAAYABgAAAAAAAAACAAcABgAAAAAAAAACAAgABgAAAAAAAAACAAkABgAAAAAAAAACAAoABgAAAAAAAAADAAAABgAAAAAAAAADAAEABgAAAAAAAAADAAIABgAAAAAAAAADAAMABgAAAAAAAAADAAQABgAAAAAAAAADAAUABgAAAAAAAAADAAYABgAAAAAAAAADAAcABgAAAAAAAAADAAgABgAAAAAAAAADAAkABgAAAAAAAAADAAoABgAAAAAAAAAEAAAABgAAAAAAAAAEAAEABgAAAAAAAAAEAAIABgAAAAAAAAAEAAMABgAAAAAAAAAEAAQABgAAAAAAAAAEAAUABgAAAAAAAAAEAAYABgAAAAAAAAAEAAcABgAAAAAAAAAEAAgABgAAAAAAAAAEAAkABgAAAAAAAAAEAAoABgAAAAAAAAAFAAAABgAAAAAAAAAFAAEABgAAAAAAAAAFAAIABgAAAAAAAAAFAAMABgAAAAAAAAAFAAQABgAAAAAAAAAFAAUABgAAAAAAAAAFAAYABgAAAAAAAAAFAAcABgAAAAAAAAAFAAgABgAAAAAAAAAFAAkABgAAAAAAAAAFAAoABgAAAAAAAAAGAAAABgAAAAAAAAAGAAEABgAAAAAAAAAGAAIABgAAAAAAAAAGAAMABgAAAAAAAAAGAAQABgAAAAAAAAAGAAUABgAAAAAAAAAGAAYABgAAAAAAAAAGAAcABgAAAAAAAAAGAAgABgAAAAAAAAAGAAkABgAAAAAAAAAGAAoABgAAAAAAAAAHAAAABgAAAAAAAAAHAAEABgAAAAAAAAAHAAIABgAAAAAAAAAHAAMABgAAAAAAAAAHAAQABgAAAAAAAAAHAAUABgAAAAAAAAAHAAYABgAAAAAAAAAHAAcABgAAAAAAAAAHAAgABgAAAAAAAAAHAAkABgAAAAAAAAAHAAoABgAAAAAAAAAIAAAABgAAAAAAAAAIAAEABgAAAAAAAAAIAAIABgAAAAAAAAAIAAMABgAAAAAAAAAIAAQABgAAAAAAAAAIAAUABgAAAAAAAAAIAAYABgAAAAAAAAAIAAcABgAAAAAAAAAIAAgABgAAAAAAAAAIAAkABgAAAAAAAAAIAAoABgAAAAAAAAAJAAAABgAAAAAAAAAJAAEABgAAAAAAAAAJAAIABgAAAAAAAAAJAAMABgAAAAAAAAAJAAQABgAAAAAAAAAJAAUABgAAAAAAAAAJAAYABgAAAAAAAAAJAAcABgAAAAAAAAAJAAgABgAAAAAAAAAJAAkABgAAAAAAAAAJAAoABgAAAAAAAAAKAAAABgAAAAAAAAAKAAIABgAAAAAAAAAKAAMABgAAAAAAAAAKAAQABgAAAAAAAAAKAAUABgAAAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAAAAAAKAAgABgAAAAAAAAAKAAkABgAAAAAAAAAKAAoABgAAAAAAAAALAAAABgAAAAAAAAALAAEABgAAAAAAAAALAAIABgAAAAAAAAALAAMABgAAAAAAAAALAAQABgAAAAAAAAALAAUABgAAAAAAAAALAAYABgAAAAAAAAALAAcABgAAAAAAAAALAAgABgAAAAAAAAALAAkABgAAAAAAAAALAAoABgAAAAAAAAAMAAQABgAAAAAAAAAMAAUABgAAAAAAAAAMAAYABgAAAAAAAAAMAAcABgAAAAAAAAAMAAgABgAAAAAAAAAMAAkABgAAAAAAAAAMAAoABgAAAAAAAAAKAAEABgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAABgAAAAAAAAAAAAEABgAAAAAAAAAAAAIABgAAAAAAAAAAAAMABgAAAAAAAAAAAAQABgAAAAAAAAAAAAUABgAAAAAAAAAAAAYABgAAAAAAAAAAAAcABgAAAAAAAAAAAAgABgAAAAAAAAAAAAkABgAAAAAAAAABAAAABgAAAAAAAAABAAEABgAAAAAAAAABAAIABgAAAAAAAAABAAMABgAAAAAAAAABAAQABgAAAAAAAAABAAUABgAAAAAAAAABAAYABgAAAAAAAAABAAcABgAAAAAAAAABAAgABgAAAAAAAAABAAkABgAAAAAAAAACAAAABgAAAAAAAAACAAEABgAAAAAAAAACAAIABgAAAAAAAAACAAMABgAAAAAAAAACAAQABgAAAAAAAAACAAUABgAAAAAAAAACAAYABgAAAAAAAAACAAcABgAAAAAAAAACAAgABgAAAAAAAAACAAkABgAAAAAAAAADAAAABgAAAAAAAAADAAEABgAAAAAAAAADAAIABgAAAAAAAAADAAMABgAAAAAAAAADAAQABgAAAAAAAAADAAUABgAAAAAAAAADAAYABgAAAAAAAAADAAcABgAAAAAAAAADAAgABgAAAAAAAAADAAkABgAAAAAAAAAEAAAABgAAAAAAAAAEAAEABgAAAAAAAAAEAAIABgAAAAAAAAAEAAMABgAAAAAAAAAEAAQABgAAAAAAAAAEAAUABgAAAAAAAAAEAAYABgAAAAAAAAAEAAcABgAAAAAAAAAEAAgABgAAAAAAAAAEAAkABgAAAAAAAAAFAAAABgAAAAAAAAAFAAEABgAAAAAAAAAFAAIABgAAAAAAAAAFAAMABgAAAAAAAAAFAAQABgAAAAAAAAAFAAUABgAAAAAAAAAFAAYABgAAAAAAAAAFAAcABgAAAAAAAAAFAAgABgAAAAAAAAAFAAkABgAAAAAAAAAGAAAABgAAAAAAAAAGAAEABgAAAAAAAAAGAAIABgAAAAAAAAAGAAMABgAAAAAAAAAGAAQABgAAAAAAAAAGAAUABgAAAAAAAAAGAAYABgAAAAAAAAAGAAcABgAAAAAAAAAGAAgABgAAAAAAAAAGAAkABgAAAAAAAAAHAAAABgAAAAAAAAAHAAEABgAAAAAAAAAHAAIABgAAAAAAAAAHAAMABgAAAAAAAAAHAAQABgAAAAAAAAAHAAUABgAAAAAAAAAHAAYABgAAAAAAAAAHAAcABgAAAAAAAAAHAAgABgAAAAAAAAAHAAkABgAAAAAAAAAIAAAABgAAAAAAAAAIAAEABgAAAAAAAAAIAAIABgAAAAAAAAAIAAMABgAAAAAAAAAIAAQABgAAAAAAAAAIAAUABgAAAAAAAAAIAAYABgAAAAAAAAAIAAcABgAAAAAAAAAIAAgABgAAAAAAAAAIAAkABgAAAAAAAAAJAAAABgAAAAAAAAAJAAEABgAAAAAAAAAJAAIABgAAAAAAAAAJAAMABgAAAAAAAAAJAAQABgAAAAAAAAAJAAUABgAAAAAAAAAJAAYABgAAAAAAAAAJAAcABgAAAAAAAAAJAAgABgAAAAAAAAAJAAkABgAAAAAAAAAKAAAABgAAAAAAAAAKAAIABgAAAAAAAAAKAAMABgAAAAAAAAAKAAQABgAAAAAAAAAKAAUABgAAAAAAAAAKAAYABgAAAAAAAAAKAAcABgAAAAAAAAAKAAgABgAAAAAAAAAKAAkABgAAAAAAAAALAAAABgAAAAAAAAALAAEABgAAAAAAAAALAAIABgAAAAAAAAALAAMABgAAAAAAAAALAAQABgAAAAAAAAALAAUABgAAAAAAAAALAAYABgAAAAAAAAALAAcABgAAAAAAAAALAAgABgAAAAAAAAALAAkABgAAAAAAAAAKAAEABgAAAAAAAAA=")
 tile_set = ExtResource("1_4kahi")
 
 [node name="Wall" type="TileMapLayer" parent="."]
@@ -203,16 +184,15 @@ visibility_layer = 2
 tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAIAAUAAAAAAAEAAAADAAQAAAAAAAEAADADAAUAAAAAAAAAADAFAAQAAQAAAAAAAAAFAAUAAQAAAAEAAAAGAAQAAQABAAAAAAAGAAUAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_i0gu1")
 
-[node name="TestingBody" parent="." instance=ExtResource("9_rqk7i")]
-position = Vector2(160, 143)
+[node name="Torches" type="Node2D" parent="."]
 
-[node name="Torch" type="Sprite2D" parent="."]
+[node name="Torch" type="Sprite2D" parent="Torches"]
 position = Vector2(385, 115)
 rotation = -1.56656
 scale = Vector2(0.376371, 0.376371)
 texture = ExtResource("10_rqk7i")
 
-[node name="Torch" type="AnimatedSprite2D" parent="Torch"]
+[node name="Torch" type="AnimatedSprite2D" parent="Torches/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-0.112671, -26.5693)
@@ -223,7 +203,7 @@ animation = &"Fire"
 autoplay = "Fire"
 frame_progress = 0.565663
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch/Torch"]
+[node name="PointLight2D" type="PointLight2D" parent="Torches/Torch/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1914)
@@ -234,13 +214,13 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.61
 
-[node name="Torch2" type="Sprite2D" parent="."]
+[node name="Torch2" type="Sprite2D" parent="Torches"]
 position = Vector2(386, 201)
 rotation = -1.56656
 scale = Vector2(0.376371, 0.376371)
 texture = ExtResource("10_rqk7i")
 
-[node name="Torch" type="AnimatedSprite2D" parent="Torch2"]
+[node name="Torch" type="AnimatedSprite2D" parent="Torches/Torch2"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-0.112671, -26.5693)
@@ -251,7 +231,7 @@ animation = &"Fire"
 autoplay = "Fire"
 frame_progress = 0.565663
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch2/Torch"]
+[node name="PointLight2D" type="PointLight2D" parent="Torches/Torch2/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1916)
@@ -262,13 +242,13 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.61
 
-[node name="Torch3" type="Sprite2D" parent="."]
+[node name="Torch3" type="Sprite2D" parent="Torches"]
 position = Vector2(140, -5.96046e-08)
 rotation = 3.14159
 scale = Vector2(0.376371, 0.376371)
 texture = ExtResource("10_rqk7i")
 
-[node name="Torch" type="AnimatedSprite2D" parent="Torch3"]
+[node name="Torch" type="AnimatedSprite2D" parent="Torches/Torch3"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-0.112671, -26.5693)
@@ -279,7 +259,7 @@ animation = &"Fire"
 autoplay = "Fire"
 frame_progress = 0.565663
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch3/Torch"]
+[node name="PointLight2D" type="PointLight2D" parent="Torches/Torch3/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1916)
@@ -290,13 +270,13 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.61
 
-[node name="Torch4" type="Sprite2D" parent="."]
+[node name="Torch4" type="Sprite2D" parent="Torches"]
 position = Vector2(1.43051e-06, 112)
 rotation = 1.5708
 scale = Vector2(0.376371, 0.376371)
 texture = ExtResource("10_rqk7i")
 
-[node name="Torch" type="AnimatedSprite2D" parent="Torch4"]
+[node name="Torch" type="AnimatedSprite2D" parent="Torches/Torch4"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-0.112671, -26.5693)
@@ -307,7 +287,7 @@ animation = &"Fire"
 autoplay = "Fire"
 frame_progress = 0.565663
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch4/Torch"]
+[node name="PointLight2D" type="PointLight2D" parent="Torches/Torch4/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1916)
@@ -318,13 +298,13 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.61
 
-[node name="Torch5" type="Sprite2D" parent="."]
+[node name="Torch5" type="Sprite2D" parent="Torches"]
 position = Vector2(3.8147e-06, 206)
 rotation = 1.5708
 scale = Vector2(0.376371, 0.376371)
 texture = ExtResource("10_rqk7i")
 
-[node name="Torch" type="AnimatedSprite2D" parent="Torch5"]
+[node name="Torch" type="AnimatedSprite2D" parent="Torches/Torch5"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-0.112671, -26.5693)
@@ -335,7 +315,7 @@ animation = &"Fire"
 autoplay = "Fire"
 frame_progress = 0.565663
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch5/Torch"]
+[node name="PointLight2D" type="PointLight2D" parent="Torches/Torch5/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1916)
@@ -346,13 +326,13 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.61
 
-[node name="Torch6" type="Sprite2D" parent="."]
+[node name="Torch6" type="Sprite2D" parent="Torches"]
 position = Vector2(234, -1.19209e-07)
 rotation = -3.14159
 scale = Vector2(0.376371, 0.376371)
 texture = ExtResource("10_rqk7i")
 
-[node name="Torch" type="AnimatedSprite2D" parent="Torch6"]
+[node name="Torch" type="AnimatedSprite2D" parent="Torches/Torch6"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-0.112671, -26.5693)
@@ -363,7 +343,7 @@ animation = &"Fire"
 autoplay = "Fire"
 frame_progress = 0.565663
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch6/Torch"]
+[node name="PointLight2D" type="PointLight2D" parent="Torches/Torch6/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1916)
@@ -374,12 +354,12 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.61
 
-[node name="Torch7" type="Sprite2D" parent="."]
+[node name="Torch7" type="Sprite2D" parent="Torches"]
 position = Vector2(243, 320)
 scale = Vector2(0.376371, 0.376371)
 texture = ExtResource("10_rqk7i")
 
-[node name="Torch" type="AnimatedSprite2D" parent="Torch7"]
+[node name="Torch" type="AnimatedSprite2D" parent="Torches/Torch7"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-0.112671, -26.5693)
@@ -390,7 +370,7 @@ animation = &"Fire"
 autoplay = "Fire"
 frame_progress = 0.565663
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch7/Torch"]
+[node name="PointLight2D" type="PointLight2D" parent="Torches/Torch7/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1916)
@@ -401,12 +381,12 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.61
 
-[node name="Torch8" type="Sprite2D" parent="."]
+[node name="Torch8" type="Sprite2D" parent="Torches"]
 position = Vector2(148, 320)
 scale = Vector2(0.376371, 0.376371)
 texture = ExtResource("10_rqk7i")
 
-[node name="Torch" type="AnimatedSprite2D" parent="Torch8"]
+[node name="Torch" type="AnimatedSprite2D" parent="Torches/Torch8"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-0.112671, -26.5693)
@@ -417,7 +397,7 @@ animation = &"Fire"
 autoplay = "Fire"
 frame_progress = 0.565663
 
-[node name="PointLight2D" type="PointLight2D" parent="Torch8/Torch"]
+[node name="PointLight2D" type="PointLight2D" parent="Torches/Torch8/Torch"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1916)
@@ -427,6 +407,9 @@ range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.61
+
+[node name="TestingBody" parent="." instance=ExtResource("9_rqk7i")]
+position = Vector2(160, 143)
 
 [node name="WestDoor" type="Area2D" parent="."]
 position = Vector2(11, 158)
