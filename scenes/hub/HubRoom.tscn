@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bc0c3hy2bfhbf" path="res://assets/tilesets/sink.png" id="5_dp14r"]
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="9_hb6ud"]
-[ext_resource type="PackedScene" uid="uid://dan1cc702xgu8" path="res://scenes/Player/testing_body.tscn" id="9_rqk7i"]
+[ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="9_rqk7i"]
 [ext_resource type="Texture2D" uid="uid://dki0ec7cklwne" path="res://assets/images/torch_only.png" id="10_rqk7i"]
 [ext_resource type="Script" uid="uid://21fvpujg03l" path="res://scenes/hub/WDoor.gd" id="11_i0gu1"]
 [ext_resource type="Script" uid="uid://dbfijmlv17hds" path="res://scenes/hub/south_door.gd" id="12_e1xmp"]
