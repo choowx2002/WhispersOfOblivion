@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://nv6v05v7me5t"]
+[gd_scene load_steps=12 format=4 uid="uid://nv6v05v7me5t"]
 
 [ext_resource type="TileSet" uid="uid://3ip1jes7nnmf" path="res://assets/tilesets/Cave.tres" id="1_euhjs"]
 [ext_resource type="Script" uid="uid://hrqd67f8757u" path="res://scenes/mazes/n_maze.gd" id="1_mbjul"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dad66ef8pqoqq" path="res://scenes/mazes/escape_gate.gd" id="7_urqrk"]
 [ext_resource type="Texture2D" uid="uid://p5v663is4fxb" path="res://assets/tilesets/keepdoors_lion_bw_gt.png" id="8_mbjul"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="8_urqrk"]
+[ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="9_mbjul"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_urqrk"]
 
@@ -67,5 +68,10 @@ position = Vector2(1733, -1801)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0352941, 0.0352941, 0.121569, 1)
+
+[node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map", "grass_map") groups=["surface_detector"]]
+script = ExtResource("9_mbjul")
+ground_map = NodePath("../Ground")
+grass_map = NodePath("")
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]

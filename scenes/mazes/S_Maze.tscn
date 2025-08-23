@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bodlwpbnqs52j"]
+[gd_scene load_steps=9 format=4 uid="uid://bodlwpbnqs52j"]
 
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_oyhaw"]
 [ext_resource type="Script" uid="uid://d3ixxjp8u87vr" path="res://scenes/mazes/s_maze.gd" id="1_ucpvt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://biaqvw0hcdgkq" path="res://scenes/mazes/collectible_item.gd" id="3_r3711"]
 [ext_resource type="Texture2D" uid="uid://kancbj08u2pr" path="res://assets/tilesets/Lattia2.jpg" id="4_w0j7y"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="6_aorba"]
+[ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="7_ucpvt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qr21i"]
 
@@ -46,3 +47,8 @@ position = Vector2(88, 216)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0350194, 0.036488, 0.120756, 1)
+
+[node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map", "grass_map") groups=["surface_detector"]]
+script = ExtResource("7_ucpvt")
+ground_map = NodePath("../Ground")
+grass_map = NodePath("")

@@ -2,10 +2,16 @@ extends CharacterBody2D
 
 var anim_sprite: AnimatedSprite2D # run animation
 @export var move_speed := 100 # player movement base speed（frame/sec）
+@onready var step_audio := $StepAudio
+var surface_detector
+var step_timer := 0.0
+var base_interval := 0.45
+var min_interval := 0.20
 var is_dead: bool = false # declare if player ded
 
 func _ready():
 	anim_sprite = get_node("AnimatedSprite2D")
+	surface_detector = get_tree().get_first_node_in_group("surface_detector")
 	#connect("body_entered", Callable(self, "touch_enemy"))
 
 func _physics_process(delta):
@@ -43,6 +49,21 @@ func _physics_process(delta):
 		# run idle animation when vector = 0 (idle)
 		velocity = Vector2.ZERO
 		anim_sprite.play("idle")
+	
+	#detect speed and step sound
+	var speed = velocity.length()
+	
+	if speed > 10:
+		var ratio = speed / move_speed
+		var step_interval = clamp(base_interval / ratio, min_interval, base_interval)
+		step_timer -= delta
+		
+		if step_timer <= 0.0:
+			step_timer = step_interval
+			_play_step_sound()
+	else:
+		step_timer = 0.0
+	
 	move_and_slide()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
@@ -65,3 +86,19 @@ func respawn():
 	anim_sprite.play("idle")
 	is_dead = false
 	set_physics_process(true)
+
+func _play_step_sound():
+	if not surface_detector:
+		return
+
+	var surface = surface_detector.get_surface_type(global_position)
+	match surface:
+		"ground":
+			step_audio.stream = preload("res://assets/sounds/footstep.mp3")
+		"grass":
+			step_audio.stream = preload("res://assets/sounds/walking-on-grass.mp3")
+		_:
+			step_audio.stream = preload("res://assets/sounds/footstep.mp3")
+
+	step_audio.pitch_scale = randf_range(0.95, 1.05)
+	step_audio.play()

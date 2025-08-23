@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=46 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
 [ext_resource type="Script" uid="uid://bxihib6imi8yc" path="res://scenes/hub/hub_room.gd" id="1_oawfl"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b8yfxaixcchsv" path="res://scenes/Item/collect_item.tscn" id="13_svha4"]
 [ext_resource type="PackedScene" uid="uid://dx0mwwmn1t1ed" path="res://scenes/Enemy/testing_enemy.tscn" id="16_k0xi1"]
 [ext_resource type="AudioStream" uid="uid://3r8k4o8taqxl" path="res://assets/sounds/horrorBGM1.mp3" id="18_sqw0j"]
+[ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="19_so866"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
 resource_name = "sofa"
@@ -515,8 +516,12 @@ rotation = -1.5708
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_sqw0j")
-volume_db = -5.0
 autoplay = true
+
+[node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map", "grass_map") groups=["surface_detector"]]
+script = ExtResource("19_so866")
+ground_map = NodePath("../Ground")
+grass_map = NodePath("")
 
 [connection signal="body_entered" from="WestDoor" to="WestDoor" method="_on_body_entered"]
 [connection signal="body_exited" from="WestDoor" to="WestDoor" method="_on_body_exited"]
