@@ -379,7 +379,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 20.0
+"speed": 20.5
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fon1v"]
@@ -399,7 +399,7 @@ texture = ExtResource("2_6sdiv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1375, 0.1375)
 sprite_frames = SubResource("SpriteFrames_tsc7x")
-animation = &"died"
+animation = &"move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fon1v")
