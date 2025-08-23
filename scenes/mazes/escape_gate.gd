@@ -16,9 +16,10 @@ func _on_body_entered(body):
 	
 	# If the memory fragment from this maze is collected, mark maze as done
 	if GameState.has_collected_fragment(maze_key):
+		print("Fragment Unlocked: ", maze_key)
 		GameState.on_escape_completed(maze_key)
 	else:
-		print("No memory fragment collected for", maze_key)
+		print("Fragment No Collected: ", maze_key)
 	
 	# Teleport back to the hub
 	get_tree().call_deferred("change_scene_to_file", target_scene)

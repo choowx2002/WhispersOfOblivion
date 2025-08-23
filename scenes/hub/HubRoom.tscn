@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=44 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
 [ext_resource type="Script" uid="uid://bxihib6imi8yc" path="res://scenes/hub/hub_room.gd" id="1_oawfl"]
@@ -15,8 +15,6 @@
 [ext_resource type="Script" uid="uid://dbfijmlv17hds" path="res://scenes/hub/south_door.gd" id="12_e1xmp"]
 [ext_resource type="Script" uid="uid://d2j1hfhgwa7ls" path="res://scenes/hub/east_door.gd" id="12_r48qa"]
 [ext_resource type="Script" uid="uid://cyh8c3pqm40yu" path="res://scenes/hub/north_door.gd" id="13_fevrt"]
-[ext_resource type="PackedScene" uid="uid://b8yfxaixcchsv" path="res://scenes/Item/collect_item.tscn" id="13_svha4"]
-[ext_resource type="PackedScene" uid="uid://dx0mwwmn1t1ed" path="res://scenes/Enemy/testing_enemy.tscn" id="16_k0xi1"]
 [ext_resource type="AudioStream" uid="uid://3r8k4o8taqxl" path="res://assets/sounds/horrorBGM1.mp3" id="18_sqw0j"]
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="19_so866"]
 
@@ -506,13 +504,6 @@ shape = SubResource("RectangleShape2D_fevrt")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(-1.52588e-05, -3.05176e-05)
 color = Color(0.110731, 0.1209, 0.122923, 1)
-
-[node name="testing_enemy" parent="." instance=ExtResource("16_k0xi1")]
-position = Vector2(156, 235)
-
-[node name="collect item" parent="." instance=ExtResource("13_svha4")]
-position = Vector2(238, 219)
-rotation = -1.5708
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_sqw0j")

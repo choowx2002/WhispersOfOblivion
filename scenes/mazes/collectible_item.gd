@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	# Only trigger for player
 	if body.name != "TestingBody":
+		print("Player touched collectible")
 		return
 	if auto_pickup:
 		_collect(body)
@@ -46,8 +47,13 @@ func _collect_fragment():
 	var scene := get_tree().current_scene
 	if scene and scene.has_method("get_maze_key"):
 		maze_key = scene.get_maze_key()
+	print("Player pickup collectible in maze:", maze_key, " Item ID:", item_id)
+	
 	if item_id == "memory_fragment" and maze_key != "":
 		GameState.mark_fragment_collected(maze_key)
+		print("✅ Marked fragment as collected for", maze_key)
+	else:
+		print("❌ Not marking fragment collected")
 
 # Start fade-out animation
 func _start_fade():

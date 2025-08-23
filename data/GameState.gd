@@ -132,9 +132,9 @@ func mark_fragment_collected(maze_key: String) -> void:
 		fragments_collected[key] = true
 		save()
 
-# maze exit function
+# maze escape triggered function (collected frags)
 func on_escape_completed(maze_key: String) -> void:
-	# Only unlock if the player actually collected the fragment in this maze
+	# Only run if the player actually collected the fragment in this maze
 	var key := normalize_maze_key(maze_key)
 	var frag_id := get_fragment_id_for_maze(key)
 
