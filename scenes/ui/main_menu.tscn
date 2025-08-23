@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckpnpfqic2di7"]
+
+[ext_resource type="Script" uid="uid://b6fqydsseiyp7" path="res://scenes/ui/main_menu.gd" id="1_1g8jr"]
+[ext_resource type="Texture2D" uid="uid://dxb3a6sv0jo60" path="res://assets/ui/pngtree-game-castle-horror-scene-illustration-background-picture-image_2384835.png" id="1_fe2o3"]
+[ext_resource type="Texture2D" uid="uid://c8g8a4ijp6gmo" path="res://assets/ui/FreeHorrorUi.png" id="2_1g8jr"]
+
+[sub_resource type="GDScript" id="GDScript_m1kxf"]
+script/source = "extends MarginContainer
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1kxf"]
+texture = ExtResource("2_1g8jr")
+region_rect = Rect2(69.6326, 138.139, 52.7189, 13.9039)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2yvf"]
+texture = ExtResource("2_1g8jr")
+region_rect = Rect2(6.42134, 137.659, 51.8731, 15.4217)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fe2o3"]
+texture = ExtResource("2_1g8jr")
+region_rect = Rect2(70.1111, 169.985, 51.7399, 13.5711)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1g8jr"]
+texture = ExtResource("2_1g8jr")
+region_rect = Rect2(5.53538, 170.623, 52.164, 13.147)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uhagc"]
+texture = ExtResource("2_1g8jr")
+region_rect = Rect2(70.7675, 202.574, 51.7823, 13.0622)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btxxm"]
+texture = ExtResource("2_1g8jr")
+region_rect = Rect2(5.9323, 201.658, 53.0122, 15.6916)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1g8jr")
+
+[node name="Button" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_m1kxf")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Button"]
+layout_mode = 2
+texture = ExtResource("1_fe2o3")
+
+[node name="Play" type="Button" parent="Button/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.332
+anchor_top = 0.396
+anchor_right = 0.702
+anchor_bottom = 0.559
+offset_left = 0.0239868
+offset_top = 0.559982
+offset_right = -0.135986
+offset_bottom = 0.23999
+theme_override_styles/hover = SubResource("StyleBoxTexture_m1kxf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m1kxf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_x2yvf")
+
+[node name="Setting" type="Button" parent="Button/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335
+anchor_top = 0.598
+anchor_right = 0.698
+anchor_bottom = 0.747
+offset_left = -0.279999
+offset_top = 0.279968
+offset_right = -0.0640259
+offset_bottom = -0.0800171
+theme_override_styles/hover = SubResource("StyleBoxTexture_fe2o3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fe2o3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1g8jr")
+
+[node name="Exit" type="Button" parent="Button/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34
+anchor_top = 0.798
+anchor_right = 0.704
+anchor_bottom = 0.955
+offset_left = -0.119995
+offset_top = 0.279968
+offset_right = 0.327942
+offset_bottom = -0.200012
+theme_override_styles/hover = SubResource("StyleBoxTexture_uhagc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uhagc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_btxxm")
+
+[node name="Setting" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
