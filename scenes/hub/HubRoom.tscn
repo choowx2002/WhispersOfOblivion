@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bc0c3hy2bfhbf" path="res://assets/tilesets/sink.png" id="5_dp14r"]
 [ext_resource type="Texture2D" uid="uid://b74ulmru47py6" path="res://assets/tilesets/Wood_Door_Open-Blu-hrc.png" id="8_4kahi"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="9_hb6ud"]
-[ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="9_rqk7i"]
+[ext_resource type="PackedScene" uid="uid://dan1cc702xgu8" path="res://scenes/Player/testing_body.tscn" id="9_rqk7i"]
 [ext_resource type="Texture2D" uid="uid://dki0ec7cklwne" path="res://assets/images/torch_only.png" id="10_rqk7i"]
 [ext_resource type="Script" uid="uid://21fvpujg03l" path="res://scenes/hub/WDoor.gd" id="11_i0gu1"]
 [ext_resource type="Script" uid="uid://dbfijmlv17hds" path="res://scenes/hub/south_door.gd" id="12_e1xmp"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b8yfxaixcchsv" path="res://scenes/Item/collect_item.tscn" id="13_svha4"]
 [ext_resource type="PackedScene" uid="uid://dx0mwwmn1t1ed" path="res://scenes/Enemy/testing_enemy.tscn" id="16_k0xi1"]
 [ext_resource type="AudioStream" uid="uid://3r8k4o8taqxl" path="res://assets/sounds/horrorBGM1.mp3" id="18_sqw0j"]
-[ext_resource type="Script" path="res://utils/surface_detector.gd" id="19_so866"]
+[ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="19_so866"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
 resource_name = "sofa"
@@ -410,7 +410,7 @@ texture = ExtResource("4_tqygv")
 texture_scale = 5.61
 
 [node name="TestingBody" parent="." instance=ExtResource("9_rqk7i")]
-position = Vector2(160, 143)
+position = Vector2(155, 85)
 
 [node name="WestDoor" type="Area2D" parent="."]
 position = Vector2(11, 158)

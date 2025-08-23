@@ -9,15 +9,7 @@ var base_interval := 0.45
 var min_interval := 0.20
 var is_dead: bool = false # declare if player ded
 
-signal healthChanged
-@export var maxHealth: float = 3.0 # set maximum health to 3 unit
-var currentHealth: float = maxHealth # current heath status
-@onready var heartsContainer = $HeartBar/HeartContainer
-
 func _ready():
-	heartsContainer.setMaxHearts(maxHealth) # show heart ui
-	heartsContainer.updateHearts(currentHealth) # update the current heart
-	healthChanged.connect(heartsContainer.updateHearts)
 	anim_sprite = get_node("AnimatedSprite2D")
 	surface_detector = get_tree().get_first_node_in_group("surface_detector")
 	#connect("body_entered", Callable(self, "touch_enemy"))
@@ -38,7 +30,7 @@ func _physics_process(delta):
 	
 	# Character facing
 	if input_vector.length() > 0:
-		rotation = input_vector.angle()
+		anim_sprite.rotation = input_vector.angle() - PI / 2
 	
 	# If shift is pressed, slow down (stealth mode)
 	var speed_multiplier := 1.0
@@ -79,30 +71,20 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if is_dead:
 		return
 	if area.get_parent().is_in_group("Enemy"):  # check if enemy parent is in group
-		currentHealth -= 1.0 # minus 1 heart while touched the hitbox
-		healthChanged.emit(currentHealth) # show latest health status
-		if currentHealth == 0:
-			die()
+		die()
 
 func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
 	anim_sprite.play("died")
 	await anim_sprite.animation_finished
-	await get_tree().create_timer(1.0).timeout
 	respawn()
 	print("Player died.")
 
 func respawn():
-	maxHealth += 1
-	if maxHealth >= 100:
-		maxHealth -= 97 # clear the health in default 3 unit if reach 100 health limit
-		return
-	currentHealth = maxHealth
 	global_position = get_tree().current_scene.gameRespawnPoint
 	anim_sprite.play("idle")
 	is_dead = false
-	healthChanged.emit(currentHealth)
 	set_physics_process(true)
 
 func _play_step_sound():
