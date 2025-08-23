@@ -36,6 +36,9 @@ func _ready():
 		playerCamera.limit_right = 1952
 		playerCamera.limit_bottom = 1952
 
+func get_maze_key() -> String:
+	return "west"
+
 func _on_check_timer_timeout():
 	if targets.is_empty():
 		return

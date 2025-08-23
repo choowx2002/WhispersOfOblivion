@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dnofk5jr5j8hc" path="res://assets/player/Player_death.png" id="3_53u1h"]
 [ext_resource type="Texture2D" uid="uid://cey4jjaf50ckw" path="res://assets/player/Player_idle.png" id="4_ci0fc"]
 [ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://assets/player/Player_walk.png" id="5_tfrc8"]
-[ext_resource type="PackedScene" path="res://scenes/ui/heart_container.tscn" id="6_6sdiv"]
+[ext_resource type="PackedScene" uid="uid://4fvajghxktbk" path="res://scenes/ui/heart_container.tscn" id="6_6sdiv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6sdiv"]
 atlas = ExtResource("3_53u1h")
@@ -392,21 +392,26 @@ radius = 13.0
 script = ExtResource("1_ci0fc")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 energy = 1.2
 shadow_enabled = true
 texture = ExtResource("2_6sdiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.187647
 scale = Vector2(0.1375, 0.1375)
 sprite_frames = SubResource("SpriteFrames_tsc7x")
 animation = &"move"
+frame_progress = 0.849639
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_fon1v")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 shape = SubResource("CircleShape2D_ci0fc")
 
 [node name="Camera2D" type="Camera2D" parent="."]

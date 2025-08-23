@@ -18,3 +18,6 @@ func _ready():
 		playerCamera.limit_top = 0
 		playerCamera.limit_right = 1952
 		playerCamera.limit_bottom = 1952
+
+func get_maze_key() -> String:
+	return "east"

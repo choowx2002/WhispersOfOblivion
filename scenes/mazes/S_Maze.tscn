@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d3ixxjp8u87vr" path="res://scenes/mazes/s_maze.gd" id="1_ucpvt"]
 [ext_resource type="TileSet" uid="uid://3ip1jes7nnmf" path="res://assets/tilesets/Cave.tres" id="2_33w48"]
 [ext_resource type="Script" uid="uid://biaqvw0hcdgkq" path="res://scenes/mazes/collectible_item.gd" id="3_r3711"]
-[ext_resource type="Texture2D" uid="uid://kancbj08u2pr" path="res://assets/tilesets/Lattia2.jpg" id="4_w0j7y"]
+[ext_resource type="Texture2D" uid="uid://deb2kdj538xyn" path="res://assets/images/collectable_item_south.png" id="5_ucpvt"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="6_aorba"]
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="7_ucpvt"]
 
@@ -28,7 +28,8 @@ position = Vector2(543, 1004)
 script = ExtResource("3_r3711")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollectableItem"]
-texture = ExtResource("4_w0j7y")
+scale = Vector2(0.0240329, 0.0236545)
+texture = ExtResource("5_ucpvt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableItem"]
 shape = SubResource("CircleShape2D_qr21i")
@@ -46,6 +47,7 @@ position = Vector2(1, -1817)
 position = Vector2(88, 216)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0350194, 0.036488, 0.120756, 1)
 
 [node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map") groups=["surface_detector"]]

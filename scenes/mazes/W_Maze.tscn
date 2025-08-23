@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://dad66ef8pqoqq" path="res://scenes/mazes/escape_gate.gd" id="4_n65wr"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="6_krb2h"]
 [ext_resource type="Script" uid="uid://biaqvw0hcdgkq" path="res://scenes/mazes/collectible_item.gd" id="8_mbxff"]
-[ext_resource type="Texture2D" uid="uid://kancbj08u2pr" path="res://assets/tilesets/Lattia2.jpg" id="9_gp22u"]
+[ext_resource type="Texture2D" uid="uid://culkeuk4k0uj2" path="res://assets/images/collectable_item_west.png" id="9_qpqmv"]
 [ext_resource type="AudioStream" uid="uid://qd44lerfuqws" path="res://assets/sounds/north.mp3" id="10_i53lc"]
 [ext_resource type="AudioStream" uid="uid://c4xiorfqe1my5" path="res://assets/sounds/east.mp3" id="11_0xgad"]
 [ext_resource type="AudioStream" uid="uid://billjhwbmnp7r" path="res://assets/sounds/south.mp3" id="12_qpqmv"]
@@ -99,7 +99,8 @@ position = Vector2(51, 353)
 script = ExtResource("8_mbxff")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollectableItem"]
-texture = ExtResource("9_gp22u")
+scale = Vector2(0.0460669, 0.0460669)
+texture = ExtResource("9_qpqmv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableItem"]
 shape = SubResource("CircleShape2D_cx813")
@@ -116,6 +117,7 @@ position = Vector2(1824, -1831)
 position = Vector2(66, 144)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0352941, 0.0352941, 0.121569, 1)
 
 [node name="Sounds" type="Node" parent="."]

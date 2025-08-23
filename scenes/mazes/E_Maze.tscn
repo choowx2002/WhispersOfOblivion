@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://3ip1jes7nnmf" path="res://assets/tilesets/Cave.tres" id="2_1n4lv"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="4_vrddb"]
 [ext_resource type="Script" uid="uid://biaqvw0hcdgkq" path="res://scenes/mazes/collectible_item.gd" id="5_gwn0b"]
-[ext_resource type="Texture2D" uid="uid://kancbj08u2pr" path="res://assets/tilesets/Lattia2.jpg" id="6_ssd4l"]
+[ext_resource type="Texture2D" uid="uid://vounnyjrcl3a" path="res://assets/images/collectable_item_east.png" id="6_xlx1c"]
 [ext_resource type="Script" uid="uid://dad66ef8pqoqq" path="res://scenes/mazes/escape_gate.gd" id="7_ofleh"]
 [ext_resource type="Texture2D" uid="uid://p5v663is4fxb" path="res://assets/tilesets/keepdoors_lion_bw_gt.png" id="8_xlx1c"]
 [ext_resource type="Script" uid="uid://0hfwlgyec2ex" path="res://scenes/mazes/testing_body_2.gd" id="10_gwn0b"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="13_xlx1c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75xqg"]
+radius = 15.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gaifs"]
 size = Vector2(7.25, 32)
@@ -192,9 +193,11 @@ position = Vector2(961, 958)
 script = ExtResource("5_gwn0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollectableItem"]
-texture = ExtResource("6_ssd4l")
+scale = Vector2(0.0169228, 0.0169228)
+texture = ExtResource("6_xlx1c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableItem"]
+scale = Vector2(1, 0.639961)
 shape = SubResource("CircleShape2D_75xqg")
 
 [node name="EscapeGate" type="Area2D" parent="."]
@@ -356,9 +359,10 @@ shape = SubResource("CircleShape2D_a11uw")
 collision_mask = 3
 
 [node name="TestingBody" parent="." instance=ExtResource("11_ofleh")]
-position = Vector2(1011, 1076)
+position = Vector2(377, 1031)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0352941, 0.0352941, 0.121569, 1)
 
 [node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map") groups=["surface_detector"]]
