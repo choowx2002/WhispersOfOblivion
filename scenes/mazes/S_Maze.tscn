@@ -48,7 +48,6 @@ position = Vector2(88, 216)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0350194, 0.036488, 0.120756, 1)
 
-[node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map", "grass_map") groups=["surface_detector"]]
+[node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map") groups=["surface_detector"]]
 script = ExtResource("7_ucpvt")
 ground_map = NodePath("../Ground")
-grass_map = NodePath("")

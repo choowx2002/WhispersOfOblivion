@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/Player/testing_body.gd" id="1_ci0fc"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="2_6sdiv"]
-[ext_resource type="Texture2D" uid="uid://dnofk5jr5j8hc" path="res://player/Player_death.png" id="3_53u1h"]
-[ext_resource type="Texture2D" uid="uid://cey4jjaf50ckw" path="res://player/Player_idle.png" id="4_ci0fc"]
-[ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://player/Player_walk.png" id="5_tfrc8"]
+[ext_resource type="Texture2D" uid="uid://dnofk5jr5j8hc" path="res://assets/player/Player_death.png" id="3_53u1h"]
+[ext_resource type="Texture2D" uid="uid://cey4jjaf50ckw" path="res://assets/player/Player_idle.png" id="4_ci0fc"]
+[ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://assets/player/Player_walk.png" id="5_tfrc8"]
 [ext_resource type="PackedScene" path="res://scenes/ui/heart_container.tscn" id="6_6sdiv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6sdiv"]
