@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 var anim_sprite: AnimatedSprite2D # run animation
 @export var move_speed := 100 # player movement base speed（frame/sec）
+var stealth_multiplier: float = 1.0
+var external_multiplier: float = 1.0
+
 @onready var step_audio := $StepAudio
 var surface_detector
 var step_timer := 0.0
@@ -33,9 +36,26 @@ func _physics_process(delta):
 		anim_sprite.rotation = input_vector.angle() - PI / 2
 	
 	# If shift is pressed, slow down (stealth mode)
-	var speed_multiplier := 1.0
-	if Input.is_action_pressed("stealth"):
-		speed_multiplier = 0.33  # Slowdown multiplier
+	stealth_multiplier = 0.33 if Input.is_action_pressed("stealth") else 1.0
+	
+	# 根据 tilemap 检测地表
+	var surface = "default"
+	if surface_detector:
+		surface = surface_detector.get_surface_type(global_position)
+
+	# 默认外部倍率
+	external_multiplier = 1.0
+	match surface:
+		"slow":
+			external_multiplier = 0.3
+		"grass":
+			external_multiplier = 0.8
+		"ground":
+			external_multiplier = 1.0
+		"default":
+			external_multiplier = 1.0
+			
+	var speed_multiplier = stealth_multiplier * external_multiplier
 	
 	# Move and animate
 	if input_vector.length() > 0:
@@ -49,20 +69,9 @@ func _physics_process(delta):
 		# run idle animation when vector = 0 (idle)
 		velocity = Vector2.ZERO
 		anim_sprite.play("idle")
-	
-	#detect speed and step sound
-	var speed = velocity.length()
-	
-	if speed > 10:
-		var ratio = speed / move_speed
-		var step_interval = clamp(base_interval / ratio, min_interval, base_interval)
-		step_timer -= delta
 		
-		if step_timer <= 0.0:
-			step_timer = step_interval
-			_play_step_sound()
-	else:
-		step_timer = 0.0
+	#detect speed and step sound
+	_play_step_sound(surface, velocity.length())
 	
 	move_and_slide()
 
@@ -87,18 +96,23 @@ func respawn():
 	is_dead = false
 	set_physics_process(true)
 
-func _play_step_sound():
-	if not surface_detector:
-		return
-
-	var surface = surface_detector.get_surface_type(global_position)
-	match surface:
-		"ground":
-			step_audio.stream = preload("res://assets/sounds/footstep.mp3")
-		"grass":
-			step_audio.stream = preload("res://assets/sounds/walking-on-grass.mp3")
-		_:
-			step_audio.stream = preload("res://assets/sounds/footstep.mp3")
-
-	step_audio.pitch_scale = randf_range(0.95, 1.05)
-	step_audio.play()
+func _play_step_sound(surface: String, speed: float) -> void:
+	if speed > 10:
+		var ratio = speed / move_speed
+		var step_interval = clamp(base_interval / ratio, min_interval, base_interval)
+		step_timer -= get_physics_process_delta_time()
+		
+		if step_timer <= 0.0:
+			step_timer = step_interval
+			match surface:
+				"slow":
+					step_audio.stream = preload("res://assets/sounds/footsteps-on-tile-31653.mp3")
+				"grass":
+					step_audio.stream = preload("res://assets/sounds/walking-on-grass.mp3")
+				"ground", "default":
+					step_audio.stream = preload("res://assets/sounds/footstep.mp3")
+			
+			step_audio.pitch_scale = randf_range(0.95, 1.05)
+			step_audio.play()
+	else:
+		step_timer = 0.0
