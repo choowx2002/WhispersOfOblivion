@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var player := $TestingBody
+@onready var collection_display = $CollectionDisplay
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var playerCamera: Camera2D = player.find_child("Camera2D")
@@ -11,7 +13,10 @@ func _ready() -> void:
 		playerCamera.limit_bottom = 320
 		playerCamera.zoom = Vector2(4.8, 4.8)
 
-
+# Function to display collectables in maze
+func _enter_tree():
+	if collection_display:
+		collection_display.update_display()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

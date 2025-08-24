@@ -16,6 +16,7 @@ const FRAG_DB_PATH := "res://data/memory_fragments.json"
 
 signal progress_changed(escape_count: int)
 signal fragment_unlocked(id: int)
+signal fragment_collected(maze_key: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

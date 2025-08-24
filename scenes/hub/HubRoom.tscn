@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=49 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
 [ext_resource type="Script" uid="uid://bxihib6imi8yc" path="res://scenes/hub/hub_room.gd" id="1_oawfl"]
@@ -15,8 +15,13 @@
 [ext_resource type="Script" uid="uid://dbfijmlv17hds" path="res://scenes/hub/south_door.gd" id="12_e1xmp"]
 [ext_resource type="Script" uid="uid://d2j1hfhgwa7ls" path="res://scenes/hub/east_door.gd" id="12_r48qa"]
 [ext_resource type="Script" uid="uid://cyh8c3pqm40yu" path="res://scenes/hub/north_door.gd" id="13_fevrt"]
+[ext_resource type="Texture2D" uid="uid://cfbih535kkwhq" path="res://assets/images/collectable_item_north.png" id="18_nyixv"]
 [ext_resource type="AudioStream" uid="uid://3r8k4o8taqxl" path="res://assets/sounds/horrorBGM1.mp3" id="18_sqw0j"]
+[ext_resource type="Texture2D" uid="uid://vounnyjrcl3a" path="res://assets/images/collectable_item_east.png" id="19_heyhg"]
+[ext_resource type="Script" uid="uid://bwgsne6hff3t6" path="res://scenes/hub/collection_display.gd" id="19_jnq1j"]
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="19_so866"]
+[ext_resource type="Texture2D" uid="uid://deb2kdj538xyn" path="res://assets/images/collectable_item_south.png" id="20_jnq1j"]
+[ext_resource type="Texture2D" uid="uid://culkeuk4k0uj2" path="res://assets/images/collectable_item_west.png" id="21_7e4qx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
 resource_name = "sofa"
@@ -408,7 +413,7 @@ texture = ExtResource("4_tqygv")
 texture_scale = 5.61
 
 [node name="TestingBody" parent="." instance=ExtResource("9_rqk7i")]
-position = Vector2(155, 85)
+position = Vector2(157, 85)
 
 [node name="WestDoor" type="Area2D" parent="."]
 position = Vector2(11, 158)
@@ -502,6 +507,7 @@ position = Vector2(3, 8)
 shape = SubResource("RectangleShape2D_fevrt")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2(-1.52588e-05, -3.05176e-05)
 color = Color(0.110731, 0.1209, 0.122923, 1)
 
@@ -512,6 +518,35 @@ autoplay = true
 [node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map") groups=["surface_detector"]]
 script = ExtResource("19_so866")
 ground_map = NodePath("../Ground")
+
+[node name="CollectionDisplay" type="Node2D" parent="."]
+
+[node name="North" type="Sprite2D" parent="CollectionDisplay"]
+position = Vector2(181, 147)
+scale = Vector2(0.0270839, 0.0270839)
+texture = ExtResource("18_nyixv")
+script = ExtResource("19_jnq1j")
+
+[node name="East" type="Sprite2D" parent="CollectionDisplay"]
+position = Vector2(205, 149)
+rotation = 0.673794
+scale = Vector2(0.0136468, 0.0136468)
+texture = ExtResource("19_heyhg")
+script = ExtResource("19_jnq1j")
+
+[node name="South" type="Sprite2D" parent="CollectionDisplay"]
+position = Vector2(203, 171)
+rotation = -2.40669
+scale = Vector2(0.0274754, 0.0274754)
+texture = ExtResource("20_jnq1j")
+script = ExtResource("19_jnq1j")
+
+[node name="West" type="Sprite2D" parent="CollectionDisplay"]
+position = Vector2(179, 170)
+rotation = 0.902104
+scale = Vector2(0.0387751, 0.0389489)
+texture = ExtResource("21_7e4qx")
+script = ExtResource("19_jnq1j")
 
 [connection signal="body_entered" from="WestDoor" to="WestDoor" method="_on_body_entered"]
 [connection signal="body_exited" from="WestDoor" to="WestDoor" method="_on_body_exited"]
