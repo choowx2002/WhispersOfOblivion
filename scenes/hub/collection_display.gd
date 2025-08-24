@@ -11,7 +11,7 @@ func _ready() -> void:
 	self.visible = false
 	
 	# Get maze direction from node name
-	var direction = name.to_lower()  # "North" becomes "north", etc.
+	var direction = name.to_lower()
 	print("DEBUG: Initializing ", direction, " fragment display")
 	
 	# Check if fragment is collected
