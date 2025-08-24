@@ -51,7 +51,7 @@ func _collect_fragment():
 	
 	if item_id == "memory_fragment" and maze_key != "":
 		GameState.mark_fragment_collected(maze_key)
-		print("✅ Marked fragment as collected for", maze_key)
+		print("✅ Marked fragment as collected for ", maze_key)
 	else:
 		print("❌ Not marking fragment collected")
 
