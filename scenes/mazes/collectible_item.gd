@@ -10,11 +10,28 @@ extends Area2D
 var fading: bool = false
 var timer: float = 0.0
 var start_scale: Vector2
+var maze_key: String = ""
 
 func _ready():
 	sprite.modulate.a = 1.0
 	start_scale = sprite.scale  # Store original item scale
 	body_entered.connect(_on_body_entered)
+
+	# Get maze name on load
+	var scene := get_tree().current_scene
+	if scene and scene.has_method("get_maze_key"):
+		maze_key = scene.get_maze_key()
+		print("DEBUG: Collectible initialized in maze: ", maze_key)
+		
+		# Verify collection state
+		if item_id == "memory_fragment" and maze_key != "":
+			var is_collected = GameState.has_collected_fragment(maze_key)
+			print("DEBUG: Fragment collection state for ", maze_key, ": ", is_collected)
+			if is_collected:
+				queue_free()
+				return
+	else:
+		push_warning("Scene missing get_maze_key() method!")
 
 func _process(delta: float) -> void:
 	# Handle fade-out animation
@@ -31,15 +48,19 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	# Only trigger for player
 	if body.name != "TestingBody":
-		print("Player touched collectible")
 		return
-	if auto_pickup:
+	
+	if auto_pickup and not GameState.has_collected_fragment(maze_key):
 		_collect(body)
 
 func _collect(body: Node):
-	_collect_fragment()
-	_start_fade()
-	print("Player collected item:", item_id)
+	if item_id == "memory_fragment" and maze_key != "":
+		if not GameState.has_collected_fragment(maze_key):
+			GameState.mark_fragment_collected(maze_key)
+			print("DEBUG: Fragment collected in maze: ", maze_key)
+			_start_fade()
+		else:
+			print("DEBUG: Fragment already collected in maze: ", maze_key)
 	
 # Mark memory fragment collected
 func _collect_fragment():

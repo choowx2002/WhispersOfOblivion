@@ -21,10 +21,24 @@ signal fragment_unlocked(id: int)
 func _ready() -> void:
 	_load_db()
 	_load_save()
+	print("DEBUG: Initial fragments state: ", fragments_collected)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+# Function to Hard Reset Game Status
+func reset_game_state() -> void:
+	fragments_collected = {
+		"north": false,
+		"east": false,
+		"south": false,
+		"west": false
+	}
+	escape_count = 0
+	unlocked_fragments.clear()
+	save()
+	print("DEBUG: Reset game state - fragments:", fragments_collected)
 
 # Load database
 func _load_db() -> void:
