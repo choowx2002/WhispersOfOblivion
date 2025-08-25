@@ -1,6 +1,7 @@
 extends Panel
 
-@onready var sprite = $Sprite2D
+@onready var sprite: Sprite2D = $Sprite2D
+
 func _ready():
 	pass
 	
@@ -8,5 +9,7 @@ func _process(delta):
 	pass
 	
 func update(whole: bool):
-	if whole: sprite.frame = 7
-	else: sprite.frame = 8
+	if whole: 
+		sprite.frame = 12
+	else: 
+		sprite.frame = 13

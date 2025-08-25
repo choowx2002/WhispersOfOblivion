@@ -12,12 +12,22 @@ var is_dead: bool = false # declare if player ded
 signal healthChanged
 @export var maxHealth: float = 3.0 # set maximum health to 3 unit
 var currentHealth: float = maxHealth # current heath status
+<<<<<<< Updated upstream
 @onready var heartsContainer = $HeartBar/HeartContainer
 
 func _ready():
 	heartsContainer.setMaxHearts(maxHealth) # show heart ui
 	heartsContainer.updateHearts(currentHealth) # update the current heart
 	healthChanged.connect(heartsContainer.updateHearts)
+=======
+@onready var heartsContainer = $HeartBar/HeartContainer #read the function in path
+func _ready():
+	currentHealth = maxHealth
+	print("Player ready: current =", currentHealth, " max =", maxHealth)
+	heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
+	heartsContainer.updateHearts(currentHealth) # update the current heart
+	#healthChanged.connect(heartsContainer.updateHearts)
+>>>>>>> Stashed changes
 	anim_sprite = get_node("AnimatedSprite2D")
 	surface_detector = get_tree().get_first_node_in_group("surface_detector")
 	#connect("body_entered", Callable(self, "touch_enemy"))
@@ -79,9 +89,15 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if is_dead:
 		return
 	if area.get_parent().is_in_group("Enemy"):  # check if enemy parent is in group
+<<<<<<< Updated upstream
 		currentHealth -= 1.0 # minus 1 heart while touched the hitbox
 		healthChanged.emit(currentHealth) # show latest health status
 		if currentHealth == 0:
+=======
+		currentHealth -= 1.0
+		heartsContainer.updateHearts(currentHealth)
+		if currentHealth <= 0:
+>>>>>>> Stashed changes
 			die()
 
 func die() -> void:
@@ -94,6 +110,7 @@ func die() -> void:
 	print("Player died.")
 
 func respawn():
+<<<<<<< Updated upstream
 	maxHealth += 1
 	if maxHealth >= 100:
 		maxHealth -= 97 # clear the health in default 3 unit if reach 100 health limit
@@ -103,6 +120,24 @@ func respawn():
 	anim_sprite.play("idle")
 	is_dead = false
 	healthChanged.emit(currentHealth)
+=======
+	
+	maxHealth += 1
+	
+	if maxHealth >= 100:
+		maxHealth = 3
+		return
+		
+	currentHealth = maxHealth
+	print("Player respawn: current =", currentHealth, " max =", maxHealth)
+	heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
+	heartsContainer.updateHearts(currentHealth) # update the current heart
+	
+	global_position = get_tree().current_scene.gameRespawnPoint
+	anim_sprite.play("idle")
+	is_dead = false
+	
+>>>>>>> Stashed changes
 	set_physics_process(true)
 
 func _play_step_sound():
