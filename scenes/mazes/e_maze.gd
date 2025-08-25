@@ -10,7 +10,7 @@ func _ready():
 
 	var chosen_point = respawn_points[randi() % respawn_points.size()]
 	gameRespawnPoint = chosen_point.global_position
-	#player.global_position = chosen_point.global_position
+	player.global_position = chosen_point.global_position
 
 	var playerCamera: Camera2D = player.find_child("Camera2D")
 	if playerCamera:
@@ -18,3 +18,6 @@ func _ready():
 		playerCamera.limit_top = 0
 		playerCamera.limit_right = 1952
 		playerCamera.limit_bottom = 1952
+
+func get_maze_key() -> String:
+	return "east"

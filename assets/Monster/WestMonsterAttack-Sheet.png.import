@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx52jjb23blcq"
-path="res://.godot/imported/Player_walk.png-ec80b53c2bbfc01870b286efe554c002.ctex"
+uid="uid://cnqurifefta44"
+path="res://.godot/imported/WestMonsterAttack-Sheet.png-8da3b6d585b70bc1ba57497188f60476.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/Player_walk.png"
-dest_files=["res://.godot/imported/Player_walk.png-ec80b53c2bbfc01870b286efe554c002.ctex"]
+source_file="res://assets/Monster/WestMonsterAttack-Sheet.png"
+dest_files=["res://.godot/imported/WestMonsterAttack-Sheet.png-8da3b6d585b70bc1ba57497188f60476.ctex"]
 
 [params]
 

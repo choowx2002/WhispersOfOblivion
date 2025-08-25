@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 var anim_sprite: AnimatedSprite2D # run animation
 @export var move_speed := 100 # player movement base speed（frame/sec）
+var stealth_multiplier: float = 1.0
+var external_multiplier: float = 1.0
+
 @onready var step_audio := $StepAudio
 var surface_detector
 var step_timer := 0.0
@@ -12,22 +15,16 @@ var is_dead: bool = false # declare if player ded
 signal healthChanged
 @export var maxHealth: float = 3.0 # set maximum health to 3 unit
 var currentHealth: float = maxHealth # current heath status
-<<<<<<< Updated upstream
+
 @onready var heartsContainer = $HeartBar/HeartContainer
 
-func _ready():
-	heartsContainer.setMaxHearts(maxHealth) # show heart ui
-	heartsContainer.updateHearts(currentHealth) # update the current heart
-	healthChanged.connect(heartsContainer.updateHearts)
-=======
-@onready var heartsContainer = $HeartBar/HeartContainer #read the function in path
 func _ready():
 	currentHealth = maxHealth
 	print("Player ready: current =", currentHealth, " max =", maxHealth)
 	heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
 	heartsContainer.updateHearts(currentHealth) # update the current heart
 	#healthChanged.connect(heartsContainer.updateHearts)
->>>>>>> Stashed changes
+
 	anim_sprite = get_node("AnimatedSprite2D")
 	surface_detector = get_tree().get_first_node_in_group("surface_detector")
 	#connect("body_entered", Callable(self, "touch_enemy"))
@@ -48,12 +45,29 @@ func _physics_process(delta):
 	
 	# Character facing
 	if input_vector.length() > 0:
-		rotation = input_vector.angle()
+		anim_sprite.rotation = input_vector.angle() - PI / 2
 	
 	# If shift is pressed, slow down (stealth mode)
-	var speed_multiplier := 1.0
-	if Input.is_action_pressed("stealth"):
-		speed_multiplier = 0.33  # Slowdown multiplier
+	stealth_multiplier = 0.33 if Input.is_action_pressed("stealth") else 1.0
+	
+	# 根据 tilemap 检测地表
+	var surface = "default"
+	if surface_detector:
+		surface = surface_detector.get_surface_type(global_position)
+
+	# 默认外部倍率
+	external_multiplier = 1.0
+	match surface:
+		"slow":
+			external_multiplier = 0.3
+		"grass":
+			external_multiplier = 0.8
+		"ground":
+			external_multiplier = 1.0
+		"default":
+			external_multiplier = 1.0
+			
+	var speed_multiplier = stealth_multiplier * external_multiplier
 	
 	# Move and animate
 	if input_vector.length() > 0:
@@ -67,20 +81,9 @@ func _physics_process(delta):
 		# run idle animation when vector = 0 (idle)
 		velocity = Vector2.ZERO
 		anim_sprite.play("idle")
-	
-	#detect speed and step sound
-	var speed = velocity.length()
-	
-	if speed > 10:
-		var ratio = speed / move_speed
-		var step_interval = clamp(base_interval / ratio, min_interval, base_interval)
-		step_timer -= delta
 		
-		if step_timer <= 0.0:
-			step_timer = step_interval
-			_play_step_sound()
-	else:
-		step_timer = 0.0
+	#detect speed and step sound
+	_play_step_sound(surface, velocity.length())
 	
 	move_and_slide()
 
@@ -89,15 +92,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if is_dead:
 		return
 	if area.get_parent().is_in_group("Enemy"):  # check if enemy parent is in group
-<<<<<<< Updated upstream
 		currentHealth -= 1.0 # minus 1 heart while touched the hitbox
 		healthChanged.emit(currentHealth) # show latest health status
-		if currentHealth == 0:
-=======
-		currentHealth -= 1.0
 		heartsContainer.updateHearts(currentHealth)
 		if currentHealth <= 0:
->>>>>>> Stashed changes
 			die()
 
 func die() -> void:
@@ -105,22 +103,10 @@ func die() -> void:
 	velocity = Vector2.ZERO
 	anim_sprite.play("died")
 	await anim_sprite.animation_finished
-	await get_tree().create_timer(1.0).timeout
 	respawn()
 	print("Player died.")
 
 func respawn():
-<<<<<<< Updated upstream
-	maxHealth += 1
-	if maxHealth >= 100:
-		maxHealth -= 97 # clear the health in default 3 unit if reach 100 health limit
-		return
-	currentHealth = maxHealth
-	global_position = get_tree().current_scene.gameRespawnPoint
-	anim_sprite.play("idle")
-	is_dead = false
-	healthChanged.emit(currentHealth)
-=======
 	
 	maxHealth += 1
 	
@@ -136,22 +122,26 @@ func respawn():
 	global_position = get_tree().current_scene.gameRespawnPoint
 	anim_sprite.play("idle")
 	is_dead = false
-	
->>>>>>> Stashed changes
+
 	set_physics_process(true)
 
-func _play_step_sound():
-	if not surface_detector:
-		return
-
-	var surface = surface_detector.get_surface_type(global_position)
-	match surface:
-		"ground":
-			step_audio.stream = preload("res://assets/sounds/footstep.mp3")
-		"grass":
-			step_audio.stream = preload("res://assets/sounds/walking-on-grass.mp3")
-		_:
-			step_audio.stream = preload("res://assets/sounds/footstep.mp3")
-
-	step_audio.pitch_scale = randf_range(0.95, 1.05)
-	step_audio.play()
+func _play_step_sound(surface: String, speed: float) -> void:
+	if speed > 10:
+		var ratio = speed / move_speed
+		var step_interval = clamp(base_interval / ratio, min_interval, base_interval)
+		step_timer -= get_physics_process_delta_time()
+		
+		if step_timer <= 0.0:
+			step_timer = step_interval
+			match surface:
+				"slow":
+					step_audio.stream = preload("res://assets/sounds/footsteps-on-tile-31653.mp3")
+				"grass":
+					step_audio.stream = preload("res://assets/sounds/walking-on-grass.mp3")
+				"ground", "default":
+					step_audio.stream = preload("res://assets/sounds/footstep.mp3")
+			
+			step_audio.pitch_scale = randf_range(0.95, 1.05)
+			step_audio.play()
+	else:
+		step_timer = 0.0
