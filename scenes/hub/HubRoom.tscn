@@ -520,13 +520,13 @@ ground_map = NodePath("../Ground")
 
 [node name="CollectionDisplay" type="Node2D" parent="."]
 
-[node name="North" type="Sprite2D" parent="CollectionDisplay"]
+[node name="NorthItem" type="Sprite2D" parent="CollectionDisplay"]
 position = Vector2(181, 147)
 scale = Vector2(0.0270839, 0.0270839)
 texture = ExtResource("18_nyixv")
 script = ExtResource("19_jnq1j")
 
-[node name="PointLight2D" type="PointLight2D" parent="CollectionDisplay/North"]
+[node name="PointLight2D" type="PointLight2D" parent="CollectionDisplay/NorthItem"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-36.9223, 36.9224)
@@ -537,14 +537,14 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.0
 
-[node name="East" type="Sprite2D" parent="CollectionDisplay"]
+[node name="EastItem" type="Sprite2D" parent="CollectionDisplay"]
 position = Vector2(205, 149)
 rotation = 0.673794
 scale = Vector2(0.0136468, 0.0136468)
 texture = ExtResource("19_heyhg")
 script = ExtResource("19_jnq1j")
 
-[node name="PointLight2D" type="PointLight2D" parent="CollectionDisplay/East"]
+[node name="PointLight2D" type="PointLight2D" parent="CollectionDisplay/EastItem"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1914)
@@ -555,14 +555,14 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 4.0
 
-[node name="South" type="Sprite2D" parent="CollectionDisplay"]
+[node name="SouthItem" type="Sprite2D" parent="CollectionDisplay"]
 position = Vector2(203, 171)
 rotation = -2.40669
 scale = Vector2(0.0274754, 0.0274754)
 texture = ExtResource("20_jnq1j")
 script = ExtResource("19_jnq1j")
 
-[node name="PointLight2D" type="PointLight2D" parent="CollectionDisplay/South"]
+[node name="PointLight2D" type="PointLight2D" parent="CollectionDisplay/SouthItem"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(-75.8104, -29.6002)
@@ -573,14 +573,14 @@ shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.0
 
-[node name="West" type="Sprite2D" parent="CollectionDisplay"]
+[node name="WestItem" type="Sprite2D" parent="CollectionDisplay"]
 position = Vector2(179, 170)
 rotation = 0.902104
 scale = Vector2(0.0387751, 0.0389489)
 texture = ExtResource("21_7e4qx")
 script = ExtResource("19_jnq1j")
 
-[node name="PointLight2D" type="PointLight2D" parent="CollectionDisplay/West"]
+[node name="PointLight2D" type="PointLight2D" parent="CollectionDisplay/WestItem"]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(21.0527, 53.1914)
