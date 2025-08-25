@@ -392,6 +392,7 @@ radius = 13.0
 script = ExtResource("1_ci0fc")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.9, 0.9)
 color = Color(1, 1, 1, 0.556863)
 energy = 1.2
 shadow_enabled = true
@@ -399,7 +400,7 @@ texture = ExtResource("2_6sdiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 0.187647
-scale = Vector2(0.1375, 0.1375)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_tsc7x")
 animation = &"move"
 frame_progress = 0.849639
