@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://buhc82qm3jdk3"]
+
+[ext_resource type="Script" uid="uid://c4kcg4vngflbr" path="res://scenes/ui/game_over_ui.gd" id="1_sxdiq"]
+[ext_resource type="Texture2D" uid="uid://bnfe6vqhsbhm" path="res://assets/ui/3e9eeb4b949bf10f7df922d78360739a.jpg" id="2_pgjlk"]
+[ext_resource type="Texture2D" uid="uid://c8g8a4ijp6gmo" path="res://assets/ui/FreeHorrorUi.png" id="3_nkgcp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6o2nj"]
+texture = ExtResource("3_nkgcp")
+region_rect = Rect2(69.313, 234.164, 53.205, 13.1085)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k7p00"]
+texture = ExtResource("3_nkgcp")
+region_rect = Rect2(6.38997, 234.66, 49.9163, 13.9952)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxdiq"]
+texture = ExtResource("3_nkgcp")
+region_rect = Rect2(71.7106, 234.17, 49.7351, 13.494)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pgjlk"]
+texture = ExtResource("3_nkgcp")
+region_rect = Rect2(5.73589, 233.66, 51.8731, 14.3702)
+
+[node name="GameOverUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sxdiq")
+
+[node name="Button" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.991
+anchor_bottom = 0.966
+offset_right = -0.0880127
+offset_bottom = -0.23999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Button"]
+layout_mode = 2
+texture = ExtResource("2_pgjlk")
+
+[node name="RespawnHubRoom" type="Button" parent="Button/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.355
+anchor_top = 0.612
+anchor_right = 0.63
+anchor_bottom = 0.763
+offset_left = 0.0749969
+offset_top = -0.0880127
+offset_right = -0.0500183
+offset_bottom = 0.0879974
+tooltip_text = "Respawn to Hub Room"
+theme_override_styles/hover = SubResource("StyleBoxTexture_6o2nj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6o2nj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k7p00")
+
+[node name="MainMenu" type="Button" parent="Button/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361
+anchor_top = 0.817
+anchor_right = 0.636
+anchor_bottom = 0.955
+offset_left = 0.0649872
+offset_top = -0.00801086
+offset_right = -0.0600128
+offset_bottom = 0.0799866
+theme_override_styles/hover = SubResource("StyleBoxTexture_sxdiq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sxdiq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pgjlk")

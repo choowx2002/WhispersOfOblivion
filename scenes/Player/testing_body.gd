@@ -12,23 +12,50 @@ var base_interval := 0.45
 var min_interval := 0.20
 var is_dead: bool = false # declare if player ded
 
-signal healthChanged
-@export var maxHealth: float = 3.0 # set maximum health to 3 unit
-var currentHealth: float = maxHealth # current heath status
+#signal healthChanged
+#@export var maxHealth: float = 3.0 # set maximum health to 3 unit
+#var currentHealth: float = maxHealth # current heath status
 
-@onready var heartsContainer = $HeartBar/HeartContainer
+#@onready var heartsContainer = $HeartBar/HeartContainer
+var sanityTimer: Timer
+var maxSanity = 100.0
+var currentSanity = 100.0
 
+@onready var sanityContainer = $Sanity/SanityContainer
+@onready var gameOverUI = $GameOverUI/GameOverUI
+@onready var sanityLabel = $Sanity/SanityLabel
 func _ready():
-	currentHealth = maxHealth
-	print("Player ready: current =", currentHealth, " max =", maxHealth)
-	heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
-	heartsContainer.updateHearts(currentHealth) # update the current heart
+	#currentHealth = maxHealth
+	#print("Player ready: current =", currentHealth, " max =", maxHealth)
+	#heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
+	#heartsContainer.updateHearts(currentHealth) # update the current heart
 	#healthChanged.connect(heartsContainer.updateHearts)
-
+	#currentSanity = maxSanity
+	#sanityContainer.setMaxSanity(maxSanity, currentSanity)
+	gameOverUI.visible = false
+	sanityContainer.setMaxSanity(maxSanity, currentSanity)
+	# Timer to reduce sanity every 10s
+	sanityTimer = Timer.new()
+	sanityTimer.wait_time = 30
+	sanityTimer.one_shot = false
+	sanityTimer.timeout.connect(_on_sanity_tick)
+	add_child(sanityTimer)
+	sanityTimer.start()
 	anim_sprite = get_node("AnimatedSprite2D")
 	surface_detector = get_tree().get_first_node_in_group("surface_detector")
 	#connect("body_entered", Callable(self, "touch_enemy"))
-
+func _on_sanity_tick():
+	change_sanity(-0.01 * maxSanity)  # -0.01% of max each 10s
+func change_sanity(amount: float):
+	currentSanity = clamp(currentSanity + amount, 0, maxSanity)
+	sanityContainer.updateSanity(currentSanity)
+	sanityLabel.text = str(round(currentSanity)) + "%"
+	if currentSanity <= 0:
+		die_from_sanity()
+		
+func die_from_sanity():
+	show_game_over()
+	
 func _physics_process(delta):
 	# run dead animation
 	if is_dead:
@@ -92,37 +119,51 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if is_dead:
 		return
 	if area.get_parent().is_in_group("Enemy"):  # check if enemy parent is in group
-		currentHealth -= 1.0 # minus 1 heart while touched the hitbox
-		healthChanged.emit(currentHealth) # show latest health status
-		heartsContainer.updateHearts(currentHealth)
-		if currentHealth <= 0:
-			die()
+		#currentHealth -= 1.0 # minus 1 heart while touched the hitbox
+		#healthChanged.emit(currentHealth) # show latest health status
+		#heartsContainer.updateHearts(currentHealth)
+		#if currentHealth <= 0:
+		die()
 
 func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
 	anim_sprite.play("died")
 	await anim_sprite.animation_finished
-	respawn()
+	change_sanity(-20)  # lose 20% on death
+	if currentSanity <= 0:
+		die_from_sanity()
+	else:
+		respawn()
 	print("Player died.")
+func show_game_over():
+	if not is_instance_valid(gameOverUI):
+		push_error("gameOverUI path is wrong")
+		return
+
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	gameOverUI.visible = true          # make it visible first
+	await get_tree().process_frame     # let it enter the scene tree this frame
+	get_tree().paused = true           # now pause everything else
+	print("[Player] Game Over shown and tree paused")
 
 func respawn():
 	
-	maxHealth += 1
+	#maxHealth += 1
 	
-	if maxHealth >= 100:
-		maxHealth = 3
-		return
+	#if maxHealth >= 100:
+		#maxHealth = 3
+		#return
 		
-	currentHealth = maxHealth
-	print("Player respawn: current =", currentHealth, " max =", maxHealth)
-	heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
-	heartsContainer.updateHearts(currentHealth) # update the current heart
-	
+	#currentHealth = maxHealth
+	#print("Player respawn: current =", currentHealth, " max =", maxHealth)
+	#heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
+	#heartsContainer.updateHearts(currentHealth) # update the current heart
 	global_position = get_tree().current_scene.gameRespawnPoint
 	anim_sprite.play("idle")
 	is_dead = false
-
+	sanityContainer.updateSanity(currentSanity) # refresh UI
+	sanityLabel.text = str(round(currentSanity)) + "%"
 	set_physics_process(true)
 
 func _play_step_sound(surface: String, speed: float) -> void:
