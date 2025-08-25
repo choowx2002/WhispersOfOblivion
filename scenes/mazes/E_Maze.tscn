@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bofn4oclsqw83"]
+[gd_scene load_steps=26 format=4 uid="uid://bofn4oclsqw83"]
 
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_ni5gm"]
 [ext_resource type="Script" uid="uid://cnj6x368wx414" path="res://scenes/mazes/e_maze.gd" id="1_vrddb"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://vounnyjrcl3a" path="res://assets/images/collectable_item_east.png" id="6_xlx1c"]
 [ext_resource type="Script" uid="uid://dad66ef8pqoqq" path="res://scenes/mazes/escape_gate.gd" id="7_ofleh"]
 [ext_resource type="Texture2D" uid="uid://p5v663is4fxb" path="res://assets/tilesets/keepdoors_lion_bw_gt.png" id="8_xlx1c"]
-[ext_resource type="Script" uid="uid://0hfwlgyec2ex" path="res://scenes/mazes/testing_body_2.gd" id="10_gwn0b"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="11_ofleh"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="11_ssd4l"]
 [ext_resource type="PackedScene" uid="uid://tdwduolf1jsk" path="res://scenes/Enemy/trap.tscn" id="11_xlx1c"]
@@ -91,9 +90,6 @@ animations = [{
 "name": &"Fire",
 "speed": 15.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_a11uw"]
-radius = 15.0
 
 [node name="EMaze" type="Node2D"]
 script = ExtResource("1_vrddb")
@@ -342,33 +338,11 @@ shadow_enabled = true
 texture = ExtResource("4_vrddb")
 texture_scale = 5.61
 
-[node name="TestingBody2" type="CharacterBody2D" parent="."]
-position = Vector2(63, 144)
-collision_mask = 5
-script = ExtResource("10_gwn0b")
-
-[node name="PointLight2D" type="PointLight2D" parent="TestingBody2"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(4, 6.95884e-06)
-scale = Vector2(1.11328, 1.11133)
-color = Color(0.983597, 0.947411, 0.93843, 1)
-range_item_cull_mask = 3
-shadow_enabled = true
-texture = ExtResource("4_vrddb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestingBody2"]
-shape = SubResource("CircleShape2D_a11uw")
-
-[node name="RayCast2D" type="RayCast2D" parent="TestingBody2"]
-collision_mask = 3
-
 [node name="TestingBody" parent="." instance=ExtResource("11_ofleh")]
 position = Vector2(979, 1029)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.0352941, 0.0352941, 0.121569, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map", "slow_map") groups=["surface_detector"]]
 script = ExtResource("13_xlx1c")
