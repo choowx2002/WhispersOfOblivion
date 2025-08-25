@@ -1,19 +1,17 @@
 extends Node
 
 var playerSelectedRoom
-# Record escape times
-var escape_count: int = 0
-# List fragments' id that alrdy collected
-var unlocked_fragments: Array[int] = []   # [0,1,2,3...]
-# flags the collected fragments
-var fragments_collected := {
+var escape_count: int = 0	# Record escape times
+var unlocked_fragments: Array[int] = []   # List fragments' id that alrdy collected [0,1,2,3...]
+var fragments_collected := {	# Records the fragment progressions
 	"north": false, "east": false, "south": false, "west": false
 }
-# fragments database
 var memory_db: Array = []
-const SAVE_PATH := "user://save.json"
+
+const SAVE_PATH := "res://data/save.json"
 const FRAG_DB_PATH := "res://data/memory_fragments.json"
 
+# Signals
 signal progress_changed(escape_count: int)
 signal fragment_unlocked(id: int)
 signal fragment_collected(maze_key: String)
@@ -103,7 +101,6 @@ func reset_save() -> void:
 	save()
 	emit_signal("progress_changed", escape_count)
 
-## --- Helpers ---
 # Normalize naming clarification
 func normalize_maze_key(k: String) -> String:
 	k = k.to_lower()
@@ -149,14 +146,13 @@ func mark_fragment_collected(maze_key: String) -> void:
 
 # maze escape triggered function (collected frags)
 func on_escape_completed(maze_key: String) -> void:
-	# Only run if the player actually collected the fragment in this maze
 	var key := normalize_maze_key(maze_key)
 	var frag_id := get_fragment_id_for_maze(key)
-
-	escape_count += 1
-	emit_signal("progress_changed", escape_count)
-
+	# Only run if the player actually collected the fragment in this maze
 	if frag_id >= 0 and not unlocked_fragments.has(frag_id) and has_collected_fragment(key):
+		escape_count += 1
+		emit_signal("progress_changed", escape_count)
+		
 		unlocked_fragments.append(frag_id)
 		emit_signal("fragment_unlocked", frag_id)
 
