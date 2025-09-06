@@ -10,27 +10,27 @@ script/source = "extends MarginContainer
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1kxf"]
 texture = ExtResource("2_1g8jr")
-region_rect = Rect2(69.6326, 138.139, 52.7189, 13.9039)
+region_rect = Rect2(69.6326, 234.231, 52.7189, 14.5091)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2yvf"]
 texture = ExtResource("2_1g8jr")
-region_rect = Rect2(6.42134, 137.659, 51.8731, 15.4217)
+region_rect = Rect2(6.42134, 235.315, 51.8731, 13.0142)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fe2o3"]
 texture = ExtResource("2_1g8jr")
-region_rect = Rect2(70.1111, 169.985, 51.7399, 13.5711)
+region_rect = Rect2(70.1111, 233.612, 51.7399, 15.0578)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1g8jr"]
 texture = ExtResource("2_1g8jr")
-region_rect = Rect2(5.53538, 170.623, 52.164, 13.147)
+region_rect = Rect2(5.53538, 234.633, 52.164, 14.6993)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uhagc"]
 texture = ExtResource("2_1g8jr")
-region_rect = Rect2(70.7675, 202.574, 51.7823, 13.0622)
+region_rect = Rect2(70.7675, 234.063, 51.7823, 14.8148)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btxxm"]
 texture = ExtResource("2_1g8jr")
-region_rect = Rect2(5.9323, 201.658, 53.0122, 15.6916)
+region_rect = Rect2(5.9323, 233.734, 50.9008, 15.4163)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -98,8 +98,3 @@ offset_bottom = -0.200012
 theme_override_styles/hover = SubResource("StyleBoxTexture_uhagc")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_uhagc")
 theme_override_styles/normal = SubResource("StyleBoxTexture_btxxm")
-
-[node name="Setting" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
