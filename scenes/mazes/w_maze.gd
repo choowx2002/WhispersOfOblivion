@@ -13,8 +13,19 @@ var targets: Array[Node] = []
 var gameRespawnPoint
 var last_cell := Vector2(-1, -1)
 
+# for world word text
+@export var word_scene: PackedScene = preload("res://scenes/ui/WordLabel.tscn")
+@export var words := {
+	"N": "North",
+	"E": "East",
+	"S": "South",
+	"W": "West",
+}
+@export var max_active_labels: int = 10
+@export var spawn_margin: int = 50
+@onready var effect_container: Control = $CanvasLayer/Effect/WordContainer
+
 func _ready():
-	
 	#get all targets
 	targets = get_tree().get_nodes_in_group("whisper_targets")
 	
@@ -52,6 +63,9 @@ func _on_check_timer_timeout():
 	var angle = rad_to_deg(atan2(dir_vec.y, dir_vec.x))
 
 	var direction = angle_to_direction(angle)
+	for i in 5:
+		var rand_text = words[direction]
+		spawn_word(rand_text)
 	play_whisper(direction)
 
 func get_nearest_target() -> Node2D:
@@ -80,3 +94,26 @@ func play_whisper(dir: String):
 		print("play sound", dir)
 		if not p.playing:
 			p.play()
+
+func spawn_word(text):
+	if effect_container == null: return
+	
+	# limit count
+	if effect_container.get_child_count() >= max_active_labels:
+		effect_container.get_child(0).queue_free()
+
+	var label = word_scene.instantiate() as Label
+	label.text = text
+
+	var viewport_size = get_viewport_rect().size
+	
+	var px = randf_range(spawn_margin, viewport_size.x - spawn_margin)
+	var py = randf_range(spawn_margin, viewport_size.y - spawn_margin)
+	
+	label.position = Vector2(px, py)
+	var dir = -1 if randi() % 2 == 0 else 1
+	label.float_offset = Vector2(
+		randf_range(20, 50) * dir,
+		randf_range(-80, -40)
+	)
+	effect_container.add_child(label)
