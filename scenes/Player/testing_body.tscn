@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://30xtrcpogkl8"]
+[gd_scene load_steps=63 format=3 uid="uid://30xtrcpogkl8"]
 
 [ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/Player/testing_body.gd" id="1_ci0fc"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="2_6sdiv"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://assets/player/Player_walk.png" id="5_tfrc8"]
 [ext_resource type="PackedScene" uid="uid://bas6orfqr7u7g" path="res://scenes/ui/sanity_container.tscn" id="7_53u1h"]
 [ext_resource type="PackedScene" uid="uid://buhc82qm3jdk3" path="res://scenes/ui/game_over_ui.tscn" id="8_vgoth"]
-[ext_resource type="Script" uid="uid://dq31i1yh7eyk6" path="res://scenes/Player/settingbutton.gd" id="9_fon1v"]
-[ext_resource type="Texture2D" uid="uid://1w8vevc4ioaq" path="res://assets/ui/Settings Square Button.png" id="10_tsc7x"]
 [ext_resource type="PackedScene" uid="uid://bkbeunnqsop87" path="res://scenes/ui/setting.tscn" id="11_tsc7x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6sdiv"]
@@ -392,10 +390,6 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ci0fc"]
 radius = 13.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xn42d"]
-texture = ExtResource("10_tsc7x")
-region_rect = Rect2(1.07236, -2.97895, 198.928, 202.979)
-
 [node name="TestingBody" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ci0fc")
 
@@ -443,35 +437,15 @@ offset_right = 158.0
 offset_bottom = 50.0
 
 [node name="GameOverUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="GameOverUI" parent="GameOverUI" instance=ExtResource("8_vgoth")]
 
 [node name="Setting" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="Setting"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("9_fon1v")
-
-[node name="ButtonSetting" type="Button" parent="Setting/Control"]
-layout_mode = 0
-offset_left = 689.0
-offset_top = 4.0
-offset_right = 761.0
-offset_bottom = 76.0
-theme_override_styles/hover = SubResource("StyleBoxTexture_xn42d")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xn42d")
-theme_override_styles/normal = SubResource("StyleBoxTexture_xn42d")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Setting/Control"]
-
-[node name="Setting" parent="Setting/Control/CanvasLayer" instance=ExtResource("11_tsc7x")]
-offset_left = 171.0
-offset_top = 117.0
-offset_right = 540.672
-offset_bottom = 486.16
+[node name="Setting" parent="Setting" instance=ExtResource("11_tsc7x")]
+offset_left = 156.0
+offset_top = 13.0
+offset_right = 601.672
+offset_bottom = 583.16
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

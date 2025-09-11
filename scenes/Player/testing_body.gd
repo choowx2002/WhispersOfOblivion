@@ -21,7 +21,7 @@ var pulse_interval: float = 10.0
 #signal healthChanged
 #@export var maxHealth: float = 3.0 # set maximum health to 3 unit
 #var currentHealth: float = maxHealth # current heath status
-
+@onready var setting_ui = $Setting/Setting
 #@onready var heartsContainer = $HeartBar/HeartContainer
 var sanityTimer: Timer
 var maxSanity = 100.0
@@ -38,6 +38,7 @@ func _ready():
 	#healthChanged.connect(heartsContainer.updateHearts)
 	#currentSanity = maxSanity
 	#sanityContainer.setMaxSanity(maxSanity, currentSanity)
+	setting_ui.hide()
 	gameOverUI.visible = false
 	sanityContainer.setMaxSanity(maxSanity, currentSanity)
 	# Timer to reduce sanity every 10s
@@ -57,7 +58,16 @@ func _ready():
 		else:
 			push_warning("SanityEffectRect not found!")
 	#connect("body_entered", Callable(self, "touch_enemy"))
-	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):  # ESC by default in Godot
+		if setting_ui.visible:
+			# Close settings
+			setting_ui.hide()
+			get_tree().paused = false
+		else:
+			# Open settings
+			setting_ui.show()
+			get_tree().paused = true
 	
 func _process(delta):
 	var time = Time.get_ticks_msec() / 1000.0
@@ -191,9 +201,9 @@ func show_game_over():
 		return
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	gameOverUI.visible = true          # make it visible first
-	await get_tree().process_frame     # let it enter the scene tree this frame
-	get_tree().paused = true           # now pause everything else
+	gameOverUI.visible = true   # make visible
+	await get_tree().process_frame
+	get_tree().paused = true    # pause the rest of the game
 	print("[Player] Game Over shown and tree paused")
 
 func respawn():
