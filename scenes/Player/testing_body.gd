@@ -12,6 +12,12 @@ var base_interval := 0.45
 var min_interval := 0.20
 var is_dead: bool = false # declare if player ded
 
+@export var whisper_audio : AudioStreamPlayer
+var last_pulse_time: float = -10.0
+var pulse_interval: float = 10.0
+
+@export var sanity_effect_rect: ColorRect
+
 #signal healthChanged
 #@export var maxHealth: float = 3.0 # set maximum health to 3 unit
 #var currentHealth: float = maxHealth # current heath status
@@ -43,16 +49,59 @@ func _ready():
 	sanityTimer.start()
 	anim_sprite = get_node("AnimatedSprite2D")
 	surface_detector = get_tree().get_first_node_in_group("surface_detector")
+	
+	if sanity_effect_rect == null:
+		var rect = get_tree().root.find_child("SanityEffectRect", true, false)
+		if rect and rect is ColorRect:
+			sanity_effect_rect = rect
+		else:
+			push_warning("SanityEffectRect not found!")
 	#connect("body_entered", Callable(self, "touch_enemy"))
+	
+	
+func _process(delta):
+	var time = Time.get_ticks_msec() / 1000.0
+	var cycle_time = fmod(time, pulse_interval)
+	if cycle_time < 0.02 and time - last_pulse_time > pulse_interval - 0.01:
+		play_whisper()
+		last_pulse_time = time
+
 func _on_sanity_tick():
 	change_sanity(-0.01 * maxSanity)  # -0.01% of max each 10s
 func change_sanity(amount: float):
 	currentSanity = clamp(currentSanity + amount, 0, maxSanity)
 	sanityContainer.updateSanity(currentSanity)
 	sanityLabel.text = str(round(currentSanity)) + "%"
+	update_sanity_effect()
+		
 	if currentSanity <= 0:
 		die_from_sanity()
-		
+
+func update_sanity_effect():
+	if sanity_effect_rect == null:
+		return
+	if sanity_effect_rect.material == null:
+		return
+	
+	var ratio = currentSanity / maxSanity
+	if ratio <= 0:
+		sanity_effect_rect.visible = false
+		return
+	sanity_effect_rect.visible = true
+	sanity_effect_rect.material.set("shader_param/sanity", ratio)
+
+func play_whisper():
+	if whisper_audio == null or currentSanity >= 70:
+		return
+	whisper_audio.pitch_scale = randf_range(0.95, 1.05)
+	var sanity_norm = currentSanity / 100.0
+	whisper_audio.volume_db = lerp(-20, 0, 1.0 - sanity_norm)
+	whisper_audio.stop()
+	whisper_audio.play()
+	#
+	#await get_tree().create_timer(3.0).timeout
+	#whisper_audio.stop()
+	
 func die_from_sanity():
 	show_game_over()
 	

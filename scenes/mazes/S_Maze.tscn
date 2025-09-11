@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bodlwpbnqs52j"]
+[gd_scene load_steps=13 format=4 uid="uid://bodlwpbnqs52j"]
 
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_oyhaw"]
 [ext_resource type="Script" uid="uid://d3ixxjp8u87vr" path="res://scenes/mazes/s_maze.gd" id="1_ucpvt"]
@@ -8,8 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://deb2kdj538xyn" path="res://assets/images/collectable_item_south.png" id="5_ucpvt"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="6_aorba"]
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="7_ucpvt"]
+[ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="9_33w48"]
+[ext_resource type="AudioStream" uid="uid://cvhyylnv8m7pw" path="res://assets/sounds/kid-laugh-scary.mp3" id="10_r3711"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qr21i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3711"]
+shader = ExtResource("9_33w48")
+shader_parameter/sanity = 1.0
 
 [node name="SMaze" type="Node2D"]
 script = ExtResource("1_ucpvt")
@@ -48,8 +54,10 @@ position = Vector2(1241, -767)
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
 position = Vector2(1, -1817)
 
-[node name="TestingBody" parent="." instance=ExtResource("6_aorba")]
+[node name="TestingBody" parent="." node_paths=PackedStringArray("whisper_audio", "sanity_effect_rect") instance=ExtResource("6_aorba")]
 position = Vector2(88, 216)
+whisper_audio = NodePath("../Kid-laugh-scary")
+sanity_effect_rect = NodePath("../SanityEffectLayer/SanityEffectRect")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0350194, 0.036488, 0.120756, 1)
@@ -58,3 +66,16 @@ color = Color(0.0350194, 0.036488, 0.120756, 1)
 script = ExtResource("7_ucpvt")
 ground_map = NodePath("../Ground")
 slow_map = NodePath("../Slow")
+
+[node name="SanityEffectLayer" type="CanvasLayer" parent="."]
+
+[node name="SanityEffectRect" type="ColorRect" parent="SanityEffectLayer"]
+material = SubResource("ShaderMaterial_r3711")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Kid-laugh-scary" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_r3711")

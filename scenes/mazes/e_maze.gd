@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var respawn_points := $RespawnPoints.get_children()
 @onready var player := $TestingBody
+
 var gameRespawnPoint
 func _ready():
 	if respawn_points.is_empty():

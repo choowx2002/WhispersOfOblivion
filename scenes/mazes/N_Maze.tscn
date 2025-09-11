@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://nv6v05v7me5t"]
+[gd_scene load_steps=29 format=4 uid="uid://nv6v05v7me5t"]
 
 [ext_resource type="TileSet" uid="uid://3ip1jes7nnmf" path="res://assets/tilesets/Cave.tres" id="1_euhjs"]
 [ext_resource type="Script" uid="uid://hrqd67f8757u" path="res://scenes/mazes/n_maze.gd" id="1_mbjul"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="9_mbjul"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="11_kck4e"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="12_ugkmd"]
+[ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="13_ugkmd"]
+[ext_resource type="AudioStream" uid="uid://dg8lurhpsad52" path="res://assets/sounds/scary-whisper.mp3" id="14_mjy3e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_urqrk"]
 
@@ -124,6 +126,10 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjy3e"]
+shader = ExtResource("13_ugkmd")
+shader_parameter/sanity = 1.0
+
 [node name="NMaze" type="Node2D"]
 script = ExtResource("1_mbjul")
 
@@ -178,7 +184,9 @@ position = Vector2(588, -106)
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
 position = Vector2(1733, -1801)
 
-[node name="TestingBody" parent="." instance=ExtResource("8_urqrk")]
+[node name="TestingBody" parent="." node_paths=PackedStringArray("whisper_audio", "sanity_effect_rect") instance=ExtResource("8_urqrk")]
+whisper_audio = NodePath("../Scary-whisper")
+sanity_effect_rect = NodePath("../SanityEffectLayer/SanityEffectRect")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0352941, 0.0352941, 0.121569, 1)
@@ -242,5 +250,18 @@ range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("12_ugkmd")
 texture_scale = 5.61
+
+[node name="SanityEffectLayer" type="CanvasLayer" parent="."]
+
+[node name="SanityEffectRect" type="ColorRect" parent="SanityEffectLayer"]
+material = SubResource("ShaderMaterial_mjy3e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scary-whisper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_mjy3e")
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]
