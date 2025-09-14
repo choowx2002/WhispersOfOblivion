@@ -15,6 +15,8 @@ const FRAG_DB_PATH := "res://data/memory_fragments.json"
 signal progress_changed(escape_count: int)
 signal fragment_unlocked(id: int)
 signal fragment_collected(maze_key: String)
+signal truth_ending_triggered
+signal fragmented_ending_triggered
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -137,6 +139,14 @@ func has_collected_fragment(maze_key: String) -> bool:
 	var key := normalize_maze_key(maze_key)
 	return bool(fragments_collected.get(key, false))
 
+# check all fragments collected (true when all collected)
+func has_all_fragments() -> bool:
+	for k in fragments_collected.keys():
+		if not fragments_collected[k]:
+			return false
+	return true
+
+
 # mark fragment as collected
 func mark_fragment_collected(maze_key: String) -> void:
 	var key := normalize_maze_key(maze_key)
@@ -155,5 +165,11 @@ func on_escape_completed(maze_key: String) -> void:
 		
 		unlocked_fragments.append(frag_id)
 		emit_signal("fragment_unlocked", frag_id)
+		save()
 
-	save()
+	# Check if this was the final maze (ending condition)
+	if key == "South":  # adjust if your last maze key is named differently
+		if has_all_fragments():
+			emit_signal("truth_ending_triggered")
+		else:
+			emit_signal("fragmented_ending_triggered")
