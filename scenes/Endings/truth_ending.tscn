@@ -738,7 +738,7 @@ modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(-1.19209e-07, 4.54747e-13)
 scale = Vector2(0.147059, 0.147059)
 sprite_frames = SubResource("SpriteFrames_d08j4")
-frame_progress = 0.947513
+frame_progress = 0.557328
 
 [node name="PointLight2D" type="PointLight2D" parent="Teddy"]
 light_mask = 3

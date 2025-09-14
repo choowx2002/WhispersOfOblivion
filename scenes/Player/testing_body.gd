@@ -187,7 +187,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
+	
+	anim_sprite.scale = Vector2(0.15, 0.15)
 	anim_sprite.play("died")
+	
 	await anim_sprite.animation_finished
 	change_sanity(-20)  # lose 20% on death
 	if currentSanity <= 0:
@@ -220,6 +223,7 @@ func respawn():
 	#heartsContainer.updateHearts(currentHealth) # update the current heart
 	global_position = get_tree().current_scene.gameRespawnPoint
 	anim_sprite.play("idle")
+	anim_sprite.scale = Vector2(0.1, 0.1)
 	is_dead = false
 	sanityContainer.updateSanity(currentSanity) # refresh UI
 	sanityLabel.text = str(round(currentSanity)) + "%"
