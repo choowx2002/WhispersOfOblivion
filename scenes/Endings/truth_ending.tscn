@@ -1,6 +1,5 @@
-[gd_scene load_steps=75 format=3 uid="uid://cootisaokcvfu"]
+[gd_scene load_steps=74 format=3 uid="uid://cootisaokcvfu"]
 
-[ext_resource type="Script" uid="uid://bm71o6elb5uw1" path="res://scenes/Endings/truth_ending.gd" id="1_0s06w"]
 [ext_resource type="Texture2D" uid="uid://8pu8280t0mia" path="res://assets/player/shiro.png" id="1_pu4ex"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="2_0s06w"]
 [ext_resource type="Texture2D" uid="uid://bwj443i6tsm7h" path="res://assets/Monster/SouthMonsterIdle-Sheet.png" id="2_pu4ex"]
@@ -719,7 +718,6 @@ _data = {
 
 [node name="TruthEnding" type="Node2D"]
 position = Vector2(12, 8)
-script = ExtResource("1_0s06w")
 
 [node name="Fade" type="ColorRect" parent="."]
 offset_left = -12.0
@@ -736,11 +734,11 @@ offset_bottom = 15.0
 scale = Vector2(1, 0.992808)
 
 [node name="Teddy" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(-1.19209e-07, 4.54747e-13)
 scale = Vector2(0.147059, 0.147059)
 sprite_frames = SubResource("SpriteFrames_d08j4")
-frame_progress = 0.229255
+frame_progress = 0.947513
 
 [node name="PointLight2D" type="PointLight2D" parent="Teddy"]
 light_mask = 3
