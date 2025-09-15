@@ -30,6 +30,8 @@ var currentSanity = 100.0
 @onready var sanityContainer = $Sanity/SanityContainer
 @onready var gameOverUI = $GameOverUI/GameOverUI
 @onready var sanityLabel = $Sanity/SanityLabel
+
+@onready var SceneSwitchAnimation = $SceneSwitchAnimation/AnimationPlayer
 func _ready():
 	#currentHealth = maxHealth
 	#print("Player ready: current =", currentHealth, " max =", maxHealth)
@@ -221,6 +223,7 @@ func respawn():
 	#print("Player respawn: current =", currentHealth, " max =", maxHealth)
 	#heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
 	#heartsContainer.updateHearts(currentHealth) # update the current heart
+	SceneSwitchAnimation.play("FadeOut")
 	global_position = get_tree().current_scene.gameRespawnPoint
 	anim_sprite.play("idle")
 	anim_sprite.scale = Vector2(0.1, 0.1)

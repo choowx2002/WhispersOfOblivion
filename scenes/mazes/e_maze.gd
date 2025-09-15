@@ -1,10 +1,14 @@
 extends Node2D
 
+@onready var SceneSwitchAnimation = $SceneSwitchAnimation/AnimationPlayer
 @onready var respawn_points := $RespawnPoints.get_children()
 @onready var player := $TestingBody
 
 var gameRespawnPoint
 func _ready():
+	SceneSwitchAnimation.get_parent().get_node("ColorRect").color.a = 255
+	SceneSwitchAnimation.play("FadeOut")
+	print(SceneSwitchAnimation.is_playing())
 	if respawn_points.is_empty():
 		push_error("No respawn points defined!")
 		return
@@ -12,6 +16,7 @@ func _ready():
 	var chosen_point = respawn_points[randi() % respawn_points.size()]
 	gameRespawnPoint = chosen_point.global_position
 	player.global_position = chosen_point.global_position
+	
 
 	var playerCamera: Camera2D = player.find_child("Camera2D")
 	if playerCamera:

@@ -1,9 +1,9 @@
-[gd_scene load_steps=29 format=4 uid="uid://bofn4oclsqw83"]
+[gd_scene load_steps=30 format=4 uid="uid://bofn4oclsqw83"]
 
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_ni5gm"]
 [ext_resource type="Script" uid="uid://cnj6x368wx414" path="res://scenes/mazes/e_maze.gd" id="1_vrddb"]
 [ext_resource type="TileSet" uid="uid://3ip1jes7nnmf" path="res://assets/tilesets/Cave.tres" id="2_1n4lv"]
-[ext_resource type="TileSet" uid="uid://6i66ked04hoe" path="res://assets/tilesets/web.tres" id="3_a11uw"]
+[ext_resource type="TileSet" uid="uid://4fet7r3s3ule" path="res://assets/tilesets/web.tres" id="3_a11uw"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="4_vrddb"]
 [ext_resource type="Script" uid="uid://biaqvw0hcdgkq" path="res://scenes/mazes/collectible_item.gd" id="5_gwn0b"]
 [ext_resource type="Texture2D" uid="uid://vounnyjrcl3a" path="res://assets/images/collectable_item_east.png" id="6_xlx1c"]
@@ -11,10 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://p5v663is4fxb" path="res://assets/tilesets/keepdoors_lion_bw_gt.png" id="8_xlx1c"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="11_ofleh"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="11_ssd4l"]
-[ext_resource type="PackedScene" uid="uid://tdwduolf1jsk" path="res://scenes/Enemy/trap.tscn" id="11_xlx1c"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/trap.tscn" id="11_xlx1c"]
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="13_xlx1c"]
 [ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="14_a11uw"]
 [ext_resource type="AudioStream" uid="uid://b5iodldk1ecs" path="res://assets/sounds/whispers.mp3" id="15_75xqg"]
+[ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="16_gaifs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75xqg"]
 radius = 15.0
@@ -369,5 +370,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SceneSwitchAnimation" parent="." instance=ExtResource("16_gaifs")]
+anchors_preset = 0
+offset_left = -275.0
+offset_top = -130.0
+offset_right = 2518.0
+offset_bottom = 2163.0
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]

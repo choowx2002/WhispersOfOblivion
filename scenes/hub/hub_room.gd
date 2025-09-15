@@ -1,10 +1,13 @@
 extends Node2D
 
+@onready var SceneSwitchAnimation = $SceneSwitchAnimation/AnimationPlayer
 @onready var player := $TestingBody
 @onready var collection_display = $CollectionDisplay
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SceneSwitchAnimation.get_parent().get_node("ColorRect").color.a = 255
+	SceneSwitchAnimation.play("FadeOut")
 	var playerCamera: Camera2D = player.find_child("Camera2D")
 	if playerCamera:
 		playerCamera.limit_left = -32
@@ -25,4 +28,7 @@ func _process(delta: float) -> void:
 
 func _enterMaze():
 		if GameState.playerSelectedRoom:
+			SceneSwitchAnimation.play("FadeIn")
+			await get_tree().create_timer(0.5).timeout
 			get_tree().change_scene_to_file(GameState.playerSelectedRoom)
+			

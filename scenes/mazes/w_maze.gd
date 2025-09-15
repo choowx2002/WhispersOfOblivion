@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var SceneSwitchAnimation = $SceneSwitchAnimation/AnimationPlayer
 @onready var respawn_points := $RespawnPoints.get_children()
 @onready var player := $TestingBody
 @onready var audio_players := {
@@ -26,6 +26,8 @@ var last_cell := Vector2(-1, -1)
 @onready var effect_container: Control = $CanvasLayer/Effect/WordContainer
 
 func _ready():
+	SceneSwitchAnimation.get_parent().get_node("ColorRect").color.a = 255
+	SceneSwitchAnimation.play("FadeOut")
 	#get all targets
 	targets = get_tree().get_nodes_in_group("whisper_targets")
 	

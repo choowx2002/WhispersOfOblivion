@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://daqcqikrg7ipn"]
+[gd_scene load_steps=39 format=4 uid="uid://daqcqikrg7ipn"]
 
 [ext_resource type="Script" uid="uid://c4uuegk0hkmxw" path="res://scenes/mazes/w_maze.gd" id="1_gp22u"]
 [ext_resource type="Texture2D" uid="uid://dqf76cv36enha" path="res://assets/tilesets/Lattia5.jpg" id="2_5mt6p"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="15_qpqmv"]
 [ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="18_g03yh"]
 [ext_resource type="AudioStream" uid="uid://b5iodldk1ecs" path="res://assets/sounds/whispers.mp3" id="19_m1bgt"]
+[ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="20_08qrs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hux61"]
 resource_name = "floor"
@@ -300,5 +301,8 @@ color = Color(1, 1, 1, 0.309804)
 
 [node name="Whispers" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_m1bgt")
+
+[node name="SceneSwitchAnimation" parent="." instance=ExtResource("20_08qrs")]
+anchors_preset = 0
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]

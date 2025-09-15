@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://30xtrcpogkl8"]
+[gd_scene load_steps=64 format=3 uid="uid://30xtrcpogkl8"]
 
 [ext_resource type="Script" uid="uid://btkrlujaoap3l" path="res://scenes/Player/testing_body.gd" id="1_ci0fc"]
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="2_6sdiv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://assets/player/Player_walk.png" id="5_tfrc8"]
 [ext_resource type="PackedScene" uid="uid://bas6orfqr7u7g" path="res://scenes/ui/sanity_container.tscn" id="7_53u1h"]
 [ext_resource type="PackedScene" uid="uid://buhc82qm3jdk3" path="res://scenes/ui/game_over_ui.tscn" id="8_vgoth"]
+[ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="9_tfrc8"]
 [ext_resource type="PackedScene" uid="uid://bkbeunnqsop87" path="res://scenes/ui/setting.tscn" id="11_tsc7x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgoth"]
@@ -446,5 +447,12 @@ offset_left = 156.0
 offset_top = 13.0
 offset_right = 601.672
 offset_bottom = 583.16
+
+[node name="SceneSwitchAnimation" parent="." instance=ExtResource("9_tfrc8")]
+anchors_preset = 0
+offset_left = -104.0
+offset_top = -88.0
+offset_right = 995.0
+offset_bottom = 653.0
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://xw4nmpgg832t"]
+[gd_scene load_steps=50 format=4 uid="uid://xw4nmpgg832t"]
 
 [ext_resource type="TileSet" uid="uid://d3tmwmng0t0hb" path="res://assets/tilesets/WoodenGround.tres" id="1_4kahi"]
 [ext_resource type="Script" uid="uid://bxihib6imi8yc" path="res://scenes/hub/hub_room.gd" id="1_oawfl"]
@@ -18,10 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://cfbih535kkwhq" path="res://assets/images/collectable_item_north.png" id="18_nyixv"]
 [ext_resource type="AudioStream" uid="uid://3r8k4o8taqxl" path="res://assets/sounds/horrorBGM1.mp3" id="18_sqw0j"]
 [ext_resource type="Texture2D" uid="uid://vounnyjrcl3a" path="res://assets/images/collectable_item_east.png" id="19_heyhg"]
-[ext_resource type="Script" uid="uid://bwgsne6hff3t6" path="res://scenes/hub/collection_display.gd" id="19_jnq1j"]
+[ext_resource type="Script" path="res://scenes/hub/collection_display.gd" id="19_jnq1j"]
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="19_so866"]
 [ext_resource type="Texture2D" uid="uid://deb2kdj538xyn" path="res://assets/images/collectable_item_south.png" id="20_jnq1j"]
 [ext_resource type="Texture2D" uid="uid://culkeuk4k0uj2" path="res://assets/images/collectable_item_west.png" id="21_7e4qx"]
+[ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="23_jnq1j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]
 resource_name = "sofa"
@@ -590,6 +591,13 @@ range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("4_tqygv")
 texture_scale = 5.0
+
+[node name="SceneSwitchAnimation" parent="." instance=ExtResource("23_jnq1j")]
+anchors_preset = 0
+offset_left = -45.0
+offset_top = -20.0
+offset_right = 959.0
+offset_bottom = 729.0
 
 [connection signal="body_entered" from="WestDoor" to="WestDoor" method="_on_body_entered"]
 [connection signal="body_exited" from="WestDoor" to="WestDoor" method="_on_body_exited"]
