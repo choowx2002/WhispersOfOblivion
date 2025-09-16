@@ -799,10 +799,10 @@ tracks/3/path = NodePath("Label:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(6, 6.5, 9, 9.5, 10, 10.5, 13, 13.5, 14, 14.5, 18, 18.5, 19, 19.5, 22.5, 23, 23.5, 24, 27, 27.5, 28, 28.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(6, 6.5, 9, 9.5, 10, 10.5, 13, 13.5, 14, 14.5, 18, 18.5, 19, 19.5, 22.5, 23, 23.5, 24, 27, 27.5, 28, 28.5, 31.0106, 31.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -939,7 +939,7 @@ scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_2glqe")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.434695
+frame_progress = 0.574618
 
 [node name="Teddy" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.588235)
@@ -947,7 +947,7 @@ position = Vector2(1031.5, 1167)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_d08j4")
 autoplay = "default"
-frame_progress = 0.728413
+frame_progress = 0.295058
 metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Teddy"]
