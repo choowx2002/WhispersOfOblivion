@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://p5v663is4fxb" path="res://assets/tilesets/keepdoors_lion_bw_gt.png" id="8_xlx1c"]
 [ext_resource type="PackedScene" uid="uid://30xtrcpogkl8" path="res://scenes/Player/testing_body.tscn" id="11_ofleh"]
 [ext_resource type="Texture2D" uid="uid://b83d5k54dimm1" path="res://assets/tilesets/blueFire.png" id="11_ssd4l"]
-[ext_resource type="PackedScene" path="res://scenes/Enemy/trap.tscn" id="11_xlx1c"]
+[ext_resource type="PackedScene" uid="uid://tdwduolf1jsk" path="res://scenes/Enemy/trap.tscn" id="11_xlx1c"]
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="13_xlx1c"]
 [ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="14_a11uw"]
 [ext_resource type="AudioStream" uid="uid://b5iodldk1ecs" path="res://assets/sounds/whispers.mp3" id="15_75xqg"]

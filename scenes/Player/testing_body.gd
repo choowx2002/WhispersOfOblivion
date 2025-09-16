@@ -184,6 +184,16 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		#healthChanged.emit(currentHealth) # show latest health status
 		#heartsContainer.updateHearts(currentHealth)
 		#if currentHealth <= 0:
+		
+		var current_scene = get_tree().current_scene
+		if current_scene and current_scene.name == "SMaze":
+			# SMaze get_maze_key()
+			var maze_key = current_scene.get_maze_key()
+			if GameState.has_collected_fragment(maze_key):
+				GameState.on_escape_completed(maze_key)
+				var target_scene = "res://scenes/Endings/truth_ending.tscn"
+				get_tree().call_deferred("change_scene_to_file", target_scene)
+				return
 		die()
 
 func die() -> void:
