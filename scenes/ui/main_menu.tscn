@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckpnpfqic2di7"]
+[gd_scene load_steps=15 format=3 uid="uid://ckpnpfqic2di7"]
 
 [ext_resource type="Script" uid="uid://b6fqydsseiyp7" path="res://scenes/ui/main_menu.gd" id="1_1g8jr"]
 [ext_resource type="Texture2D" uid="uid://dxb3a6sv0jo60" path="res://assets/ui/pngtree-game-castle-horror-scene-illustration-background-picture-image_2384835.png" id="1_fe2o3"]
 [ext_resource type="Texture2D" uid="uid://c8g8a4ijp6gmo" path="res://assets/ui/FreeHorrorUi.png" id="2_1g8jr"]
 [ext_resource type="Script" uid="uid://yydge38squp1" path="res://scenes/ui/setting_mainMenu.gd" id="4_x2yvf"]
 [ext_resource type="Texture2D" uid="uid://d1nkrmnksvt6o" path="res://assets/ui/06 Border 03.png" id="5_uhagc"]
-[ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="6_uhagc"]
 
 [sub_resource type="GDScript" id="GDScript_m1kxf"]
 script/source = "extends MarginContainer
@@ -114,25 +113,27 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_btxxm")
 
 [node name="Setting" type="Control" parent="Button/NinePatchRect/CanvasLayer"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -387.5
-offset_top = -325.0
-offset_right = 387.5
-offset_bottom = 325.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_x2yvf")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Button/NinePatchRect/CanvasLayer/Setting"]
-layout_mode = 2
-offset_left = 179.5
-offset_top = 75.0
-offset_right = 608.5
-offset_bottom = 574.0
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_top = -249.5
+offset_right = 214.5
+offset_bottom = 249.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_uhagc")
 
 [node name="Back" type="Button" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect"]
@@ -194,17 +195,8 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 16.0
 offset_top = 28.0
-offset_right = 204.0
+offset_right = 227.0
 offset_bottom = 44.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect/Bright/BrightnessLabel/HSlider"]
-
-[node name="Setting" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect/Bright/BrightnessLabel/HSlider/CanvasLayer" instance=ExtResource("6_uhagc")]
-anchors_preset = 8
-offset_left = -188.5
-offset_top = -200.5
-offset_right = 188.5
-offset_bottom = 200.5
 
 [node name="Label" type="Label" parent="Button/NinePatchRect"]
 layout_mode = 1

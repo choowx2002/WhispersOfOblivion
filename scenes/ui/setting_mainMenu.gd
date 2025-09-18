@@ -19,7 +19,7 @@ func _ready():
 	back_button.pressed.connect(_on_back_button_pressed)
 
 	# Load global settings into sliders
-	volumeLabel.text = "\tVolume"
+	volumeLabel.text = "Volume"
 	volume_slider.value = GlobalSettings.volume * 100
 	volume_slider.connect("value_changed", Callable(self, "_on_volume_changed"))
 
