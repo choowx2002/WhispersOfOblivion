@@ -65,7 +65,9 @@ func _process(delta):
 		last_pulse_time = time
 
 func _on_sanity_tick():
-	change_sanity(-0.01 * maxSanity)  # -0.01% of max each 10s
+	var current_scene = get_tree().current_scene
+	if current_scene and current_scene.name != "HubRoom":
+		change_sanity(-0.01 * maxSanity)  # -0.01% of max each 10s
 func change_sanity(amount: float):
 	currentSanity = clamp(currentSanity + amount, 0, maxSanity)
 	sanityContainer.updateSanity(currentSanity)

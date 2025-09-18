@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckpnpfqic2di7"]
+[gd_scene load_steps=16 format=3 uid="uid://ckpnpfqic2di7"]
 
 [ext_resource type="Script" uid="uid://b6fqydsseiyp7" path="res://scenes/ui/main_menu.gd" id="1_1g8jr"]
 [ext_resource type="Texture2D" uid="uid://dxb3a6sv0jo60" path="res://assets/ui/pngtree-game-castle-horror-scene-illustration-background-picture-image_2384835.png" id="1_fe2o3"]
 [ext_resource type="Texture2D" uid="uid://c8g8a4ijp6gmo" path="res://assets/ui/FreeHorrorUi.png" id="2_1g8jr"]
 [ext_resource type="Script" uid="uid://yydge38squp1" path="res://scenes/ui/setting_mainMenu.gd" id="4_x2yvf"]
 [ext_resource type="Texture2D" uid="uid://d1nkrmnksvt6o" path="res://assets/ui/06 Border 03.png" id="5_uhagc"]
+[ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="6_uhagc"]
 
 [sub_resource type="GDScript" id="GDScript_m1kxf"]
 script/source = "extends MarginContainer
@@ -159,6 +160,51 @@ offset_left = 15.995
 offset_top = -31.834
 offset_right = 73.141
 offset_bottom = 30.759
+
+[node name="Volume" type="HBoxContainer" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 146.0
+offset_right = 182.0
+offset_bottom = 191.0
+
+[node name="Volume" type="Label" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect/Volume"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect/Volume/Volume"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 34.0
+offset_right = 229.0
+offset_bottom = 87.0
+
+[node name="Bright" type="HBoxContainer" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 251.0
+offset_right = 154.0
+offset_bottom = 291.0
+
+[node name="BrightnessLabel" type="Label" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect/Bright"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect/Bright/BrightnessLabel"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 28.0
+offset_right = 204.0
+offset_bottom = 44.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect/Bright/BrightnessLabel/HSlider"]
+
+[node name="Setting" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect/Bright/BrightnessLabel/HSlider/CanvasLayer" instance=ExtResource("6_uhagc")]
+anchors_preset = 8
+offset_left = -188.5
+offset_top = -200.5
+offset_right = 188.5
+offset_bottom = 200.5
 
 [node name="Label" type="Label" parent="Button/NinePatchRect"]
 layout_mode = 1
