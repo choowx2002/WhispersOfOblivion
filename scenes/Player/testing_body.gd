@@ -21,7 +21,9 @@ var pulse_interval: float = 10.0
 #signal healthChanged
 #@export var maxHealth: float = 3.0 # set maximum health to 3 unit
 #var currentHealth: float = maxHealth # current heath status
-@onready var setting_ui = $Setting/Setting
+var hit_count: int = 0
+var respawn_count: int = 0
+
 #@onready var heartsContainer = $HeartBar/HeartContainer
 var sanityTimer: Timer
 var maxSanity = 100.0
@@ -33,14 +35,8 @@ var currentSanity = 100.0
 
 @onready var SceneSwitchAnimation = $SceneSwitchAnimation/AnimationPlayer
 func _ready():
-	#currentHealth = maxHealth
-	#print("Player ready: current =", currentHealth, " max =", maxHealth)
-	#heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
-	#heartsContainer.updateHearts(currentHealth) # update the current heart
-	#healthChanged.connect(heartsContainer.updateHearts)
-	#currentSanity = maxSanity
-	#sanityContainer.setMaxSanity(maxSanity, currentSanity)
-	setting_ui.hide()
+	if GameState.start_time == 0.0:
+		GameState.start_time = Time.get_ticks_msec() / 1000.0  # seconds since game start
 	gameOverUI.visible = false
 	sanityContainer.setMaxSanity(maxSanity, currentSanity)
 	# Timer to reduce sanity every 10s
@@ -60,16 +56,6 @@ func _ready():
 		else:
 			push_warning("SanityEffectRect not found!")
 	#connect("body_entered", Callable(self, "touch_enemy"))
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):  # ESC by default in Godot
-		if setting_ui.visible:
-			# Close settings
-			setting_ui.hide()
-			get_tree().paused = false
-		else:
-			# Open settings
-			setting_ui.show()
-			get_tree().paused = true
 	
 func _process(delta):
 	var time = Time.get_ticks_msec() / 1000.0
@@ -184,13 +170,15 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		#healthChanged.emit(currentHealth) # show latest health status
 		#heartsContainer.updateHearts(currentHealth)
 		#if currentHealth <= 0:
-		
+		hit_count += 1
 		var current_scene = get_tree().current_scene
 		if current_scene and current_scene.name == "SMaze":
 			# SMaze get_maze_key()
 			var maze_key = current_scene.get_maze_key()
 			if GameState.has_collected_fragment(maze_key):
 				GameState.on_escape_completed(maze_key)
+				GameState.hits = hit_count
+				GameState.end_time = Time.get_ticks_msec() / 1000.0
 				var target_scene = "res://scenes/Endings/truth_ending.tscn"
 				get_tree().call_deferred("change_scene_to_file", target_scene)
 				return
@@ -233,6 +221,7 @@ func respawn():
 	#print("Player respawn: current =", currentHealth, " max =", maxHealth)
 	#heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
 	#heartsContainer.updateHearts(currentHealth) # update the current heart
+	
 	SceneSwitchAnimation.play("FadeOut")
 	global_position = get_tree().current_scene.gameRespawnPoint
 	anim_sprite.play("idle")

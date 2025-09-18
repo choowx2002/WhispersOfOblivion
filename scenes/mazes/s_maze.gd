@@ -24,3 +24,12 @@ func _ready():
 
 func get_maze_key() -> String:
 	return "south"
+
+func _unhandled_input(event):
+	if event.is_action_pressed("toggle_setting"):
+		if $CanvasLayer/Setting.visible:
+			$CanvasLayer/Setting.hide()
+			get_tree().paused = false
+		else:
+			$CanvasLayer/Setting.show()
+			get_tree().paused = true

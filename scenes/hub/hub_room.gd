@@ -32,3 +32,11 @@ func _enterMaze():
 			await get_tree().create_timer(0.5).timeout
 			get_tree().change_scene_to_file(GameState.playerSelectedRoom)
 			
+func _unhandled_input(event):
+	if event.is_action_pressed("toggle_setting"):
+		if $CanvasLayer/Setting.visible:
+			$CanvasLayer/Setting.hide()
+			get_tree().paused = false
+		else:
+			$CanvasLayer/Setting.show()
+			get_tree().paused = true

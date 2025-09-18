@@ -1,7 +1,10 @@
 extends Control
 
+@onready var title = $Button/NinePatchRect/Label
 func _ready():
 	# Get the button by its node path
+	title.text = "Whispers Of Oblivion"
+	title.add_theme_font_size_override("font_size", 50)
 	var play_button = $Button/NinePatchRect/Play
 	play_button.text = "Play"
 	play_button.pressed.connect(_on_play_button_pressed)

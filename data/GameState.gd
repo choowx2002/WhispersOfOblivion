@@ -8,6 +8,10 @@ var fragments_collected := {	# Records the fragment progressions
 }
 var memory_db: Array = []
 
+var hits: int = 0
+var respawns: int = 0
+var start_time: float = 0.0
+var end_time: float = 0.0
 const SAVE_PATH := "res://data/save.json"
 const FRAG_DB_PATH := "res://data/memory_fragments.json"
 

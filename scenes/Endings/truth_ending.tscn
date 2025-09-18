@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://cootisaokcvfu"]
+[gd_scene load_steps=102 format=4 uid="uid://cootisaokcvfu"]
 
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_0s06w"]
 [ext_resource type="Script" uid="uid://bm71o6elb5uw1" path="res://scenes/Endings/truth_ending.gd" id="1_kd5tu"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://deb2kdj538xyn" path="res://assets/images/collectable_item_south.png" id="5_j7iy2"]
 [ext_resource type="Texture2D" uid="uid://culkeuk4k0uj2" path="res://assets/images/collectable_item_west.png" id="6_1h2xw"]
 [ext_resource type="AudioStream" uid="uid://d31kxppqx5dvr" path="res://assets/sounds/ending_bgm.mp3" id="12_kd5tu"]
+[ext_resource type="Texture2D" uid="uid://dogymttn0gio1" path="res://assets/ui/GameClear.png" id="13_x0t68"]
+[ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="14_hwida"]
+[ext_resource type="PackedScene" uid="uid://cce6l7r6a7wdq" path="res://scenes/result.tscn" id="15_21bc6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d08j4"]
 atlas = ExtResource("3_1h2xw")
@@ -1019,3 +1022,36 @@ zoom = Vector2(2, 2)
 
 [node name="EndingBgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_kd5tu")
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_x0t68")
+
+[node name="ResultScreen" parent="Background/NinePatchRect" instance=ExtResource("15_21bc6")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -175.0
+offset_right = 158.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SceneSwitchAnimation" parent="." instance=ExtResource("14_hwida")]
+anchors_preset = 0
+offset_left = -677.0
+offset_top = -248.0
+offset_right = -677.0
+offset_bottom = -248.0

@@ -113,18 +113,25 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_btxxm")
 
 [node name="Setting" type="Control" parent="Button/NinePatchRect/CanvasLayer"]
 layout_mode = 3
-anchor_right = 0.995
-anchor_bottom = 0.984
-offset_right = -0.160034
-offset_bottom = 0.23999
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -387.5
+offset_top = -325.0
+offset_right = 387.5
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_x2yvf")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Button/NinePatchRect/CanvasLayer/Setting"]
 layout_mode = 2
-offset_left = 175.0
-offset_top = 61.0
-offset_right = 604.0
-offset_bottom = 560.0
+offset_left = 179.5
+offset_top = 75.0
+offset_right = 608.5
+offset_bottom = 574.0
 texture = ExtResource("5_uhagc")
 
 [node name="Back" type="Button" parent="Button/NinePatchRect/CanvasLayer/Setting/NinePatchRect"]
@@ -148,7 +155,18 @@ anchor_left = 0.345
 anchor_top = 0.166
 anchor_right = 0.671
 anchor_bottom = 0.259
-offset_left = 4.995
-offset_top = 0.165993
-offset_right = 5.14099
-offset_bottom = 5.759
+offset_left = 15.995
+offset_top = -31.834
+offset_right = 73.141
+offset_bottom = 30.759
+
+[node name="Label" type="Label" parent="Button/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -201.0
+offset_top = 66.0
+offset_right = 219.0
+offset_bottom = 244.0
+grow_horizontal = 2

@@ -19,6 +19,7 @@ func _ready():
 
 func _on_respawn_button_pressed():
 	print("Respawn clicked")
+	GameState.respawns += 1
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/hub/HubRoom.tscn")
 

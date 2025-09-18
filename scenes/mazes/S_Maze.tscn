@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://bodlwpbnqs52j"]
+[gd_scene load_steps=72 format=4 uid="uid://bodlwpbnqs52j"]
 
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_oyhaw"]
 [ext_resource type="Script" uid="uid://d3ixxjp8u87vr" path="res://scenes/mazes/s_maze.gd" id="1_ucpvt"]
@@ -11,10 +11,11 @@
 [ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="9_33w48"]
 [ext_resource type="AudioStream" uid="uid://cvhyylnv8m7pw" path="res://assets/sounds/kid-laugh-scary.mp3" id="10_r3711"]
 [ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="11_w0j7y"]
-[ext_resource type="Script" path="res://scenes/Enemy/shadow_enemy.gd" id="12_8lqsc"]
+[ext_resource type="Script" uid="uid://cdj6wmlsos265" path="res://scenes/Enemy/shadow_enemy.gd" id="12_8lqsc"]
 [ext_resource type="Texture2D" uid="uid://dnofk5jr5j8hc" path="res://assets/player/Player_death.png" id="13_6ybnx"]
 [ext_resource type="Texture2D" uid="uid://cey4jjaf50ckw" path="res://assets/player/Player_idle.png" id="14_qr21i"]
 [ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://assets/player/Player_walk.png" id="15_itjfg"]
+[ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="16_qr21i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qr21i"]
 
@@ -484,3 +485,12 @@ animation = &"move"
 
 [node name="ShadowCollision" type="CollisionShape2D" parent="ShadowEnemy/Hitbox"]
 shape = SubResource("CircleShape2D_5d4ke")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Setting" parent="CanvasLayer" instance=ExtResource("16_qr21i")]
+anchors_preset = 8
+offset_left = -188.5
+offset_top = -200.5
+offset_right = 188.5
+offset_bottom = 200.5

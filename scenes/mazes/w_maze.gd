@@ -119,3 +119,12 @@ func spawn_word(text):
 		randf_range(-80, -40)
 	)
 	effect_container.add_child(label)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("toggle_setting"):
+		if $CanvasLayer2/Setting.visible:
+			$CanvasLayer2/Setting.hide()
+			get_tree().paused = false
+		else:
+			$CanvasLayer2/Setting.show()
+			get_tree().paused = true
