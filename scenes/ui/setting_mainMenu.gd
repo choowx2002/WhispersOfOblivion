@@ -6,6 +6,7 @@ extends Control
 @onready var brightLabel: Label = $NinePatchRect/Bright/BrightnessLabel
 @onready var volume_slider: HSlider = $NinePatchRect/Volume/Volume/HSlider
 @onready var brightness_slider: HSlider = $NinePatchRect/Bright/BrightnessLabel/HSlider
+@onready var note = $NinePatchRect/Label
 
 func _ready():
 	hide()
@@ -29,6 +30,8 @@ func _ready():
 
 	# Apply brightness immediately
 	_apply_brightness(GlobalSettings.brightness)
+	
+	note.text = "(ESC Key to toggle setting in game)"
 
 func _on_back_button_pressed():
 	print("Back clicked")

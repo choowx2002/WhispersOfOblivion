@@ -36,4 +36,4 @@ func format_time(seconds: float) -> String:
 	
 func set_results(hits: int, respawns: int, time_taken: float) -> void:
 	var formatted_time = format_time(time_taken)
-	ResultContain.text = "Hits: %d\n\n\nRespawns: %d\n\n\nTime Taken: %s" % [hits, respawns, formatted_time]
+	ResultContain.text = "Hitted By Enemies: %d\n\n\nRespawns: %d\n\n\nTime Taken: %s" % [hits, respawns, formatted_time]
