@@ -31,7 +31,7 @@ func _ready() -> void:
 	print("DEBUG: Initial fragments state: ", fragments_collected)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 # Function to Hard Reset Game Status

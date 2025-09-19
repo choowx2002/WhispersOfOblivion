@@ -12,7 +12,6 @@ func _ready() -> void:
 	
 	# Get maze direction from node name
 	var direction = name.trim_suffix("Item").to_lower()
-	print("DEBUG: Initializing ", direction, " fragment display")
 	
 	# Check if fragment is collected
 	if GameState.has_collected_fragment(direction):

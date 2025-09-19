@@ -44,12 +44,12 @@ func _on_body_entered(body: Node2D) -> void:
 	get_tree().root.add_child(story_label)
 	
 	if has_north and has_east and has_west:
-		message = "Almost… I can feel it… just one more thing hiding somewhere."
+		message = "The shadows here... they're different... why do they make my heart ache?"
 		story_label.fade_completed.connect(show_confirmation_dialog)
 		# Set shorter timing for final quotes
-		story_label.display_time = 1.5
-		story_label.fade_in_time = 0.5
-		story_label.show_story(message)
+	story_label.display_time = 1.5
+	story_label.fade_in_time = 0.5
+	story_label.show_story(message)
 
 func show_confirmation_dialog() -> void:
 	var panel = ConfirmationPanelScene.instantiate()

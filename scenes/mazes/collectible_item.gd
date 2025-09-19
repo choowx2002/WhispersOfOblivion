@@ -55,7 +55,7 @@ func _on_body_entered(body: Node) -> void:
 	if auto_pickup and not GameState.has_collected_fragment(maze_key):
 		_collect(body)
 
-func _collect(body: Node):
+func _collect(_body: Node):
 	if item_id == "memory_fragment" and maze_key != "":
 		if not GameState.has_collected_fragment(maze_key):
 			# Mark as picked up
@@ -83,7 +83,7 @@ func _collect(body: Node):
 	
 # Mark memory fragment collected
 func _collect_fragment():
-	var maze_key := ""
+	maze_key = ""
 	var scene := get_tree().current_scene
 	if scene and scene.has_method("get_maze_key"):
 		maze_key = scene.get_maze_key()

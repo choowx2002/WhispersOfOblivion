@@ -6,6 +6,8 @@ var stealth_multiplier: float = 1.0
 var external_multiplier: float = 1.0
 
 @onready var step_audio := $StepAudio
+
+
 var surface_detector
 var step_timer := 0.0
 var base_interval := 0.45
@@ -32,8 +34,9 @@ var currentSanity = 100.0
 @onready var sanityContainer = $Sanity/SanityContainer
 @onready var gameOverUI = $GameOverUI/GameOverUI
 @onready var sanityLabel = $Sanity/SanityLabel
-
 @onready var SceneSwitchAnimation = $SceneSwitchAnimation/AnimationPlayer
+@onready var interact_label = $InteractiveUI/InteractiveLabel
+
 func _ready():
 	if GameState.start_time == 0.0:
 		GameState.start_time = Time.get_ticks_msec() / 1000.0  # seconds since game start
@@ -57,17 +60,27 @@ func _ready():
 			push_warning("SanityEffectRect not found!")
 	#connect("body_entered", Callable(self, "touch_enemy"))
 	
-func _process(delta):
+	if interact_label:
+		interact_label.hide()
+	
+func _process(_delta):
 	var time = Time.get_ticks_msec() / 1000.0
 	var cycle_time = fmod(time, pulse_interval)
 	if cycle_time < 0.02 and time - last_pulse_time > pulse_interval - 0.01:
 		play_whisper()
 		last_pulse_time = time
 
+func show_interact_prompt():
+	interact_label.visible = true
+
+func hide_interact_prompt():
+	interact_label.visible = false
+
 func _on_sanity_tick():
 	var current_scene = get_tree().current_scene
 	if current_scene and current_scene.name != "HubRoom":
 		change_sanity(-0.01 * maxSanity)  # -0.01% of max each 10s
+
 func change_sanity(amount: float):
 	currentSanity = clamp(currentSanity + amount, 0, maxSanity)
 	sanityContainer.updateSanity(currentSanity)
@@ -105,7 +118,7 @@ func play_whisper():
 func die_from_sanity():
 	show_game_over()
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	# run dead animation
 	if is_dead:
 		if anim_sprite.animation != "died":
