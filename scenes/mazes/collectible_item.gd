@@ -73,6 +73,7 @@ func _collect(body: Node):
 		if body.has_signal("survived"):
 			body.survived.connect(_on_player_survived, CONNECT_ONE_SHOT)
 		print("DEBUG: South maze fragment picked up")
+		
 			
 	# Show story text immediately
 	var fragment_id = GameState.get_fragment_id_for_maze(maze_key)
