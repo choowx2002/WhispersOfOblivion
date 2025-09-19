@@ -446,20 +446,4 @@ offset_top = -83.0
 offset_right = 988.0
 offset_bottom = 658.0
 
-[node name="InteractiveUI" type="Node2D" parent="."]
-z_index = 100
-
-[node name="InteractiveLabel" type="Label" parent="InteractiveUI"]
-z_index = 100
-texture_filter = 1
-offset_left = -19.0
-offset_top = -18.0
-offset_right = 107.0
-offset_bottom = 5.0
-scale = Vector2(0.3, 0.3)
-text = "Press E to enter"
-horizontal_alignment = 1
-vertical_alignment = 1
-justification_flags = 161
-
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -35,7 +35,8 @@ var currentSanity = 100.0
 @onready var gameOverUI = $GameOverUI/GameOverUI
 @onready var sanityLabel = $Sanity/SanityLabel
 @onready var SceneSwitchAnimation = $SceneSwitchAnimation/AnimationPlayer
-@onready var interact_label = $InteractiveUI/InteractiveLabel
+@onready var interact_label = $"../CanvasLayer/InteractiveUI/InteractiveLabel"
+@onready var sprite = $AnimatedSprite2D
 
 func _ready():
 	if GameState.start_time == 0.0:
@@ -69,6 +70,14 @@ func _process(_delta):
 	if cycle_time < 0.02 and time - last_pulse_time > pulse_interval - 0.01:
 		play_whisper()
 		last_pulse_time = time
+
+	if interact_label and interact_label.visible and sprite:
+		var camera := get_viewport().get_camera_2d()
+		if camera:
+			# Use the sprite's position in world space
+			var screen_pos: Vector2 = camera.get_canvas_transform() * sprite.global_position
+			# Offset label above the sprite
+			interact_label.position = screen_pos + Vector2(0, -40)
 
 func show_interact_prompt():
 	interact_label.visible = true
