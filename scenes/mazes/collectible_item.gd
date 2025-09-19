@@ -61,6 +61,10 @@ func _collect(body: Node):
 			# Mark as picked up
 			GameState.mark_fragment_picked_up(maze_key)
 			
+			# For south maze, mark as collected immediately
+			if maze_key == "south":
+				GameState.mark_fragment_collected(maze_key)
+			
 			# Show story text
 			var fragment_id = GameState.get_fragment_id_for_maze(maze_key)
 			var fragment_data = GameState.get_fragment(fragment_id)

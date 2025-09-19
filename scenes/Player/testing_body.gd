@@ -225,7 +225,11 @@ func respawn():
 	#heartsContainer.updateHearts(currentHealth) # update the current heart
 	
 	SceneSwitchAnimation.play("FadeOut")
-	global_position = get_tree().current_scene.gameRespawnPoint
+	var spawn_point = get_tree().current_scene.gameRespawnPoint
+	if spawn_point is Vector2:
+		global_position = spawn_point
+	elif spawn_point is Node2D:
+		global_position = spawn_point.global_position
 	anim_sprite.play("idle")
 	anim_sprite.scale = Vector2(0.1, 0.1)
 	is_dead = false

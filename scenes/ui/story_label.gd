@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal fade_completed
+
 @onready var label = $Label
 var display_time: float = 5.0  # How long to show the message
 var fade_in_time: float = 1.0  # How long to fade in
@@ -35,6 +37,7 @@ func _process(delta):
 			var t = timer / fade_out_time
 			label.modulate.a = 1.0 - t
 			if t >= 1.0:
+				emit_signal("fade_completed")
 				queue_free()
 
 func show_story(text: String):
