@@ -18,7 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 	story_label.show_story("The maze looks frozen… something is waiting, I think.")
 	story_label.fade_completed.connect(func():
 		if player_inside and is_instance_valid(body_ref):
-			GameState.playerSelectedRoom = "res://scenes/mazes/W_Maze.tscn"
+			GameState.playerSelectedRoom = "res://scenes/mazes/N_Maze.tscn"
 			body_ref.show_interact_prompt()
 	)
 
