@@ -55,31 +55,37 @@ func _on_body_entered(body: Node) -> void:
 	if auto_pickup and not GameState.has_collected_fragment(maze_key):
 		_collect(body)
 
-func _collect(_body: Node):
-	if item_id == "memory_fragment" and maze_key != "":
-		if not GameState.has_collected_fragment(maze_key):
-			# Mark as picked up
-			GameState.mark_fragment_picked_up(maze_key)
+func _collect(body: Node):
+	if item_id != "memory_fragment" and maze_key == "":
+		print("No valid maze_key or item_id mismatch, cannot collect")
+		return
+		
+	# Prevent duplicate pickups
+	if GameState.has_collected_fragment(maze_key) or GameState.has_picked_up_fragment(maze_key):
+		print("DEBUG: Fragment already picked up or collected in maze: ", maze_key)
+		return
+		
+	# Mark as picked up
+	GameState.mark_fragment_picked_up(maze_key)
+		
+	# South maze
+	if maze_key == "south":
+		if body.has_signal("died"):
+			body.died.connect(_on_player_died, CONNECT_ONE_SHOT)
+		if body.has_signal("survived"):
+			body.survived.connect(_on_player_survived, CONNECT_ONE_SHOT)
+		print("DEBUG: South maze fragment picked up")
 			
-			# For south maze, mark as collected immediately
-			if maze_key == "south":
-				GameState.mark_fragment_collected(maze_key)
-			
-			# Show story text
-			var fragment_id = GameState.get_fragment_id_for_maze(maze_key)
-			var fragment_data = GameState.get_fragment(fragment_id)
-			if fragment_data:
-				# Create and show the story label
-				var story_label = StoryLabelScene.instantiate()
-				get_tree().root.add_child(story_label)
-				story_label.show_story(fragment_data["text"])
-			
-			# Hide the item
-			_start_fade()
-			
-			print("DEBUG: Fragment picked up in maze: ", maze_key)
-		else:
-			print("DEBUG: Fragment already collected in maze: ", maze_key)
+	# Show story text immediately
+	var fragment_id = GameState.get_fragment_id_for_maze(maze_key)
+	var fragment_data = GameState.get_fragment(fragment_id)
+	if fragment_data:
+		var story_label = StoryLabelScene.instantiate()
+		get_tree().root.add_child(story_label)
+		story_label.show_story(fragment_data["text"])
+		
+	# Start fade animation
+	_start_fade()
 	
 # Mark memory fragment collected
 func _collect_fragment():
@@ -99,3 +105,13 @@ func _collect_fragment():
 func _start_fade():
 	fading = true
 	collision.set_deferred("disabled", true)
+	
+func _on_player_died():
+	if maze_key == "south":
+		GameState.unmark_fragment(maze_key)
+		print("DEBUG: Player died, south fragment NOT collected")
+
+func _on_player_survived():
+	if maze_key == "south":
+		GameState.mark_fragment_collected(maze_key)
+		print("DEBUG: Player survived, south fragment COLLECTED")

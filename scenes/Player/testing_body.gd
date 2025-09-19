@@ -1,42 +1,34 @@
 extends CharacterBody2D
 
-var anim_sprite: AnimatedSprite2D # run animation
 @export var move_speed := 100 # player movement base speed（frame/sec）
+@export var whisper_audio : AudioStreamPlayer
+@export var sanity_effect_rect: ColorRect
+var anim_sprite: AnimatedSprite2D # run animation
 var stealth_multiplier: float = 1.0
 var external_multiplier: float = 1.0
-
-@onready var step_audio := $StepAudio
-
-
 var surface_detector
 var step_timer := 0.0
 var base_interval := 0.45
 var min_interval := 0.20
 var is_dead: bool = false # declare if player ded
-
-@export var whisper_audio : AudioStreamPlayer
 var last_pulse_time: float = -10.0
 var pulse_interval: float = 10.0
-
-@export var sanity_effect_rect: ColorRect
-
 #signal healthChanged
-#@export var maxHealth: float = 3.0 # set maximum health to 3 unit
-#var currentHealth: float = maxHealth # current heath status
 var hit_count: int = 0
 var respawn_count: int = 0
-
-#@onready var heartsContainer = $HeartBar/HeartContainer
 var sanityTimer: Timer
 var maxSanity = 100.0
 var currentSanity = 100.0
-
+@onready var step_audio := $StepAudio
 @onready var sanityContainer = $Sanity/SanityContainer
 @onready var gameOverUI = $GameOverUI/GameOverUI
 @onready var sanityLabel = $Sanity/SanityLabel
 @onready var SceneSwitchAnimation = $SceneSwitchAnimation/AnimationPlayer
 @onready var interact_label = $"../CanvasLayer/InteractiveUI/InteractiveLabel"
 @onready var sprite = $AnimatedSprite2D
+
+signal died
+signal survived
 
 func _ready():
 	if GameState.start_time == 0.0:
@@ -189,23 +181,37 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	print("Hurtbox touched:", area.name)
 	if is_dead:
 		return
+	
 	if area.get_parent().is_in_group("Enemy"):  # check if enemy parent is in group
-		#currentHealth -= 1.0 # minus 1 heart while touched the hitbox
-		#healthChanged.emit(currentHealth) # show latest health status
-		#heartsContainer.updateHearts(currentHealth)
-		#if currentHealth <= 0:
 		hit_count += 1
 		var current_scene = get_tree().current_scene
+		var maze_key := ""
+		if current_scene and current_scene.has_method("get_maze_key"):
+			maze_key = current_scene.get_maze_key()
+		
+		# Sanity check
+		if currentSanity <= 0:
+			print("Player dies to Sanity, fragment lost")
+			if maze_key != "" and GameState.has_picked_up_fragment(maze_key):
+				GameState.unmark_fragment(maze_key)  # reset picked up fragment
+			die()
+			return
+		
+		# South Maze ending triggered
 		if current_scene and current_scene.name == "SMaze":
-			# SMaze get_maze_key()
-			var maze_key = current_scene.get_maze_key()
-			if GameState.has_collected_fragment(maze_key):
+			if GameState.has_picked_up_fragment(maze_key):
 				GameState.on_escape_completed(maze_key)
 				GameState.hits = hit_count
 				GameState.end_time = Time.get_ticks_msec() / 1000.0
+				emit_signal("survived")
+				
 				var target_scene = "res://scenes/Endings/truth_ending.tscn"
 				get_tree().call_deferred("change_scene_to_file", target_scene)
 				return
+			else:
+				die()
+				return
+		# Other Mazes
 		die()
 
 func die() -> void:
@@ -221,6 +227,7 @@ func die() -> void:
 		die_from_sanity()
 	else:
 		respawn()
+	emit_signal("died")
 	print("Player died.")
 func show_game_over():
 	if not is_instance_valid(gameOverUI):
@@ -234,18 +241,6 @@ func show_game_over():
 	print("[Player] Game Over shown and tree paused")
 
 func respawn():
-	
-	#maxHealth += 1
-	
-	#if maxHealth >= 100:
-		#maxHealth = 3
-		#return
-		
-	#currentHealth = maxHealth
-	#print("Player respawn: current =", currentHealth, " max =", maxHealth)
-	#heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
-	#heartsContainer.updateHearts(currentHealth) # update the current heart
-	
 	SceneSwitchAnimation.play("FadeOut")
 	var spawn_point = get_tree().current_scene.gameRespawnPoint
 	if spawn_point is Vector2:

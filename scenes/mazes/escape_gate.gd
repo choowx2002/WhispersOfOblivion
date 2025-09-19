@@ -19,8 +19,6 @@ func _on_body_entered(body):
 		print("Fragment Collected on Escape: ", maze_key)
 		GameState.mark_fragment_collected(maze_key)
 		GameState.on_escape_completed(maze_key)
-	else:
-		print("Fragment not picked up or already collected: ", maze_key)
 	
 	# Teleport back to the hub
 	get_tree().call_deferred("change_scene_to_file", target_scene)
