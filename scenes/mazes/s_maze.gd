@@ -31,7 +31,7 @@ func _ready():
 	
 	# Create a timer just for hint messages
 	hint_timer = Timer.new()
-	hint_timer.wait_time = 6
+	hint_timer.wait_time = 30
 	hint_timer.one_shot = false
 	add_child(hint_timer)
 	hint_timer.timeout.connect(_on_hint_timer_timeout)
