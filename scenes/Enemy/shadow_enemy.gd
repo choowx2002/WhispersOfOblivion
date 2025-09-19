@@ -12,6 +12,7 @@ extends CharacterBody2D
 
 @onready var anim: AnimatedSprite2D = $ShadowAnim
 @onready var collision_shape: CollisionShape2D = $ShadowCollision
+@onready var hitbox: Area2D = $Hitbox
 
 enum ShadowState {IDLE, FADE_IN, FOLLOWING, HIDDEN}
 var state: ShadowState = ShadowState.IDLE
@@ -29,6 +30,7 @@ func _ready():
 	anim.animation = "idle"
 	modulate.a = 0.0
 	collision_shape.disabled = true
+	hitbox.monitorable = false
 
 func _physics_process(delta: float) -> void:
 	if not player:
@@ -54,6 +56,7 @@ func _physics_process(delta: float) -> void:
 					fade_timer = 0.0
 					modulate.a = 0.0
 					collision_shape.disabled = false
+					hitbox.monitorable = true
 
 		ShadowState.FADE_IN:
 			fade_timer += delta
@@ -117,5 +120,6 @@ func hide_shadow() -> void:
 	hide_timer = 0.0
 	modulate.a = 0.0
 	collision_shape.disabled = true
+	hitbox.monitorable = false
 	state = ShadowState.IDLE
 	player_moving_time = 0.0
