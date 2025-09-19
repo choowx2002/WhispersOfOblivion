@@ -70,8 +70,6 @@ func _collect(body: Node):
 		
 	# South maze
 	if maze_key == "south":
-		if body.has_signal("died"):
-			body.died.connect(_on_player_died, CONNECT_ONE_SHOT)
 		if body.has_signal("survived"):
 			body.survived.connect(_on_player_survived, CONNECT_ONE_SHOT)
 		print("DEBUG: South maze fragment picked up")
@@ -106,10 +104,6 @@ func _start_fade():
 	fading = true
 	collision.set_deferred("disabled", true)
 	
-func _on_player_died():
-	if maze_key == "south":
-		GameState.unmark_fragment(maze_key)
-		print("DEBUG: Player died, south fragment NOT collected")
 
 func _on_player_survived():
 	if maze_key == "south":

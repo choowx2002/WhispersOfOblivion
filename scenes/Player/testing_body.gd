@@ -89,7 +89,7 @@ func change_sanity(amount: float):
 	update_sanity_effect()
 		
 	if currentSanity <= 0:
-		die_from_sanity()
+		die()
 
 func update_sanity_effect():
 	if sanity_effect_rect == null:
@@ -115,9 +115,6 @@ func play_whisper():
 	#
 	#await get_tree().create_timer(3.0).timeout
 	#whisper_audio.stop()
-	
-func die_from_sanity():
-	show_game_over()
 	
 func _physics_process(_delta):
 	# run dead animation
@@ -189,14 +186,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if current_scene and current_scene.has_method("get_maze_key"):
 			maze_key = current_scene.get_maze_key()
 		
-		# Sanity check
-		if currentSanity <= 0:
-			print("Player dies to Sanity, fragment lost")
-			if maze_key != "" and GameState.has_picked_up_fragment(maze_key):
-				GameState.unmark_fragment(maze_key)  # reset picked up fragment
-			die()
-			return
-		
 		# South Maze ending triggered
 		if current_scene and current_scene.name == "SMaze":
 			if GameState.has_picked_up_fragment(maze_key):
@@ -224,11 +213,11 @@ func die() -> void:
 	await anim_sprite.animation_finished
 	change_sanity(-20)  # lose 20% on death
 	if currentSanity <= 0:
-		die_from_sanity()
+		show_game_over()
 	else:
 		respawn()
-	emit_signal("died")
 	print("Player died.")
+
 func show_game_over():
 	if not is_instance_valid(gameOverUI):
 		push_error("gameOverUI path is wrong")
