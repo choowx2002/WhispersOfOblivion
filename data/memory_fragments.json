@@ -1,6 +1,6 @@
 [
-  {"id": 0, "maze": "north", "title": "The Final Memory", "text": "You see everything clearly now...", "image": ""},
-  {"id": 1, "maze": "east",  "title": "Memory Fragment 1", "text": "frag 1 text...", "image": ""},
-  {"id": 2, "maze": "south", "title": "Memory Fragment 2", "text": "frag 2 text...", "image": ""},
+  {"id": 0, "maze": "north", "title": "Memory Fragment 1", "text": "frag 1 text...", "image": ""},
+  {"id": 1, "maze": "east",  "title": "Memory Fragment 2", "text": "frag 2 text...", "image": ""},
+  {"id": 2, "maze": "south", "title": "The Final Memory", "text": "You see everything clearly now...", "image": ""},
   {"id": 3, "maze": "west",  "title": "Memory Fragment 3", "text": "frag 3 text...", "image": ""}
 ]

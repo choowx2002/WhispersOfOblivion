@@ -7,6 +7,8 @@ extends Area2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
+var StoryLabelScene = preload("res://scenes/ui/story_label.tscn")
+
 var fading: bool = false
 var timer: float = 0.0
 var start_scale: Vector2
@@ -56,9 +58,22 @@ func _on_body_entered(body: Node) -> void:
 func _collect(body: Node):
 	if item_id == "memory_fragment" and maze_key != "":
 		if not GameState.has_collected_fragment(maze_key):
-			GameState.mark_fragment_collected(maze_key)
-			print("DEBUG: Fragment collected in maze: ", maze_key)
+			# Mark as picked up
+			GameState.mark_fragment_picked_up(maze_key)
+			
+			# Show story text
+			var fragment_id = GameState.get_fragment_id_for_maze(maze_key)
+			var fragment_data = GameState.get_fragment(fragment_id)
+			if fragment_data:
+				# Create and show the story label
+				var story_label = StoryLabelScene.instantiate()
+				get_tree().root.add_child(story_label)
+				story_label.show_story(fragment_data["text"])
+			
+			# Hide the item
 			_start_fade()
+			
+			print("DEBUG: Fragment picked up in maze: ", maze_key)
 		else:
 			print("DEBUG: Fragment already collected in maze: ", maze_key)
 	

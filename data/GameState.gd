@@ -6,6 +6,9 @@ var unlocked_fragments: Array[int] = []   # List fragments' id that alrdy collec
 var fragments_collected := {	# Records the fragment progressions
 	"north": false, "east": false, "south": false, "west": false
 }
+var fragments_picked_up := {	# Records if fragments have been picked up in current maze attempt
+	"north": false, "east": false, "south": false, "west": false
+}
 var memory_db: Array = []
 
 var hits: int = 0
@@ -34,6 +37,12 @@ func _process(delta: float) -> void:
 # Function to Hard Reset Game Status
 func reset_game_state() -> void:
 	fragments_collected = {
+		"north": false,
+		"east": false,
+		"south": false,
+		"west": false
+	}
+	fragments_picked_up = {
 		"north": false,
 		"east": false,
 		"south": false,
@@ -174,3 +183,23 @@ func on_escape_completed(maze_key: String) -> void:
 	if key == "South":  # adjust if your last maze key is named differently
 		if has_all_fragments():
 			emit_signal("truth_ending_triggered")
+
+# Mark fragment as picked up in current maze attempt
+func mark_fragment_picked_up(maze_key: String) -> void:
+	var key := normalize_maze_key(maze_key)
+	fragments_picked_up[key] = true
+	print("DEBUG: Fragment picked up in maze: ", key)
+
+# Check if fragment is picked up in current maze attempt
+func has_picked_up_fragment(maze_key: String) -> bool:
+	var key := normalize_maze_key(maze_key)
+	return bool(fragments_picked_up.get(key, false))
+
+# Reset picked up state when entering a new maze
+func reset_picked_up_state() -> void:
+	fragments_picked_up = {
+		"north": false,
+		"east": false,
+		"south": false,
+		"west": false
+	}
