@@ -13,7 +13,6 @@ var min_interval := 0.20
 var is_dead: bool = false # declare if player ded
 var last_pulse_time: float = -10.0
 var pulse_interval: float = 10.0
-#signal healthChanged
 var hit_count: int = 0
 var respawn_count: int = 0
 var sanityTimer: Timer
