@@ -74,6 +74,8 @@ func get_nearest_target() -> Node2D:
 	var nearest: Node2D = null
 	var min_dist = INF
 	for t in targets:
+		if not is_instance_valid(t):
+			continue
 		var d = player.global_position.distance_to(t.global_position)
 		if d < min_dist:
 			min_dist = d

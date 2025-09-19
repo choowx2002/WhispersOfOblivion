@@ -309,7 +309,6 @@ anchors_preset = 0
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Setting" parent="CanvasLayer2" instance=ExtResource("21_woroe")]
-anchors_preset = 8
 offset_left = -188.5
 offset_top = -200.5
 offset_right = 188.5

@@ -272,7 +272,6 @@ anchors_preset = 0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Setting" parent="CanvasLayer" instance=ExtResource("16_vlcrd")]
-anchors_preset = 8
 offset_left = -188.5
 offset_top = -200.5
 offset_right = 188.5
