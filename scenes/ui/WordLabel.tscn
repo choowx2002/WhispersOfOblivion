@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3w801k0ahvyx"]
+
+[ext_resource type="Script" uid="uid://buhaklo6xkph" path="res://scenes/ui/word_label.gd" id="1_fwegt"]
+[ext_resource type="FontFile" uid="uid://vdokv35004jd" path="res://assets/fonts/AmaticSC-Regular.ttf" id="2_6swiw"]
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_fwegt")
+custom_font = ExtResource("2_6swiw")
