@@ -433,10 +433,10 @@ shape = SubResource("CircleShape2D_qr21i")
 position = Vector2(64, 1896)
 
 [node name="SpawnA" type="Marker2D" parent="RespawnPoints"]
-position = Vector2(472, -968)
+position = Vector2(1241, -767)
 
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
-position = Vector2(532, -964)
+position = Vector2(-1, -1831)
 
 [node name="TestingBody" parent="." node_paths=PackedStringArray("whisper_audio", "sanity_effect_rect") instance=ExtResource("6_aorba")]
 position = Vector2(88, 216)
