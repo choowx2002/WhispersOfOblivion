@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cjrtqx27mexkm" path="res://Monster.tscn" id="18_2aimd"]
 [ext_resource type="PackedScene" uid="uid://bkf2x5wnv3wyj" path="res://fireball.tscn" id="19_pj370"]
 [ext_resource type="PackedScene" uid="uid://bstrfrk1a744r" path="res://monster2.tscn" id="20_k2eme"]
-[ext_resource type="PackedScene" uid="uid://d08o0ayybstlm" path="res://monster_4.tscn" id="21_30rwg"]
+[ext_resource type="PackedScene" uid="uid://cassig1ii1f2p" path="res://monster_3.tscn" id="21_30rwg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75xqg"]
 radius = 15.0
@@ -111,20 +111,19 @@ parsed_collision_mask = 4294901761
 source_geometry_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj370"]
-size = Vector2(961.915, 57.495)
+size = Vector2(238.35, 57.495)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2eme"]
-size = Vector2(17.3937, 17.3331)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjbrp"]
+size = Vector2(31.2417, 19.5207)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30rwg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjbrp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_17pqq"]
-size = Vector2(58.1023, 48.5025)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dide1"]
 size = Vector2(49, 890)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gppow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17pqq"]
 
 [node name="EMaze" type="Node2D"]
 script = ExtResource("1_vrddb")
@@ -374,7 +373,7 @@ texture = ExtResource("4_vrddb")
 texture_scale = 5.61
 
 [node name="TestingBody" parent="." node_paths=PackedStringArray("whisper_audio", "sanity_effect_rect") instance=ExtResource("11_ofleh")]
-position = Vector2(979, 1029)
+position = Vector2(1217, 1161)
 whisper_audio = NodePath("../Whispers")
 sanity_effect_rect = NodePath("../SanityEffectLayer/SanityEffectRect")
 
@@ -418,28 +417,8 @@ offset_bottom = 200.5
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_2aimd")
 
-[node name="PatrolArea1" type="Area2D" parent="."]
-position = Vector2(1218, 1656)
-scale = Vector2(0.234948, 8.98455)
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea1"]
-position = Vector2(-25.5376, -0.747543)
-shape = SubResource("RectangleShape2D_pj370")
-
-[node name="Monster3" parent="." instance=ExtResource("18_2aimd")]
-position = Vector2(1829, 632)
-patrol_area_path = NodePath("../PatrolArea3")
-ammo = ExtResource("19_pj370")
-
-[node name="PointLight2D" type="PointLight2D" parent="Monster3"]
-range_item_cull_mask = 3
-shadow_enabled = true
-texture = ExtResource("4_vrddb")
-
 [node name="Monster" parent="." instance=ExtResource("18_2aimd")]
-position = Vector2(1214, 1519)
+position = Vector2(929, 848)
 patrol_area_path = NodePath("../PatrolArea1")
 ammo = ExtResource("19_pj370")
 
@@ -448,46 +427,19 @@ range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("4_vrddb")
 
-[node name="PatrolArea2" type="Area2D" parent="."]
-position = Vector2(162, 1195)
-scale = Vector2(30.3846, -8.53859)
+[node name="PatrolArea1" type="Area2D" parent="."]
+position = Vector2(975, 857)
+scale = Vector2(0.234948, 8.98455)
+collision_layer = 0
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea2"]
-position = Vector2(4.76393, 3.16211)
-shape = SubResource("RectangleShape2D_k2eme")
-
-[node name="PatrolArea3" type="Area2D" parent="."]
-position = Vector2(1772, 658)
-scale = Vector2(16.9821, 27.3393)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea3"]
-scale = Vector2(0.815848, 0.732951)
-shape = SubResource("RectangleShape2D_30rwg")
-
-[node name="PatrolArea4" type="Area2D" parent="."]
-position = Vector2(1361, 256)
-scale = Vector2(46.1951, -12.0789)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea4"]
-shape = SubResource("RectangleShape2D_pjbrp")
-
-[node name="PatrolArea5" type="Area2D" parent="."]
-position = Vector2(221, 1513)
-scale = Vector2(12.7706, 5.01005)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea5"]
-position = Vector2(15.3478, 17.9639)
-shape = SubResource("RectangleShape2D_17pqq")
-
-[node name="PatrolArea6" type="Area2D" parent="."]
-position = Vector2(1605, 1371)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea6"]
-position = Vector2(-7, -6)
-shape = SubResource("RectangleShape2D_dide1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea1"]
+position = Vector2(-0.000305176, -0.111302)
+scale = Vector2(-5.85697, 0.115538)
+shape = SubResource("RectangleShape2D_pj370")
 
 [node name="Monster2" parent="." instance=ExtResource("20_k2eme")]
-position = Vector2(1099, 160)
+position = Vector2(67, 439)
 patrol_area_path = NodePath("../PatrolArea4")
 
 [node name="PointLight2D" type="PointLight2D" parent="Monster2"]
@@ -495,8 +447,35 @@ range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("4_vrddb")
 
+[node name="PatrolArea4" type="Area2D" parent="."]
+position = Vector2(60, 502)
+scale = Vector2(46.1951, -16.2712)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea4"]
+position = Vector2(-1.43051e-06, 0)
+scale = Vector2(0.0374164, -2.88194)
+shape = SubResource("RectangleShape2D_pjbrp")
+
+[node name="Monster3" parent="." instance=ExtResource("18_2aimd")]
+position = Vector2(1310, 640)
+patrol_area_path = NodePath("../PatrolArea3")
+ammo = ExtResource("19_pj370")
+
+[node name="PointLight2D" type="PointLight2D" parent="Monster3"]
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_vrddb")
+
+[node name="PatrolArea3" type="Area2D" parent="."]
+position = Vector2(1360, 642)
+scale = Vector2(18.8339, 27.3393)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea3"]
+scale = Vector2(2.92406, 0.107792)
+shape = SubResource("RectangleShape2D_30rwg")
+
 [node name="Monster4" parent="." instance=ExtResource("20_k2eme")]
-position = Vector2(1609, 1327)
+position = Vector2(1601, 1371)
 patrol_area_path = NodePath("../PatrolArea6")
 
 [node name="PointLight2D" type="PointLight2D" parent="Monster4"]
@@ -504,11 +483,46 @@ range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("4_vrddb")
 
-[node name="Monster5" parent="." instance=ExtResource("21_30rwg")]
-position = Vector2(86, 1205)
-patrol_area_path = NodePath("../PatrolArea2")
+[node name="PatrolArea6" type="Area2D" parent="."]
+position = Vector2(1607, 1355)
 
-[node name="Monster6" parent="." instance=ExtResource("21_30rwg")]
-patrol_area_path = NodePath("../PatrolArea5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea6"]
+position = Vector2(-7, -6)
+shape = SubResource("RectangleShape2D_dide1")
+
+[node name="Monster7" parent="." instance=ExtResource("18_2aimd")]
+position = Vector2(1267, 55)
+patrol_area_path = NodePath("../PatrolArea7")
+ammo = ExtResource("19_pj370")
+
+[node name="PointLight2D" type="PointLight2D" parent="Monster7"]
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_vrddb")
+
+[node name="PatrolArea7" type="Area2D" parent="."]
+position = Vector2(1360, 66)
+scale = Vector2(34.304, 2.27135)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea7"]
+scale = Vector2(1.58398, 1.1358)
+shape = SubResource("RectangleShape2D_gppow")
+
+[node name="Monster5" parent="." instance=ExtResource("21_30rwg")]
+position = Vector2(292, 1792)
+patrol_area_path = NodePath("../PatrolArea8")
+
+[node name="PointLight2D" type="PointLight2D" parent="Monster5"]
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("4_vrddb")
+
+[node name="PatrolArea8" type="Area2D" parent="."]
+position = Vector2(406, 1796)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea8"]
+position = Vector2(11, -3)
+scale = Vector2(38.0229, 2.32579)
+shape = SubResource("RectangleShape2D_17pqq")
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]

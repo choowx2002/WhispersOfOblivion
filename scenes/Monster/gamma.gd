@@ -205,7 +205,7 @@ func _speed_up():
 	var original_speed = speed
 	
 	# Increase speed by 5x for 1 second
-	speed = original_speed * 5.0
+	speed = original_speed * 3.0
 	print("Speed boosted to:", speed)
 	
 	# Wait for 1 second

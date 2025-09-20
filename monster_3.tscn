@@ -1,6 +1,6 @@
 [gd_scene load_steps=72 format=3 uid="uid://cassig1ii1f2p"]
 
-[ext_resource type="Script" uid="uid://builhrd0urnpl" path="res://scenes/Monster/delta.gd" id="1_n4dyi"]
+[ext_resource type="Script" uid="uid://medw8s76hmu6" path="res://scenes/Monster/alphaScript.gd" id="1_n4dyi"]
 [ext_resource type="Texture2D" uid="uid://k8vplrckjnbt" path="res://assets/Monster/NorthMonsterIdle-Sheet.png" id="2_n4dyi"]
 [ext_resource type="Texture2D" uid="uid://dv2inkfbd2amc" path="res://assets/Monster/NorthMonsterWalk-Sheet.png" id="3_dfo30"]
 [ext_resource type="AudioStream" uid="uid://64pu77vi2g2k" path="res://assets/sounds/Monster3 sound effect.mp3" id="4_n4dyi"]
@@ -476,7 +476,6 @@ animations = [{
 
 [node name="Monster3" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 0
 script = ExtResource("1_n4dyi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
