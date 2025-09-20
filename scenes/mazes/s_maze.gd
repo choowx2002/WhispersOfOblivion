@@ -29,7 +29,7 @@ func _ready():
 		playerCamera.limit_bottom = 1952
 		
 	
-	# Create a timer just for hint messages
+	# Create a timer for hint messages
 	hint_timer = Timer.new()
 	hint_timer.wait_time = 30
 	hint_timer.one_shot = false
@@ -45,7 +45,6 @@ func _process(_delta: float) -> void:
 		hint_timer.start()
 		hint_started = true
 		print("DEBUG: Hint timer started")
-
 
 func get_maze_key() -> String:
 	return "south"

@@ -24,6 +24,7 @@ var record_timer: float = 0.0
 var fade_timer: float = 0.0
 var follow_timer: float = 0.0
 var hide_timer: float = 0.0
+var currently_moving: bool = false
 
 func _ready():
 	last_player_pos = player.global_position
@@ -86,30 +87,33 @@ func _physics_process(delta: float) -> void:
 func smooth_move_along_trail(delta: float) -> void:
 	if trail.size() == 0:
 		velocity = Vector2.ZERO
+		currently_moving = false
 		return
 
 	var target = trail[0]
-	velocity = (target - global_position)
-	if velocity.length() > 0.1:
-		velocity = velocity.normalized() * speed
+	var direction = target - global_position
+	
+	if direction.length() > 0.5:
+		velocity = direction.normalized() * speed
 		global_position += velocity * delta
+		currently_moving = true
 	else:
 		velocity = Vector2.ZERO
-
-	if global_position.distance_to(target) < 2.0:
-		trail.pop_front()
+		currently_moving = false
+		if direction.length() < 0.1:
+			trail.pop_front()
 
 func update_animation_and_direction() -> void:
-	var is_running = velocity.length() > 0.1
-	if is_running:
-		if anim.animation != "move":
-			anim.animation = "move"
-	else:
-		if anim.animation != "idle":
-			anim.animation = "idle"
-
-	if is_running:
-		rotation = velocity.angle()
+	# Animation
+	if currently_moving and anim.animation != "move":
+		anim.play("move")
+	elif not currently_moving and anim.animation != "idle":
+		anim.play("idle")
+	# Facing
+	if currently_moving:
+		var move_dir = velocity.normalized()
+		if move_dir.length() > 0.01:
+			rotation = move_dir.angle() - PI/2
 
 func check_player_collision() -> void:
 	if global_position.distance_to(player.global_position) <= disappear_distance:
