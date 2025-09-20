@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cce6l7r6a7wdq"]
+
+[ext_resource type="Script" uid="uid://bswlajybyvqvb" path="res://scenes/resultScreen.gd" id="1_532bo"]
+[ext_resource type="Texture2D" uid="uid://d1nkrmnksvt6o" path="res://assets/ui/06 Border 03.png" id="2_dtx8l"]
+[ext_resource type="Texture2D" uid="uid://c8g8a4ijp6gmo" path="res://assets/ui/FreeHorrorUi.png" id="3_ar46g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1iwmk"]
+texture = ExtResource("3_ar46g")
+region_rect = Rect2(69.7486, 234.493, 51.3671, 14.7883)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a38kb"]
+texture = ExtResource("3_ar46g")
+region_rect = Rect2(6.4776, 234.133, 50.9155, 15.1521)
+
+[node name="ResultScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_532bo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 379.0
+offset_bottom = 519.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_dtx8l")
+
+[node name="ReturnMainMenu" type="Button" parent="MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 385.0
+offset_right = 276.0
+offset_bottom = 448.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_1iwmk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1iwmk")
+theme_override_styles/normal = SubResource("StyleBoxTexture_a38kb")
+
+[node name="ResultTitle" type="Label" parent="MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 48.0
+offset_right = 283.0
+offset_bottom = 121.0
+
+[node name="ResultContain" type="Label" parent="MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 129.0
+offset_right = 198.0
+offset_bottom = 298.0
