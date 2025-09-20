@@ -231,7 +231,6 @@ position = Vector2(-0.327515, -0.318756)
 scale = Vector2(0.0798573, 0.0790168)
 color = Color(0.433442, 0.169489, 0.770584, 1)
 energy = 3.25
-blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("9_g03yh")
@@ -248,10 +247,10 @@ shape = SubResource("CircleShape2D_cx813")
 position = Vector2(64, 1896)
 
 [node name="SpawnA" type="Marker2D" parent="RespawnPoints"]
-position = Vector2(962, -666)
+position = Vector2(3, 7)
 
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
-position = Vector2(956, -603)
+position = Vector2(1820, -1833)
 
 [node name="TestingBody" parent="." node_paths=PackedStringArray("whisper_audio", "sanity_effect_rect") instance=ExtResource("6_krb2h")]
 position = Vector2(1103, 1377)
@@ -328,6 +327,7 @@ offset_right = 188.5
 offset_bottom = 200.5
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_woroe")
 
 [node name="PatrolArea" type="Area2D" parent="."]

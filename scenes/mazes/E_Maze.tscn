@@ -258,10 +258,10 @@ texture = ExtResource("8_xlx1c")
 position = Vector2(621, 1341)
 
 [node name="SpawnA" type="Marker2D" parent="RespawnPoints"]
-position = Vector2(7, -114)
+position = Vector2(204, -26)
 
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
-position = Vector2(-23, 174)
+position = Vector2(404, -1173)
 
 [node name="LightGroup" type="Node" parent="."]
 
