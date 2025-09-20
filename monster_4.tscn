@@ -1,8 +1,9 @@
-[gd_scene load_steps=69 format=3 uid="uid://d08o0ayybstlm"]
+[gd_scene load_steps=70 format=3 uid="uid://d08o0ayybstlm"]
 
-[ext_resource type="Script" uid="uid://builhrd0urnpl" path="res://scenes/Monster/delta.gd" id="1_2qokk"]
+[ext_resource type="Script" uid="uid://medw8s76hmu6" path="res://scenes/Monster/alphaScript.gd" id="1_2qokk"]
 [ext_resource type="Texture2D" uid="uid://bwj443i6tsm7h" path="res://assets/Monster/SouthMonsterIdle-Sheet.png" id="2_04mnw"]
 [ext_resource type="Texture2D" uid="uid://0dyl0mkv2m87" path="res://assets/Monster/SouthMonsterRun-Sheet.png" id="3_og5p8"]
+[ext_resource type="AudioStream" uid="uid://64pu77vi2g2k" path="res://assets/sounds/Monster3 sound effect.mp3" id="4_04mnw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssiii"]
 radius = 11.9912
@@ -492,6 +493,9 @@ sprite_frames = SubResource("SpriteFrames_f6bmd")
 animation = &"run"
 autoplay = "idle"
 frame_progress = 0.692472
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_04mnw")
 
 [node name="Timer" type="Timer" parent="."]
 

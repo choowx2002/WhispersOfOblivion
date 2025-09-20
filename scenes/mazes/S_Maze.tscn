@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://bodlwpbnqs52j"]
+[gd_scene load_steps=80 format=4 uid="uid://bodlwpbnqs52j"]
 
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_oyhaw"]
 [ext_resource type="Script" uid="uid://d3ixxjp8u87vr" path="res://scenes/mazes/s_maze.gd" id="1_ucpvt"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cey4jjaf50ckw" path="res://assets/player/Player_idle.png" id="14_qr21i"]
 [ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://assets/player/Player_walk.png" id="15_itjfg"]
 [ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="16_qr21i"]
+[ext_resource type="PackedScene" uid="uid://d08o0ayybstlm" path="res://monster_4.tscn" id="17_itjfg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qr21i"]
 
@@ -401,6 +402,27 @@ animations = [{
 "speed": 20.5
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4d3x"]
+size = Vector2(360, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obq67"]
+size = Vector2(357, 258)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cynj"]
+size = Vector2(265, 542.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itjfg"]
+size = Vector2(359, 356)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0vvv"]
+size = Vector2(448.5, 164)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_577o1"]
+size = Vector2(450, 158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwtyx"]
+size = Vector2(751.125, 181.75)
+
 [node name="SMaze" type="Node2D"]
 script = ExtResource("1_ucpvt")
 
@@ -433,7 +455,7 @@ shape = SubResource("CircleShape2D_qr21i")
 position = Vector2(64, 1896)
 
 [node name="SpawnA" type="Marker2D" parent="RespawnPoints"]
-position = Vector2(1241, -767)
+position = Vector2(1252, -786)
 
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
 position = Vector2(-1, -1831)
@@ -467,6 +489,19 @@ stream = ExtResource("10_r3711")
 
 [node name="SceneSwitchAnimation" parent="." instance=ExtResource("11_w0j7y")]
 anchors_preset = 0
+offset_left = -358.0
+offset_top = -71.0
+offset_right = -358.0
+offset_bottom = -71.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Setting" parent="CanvasLayer" instance=ExtResource("16_qr21i")]
+offset_left = -188.5
+offset_top = -200.5
+offset_right = 188.5
+offset_bottom = 200.5
 
 [node name="ShadowEnemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player") groups=["Enemy"]]
 position = Vector2(-7, -4)
@@ -487,10 +522,88 @@ animation = &"move"
 [node name="ShadowCollision" type="CollisionShape2D" parent="ShadowEnemy/Hitbox"]
 shape = SubResource("CircleShape2D_5d4ke")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Monster1" parent="." instance=ExtResource("17_itjfg")]
+position = Vector2(1267, 144)
+collision_mask = 1
+patrol_area_path = NodePath("../Area/M1")
 
-[node name="Setting" parent="CanvasLayer" instance=ExtResource("16_qr21i")]
-offset_left = -188.5
-offset_top = -200.5
-offset_right = 188.5
-offset_bottom = 200.5
+[node name="Monster2" parent="." instance=ExtResource("17_itjfg")]
+position = Vector2(1703, 168)
+collision_mask = 1
+patrol_area_path = NodePath("../Area/M2")
+
+[node name="Monster3" parent="." instance=ExtResource("17_itjfg")]
+position = Vector2(1797, 1652)
+collision_mask = 1
+patrol_area_path = NodePath("../Area/M3")
+
+[node name="Monster4" parent="." instance=ExtResource("17_itjfg")]
+position = Vector2(209, 1696)
+collision_mask = 1
+patrol_area_path = NodePath("../Area/M4")
+
+[node name="Monster5" parent="." instance=ExtResource("17_itjfg")]
+position = Vector2(303, 737)
+collision_mask = 1
+patrol_area_path = NodePath("../Area/M5")
+
+[node name="Monster6" parent="." instance=ExtResource("17_itjfg")]
+position = Vector2(544, 1309)
+collision_mask = 1
+patrol_area_path = NodePath("../Area/M6")
+
+[node name="Monster7" parent="." instance=ExtResource("17_itjfg")]
+position = Vector2(1260, 1892)
+collision_mask = 1
+patrol_area_path = NodePath("../Area/M7")
+
+[node name="Area" type="CanvasGroup" parent="."]
+
+[node name="M1" type="Area2D" parent="Area"]
+position = Vector2(1267, 143)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/M1"]
+position = Vector2(-2, -30)
+shape = SubResource("RectangleShape2D_b4d3x")
+
+[node name="M2" type="Area2D" parent="Area"]
+position = Vector2(1703, 168)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/M2"]
+position = Vector2(40, -5)
+shape = SubResource("RectangleShape2D_obq67")
+
+[node name="M3" type="Area2D" parent="Area"]
+position = Vector2(1796, 1651)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/M3"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_5cynj")
+
+[node name="M4" type="Area2D" parent="Area"]
+position = Vector2(209, 1696)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/M4"]
+position = Vector2(-3, 45)
+shape = SubResource("RectangleShape2D_itjfg")
+
+[node name="M5" type="Area2D" parent="Area"]
+position = Vector2(303, 738)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/M5"]
+position = Vector2(-48.75, -49)
+shape = SubResource("RectangleShape2D_k0vvv")
+
+[node name="M6" type="Area2D" parent="Area"]
+position = Vector2(544, 1309)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/M6"]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_577o1")
+
+[node name="M7" type="Area2D" parent="Area"]
+position = Vector2(1260, 1892)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/M7"]
+position = Vector2(-3, -54)
+shape = SubResource("RectangleShape2D_kwtyx")

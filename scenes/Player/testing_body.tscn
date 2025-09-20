@@ -437,6 +437,7 @@ offset_right = 158.0
 offset_bottom = 50.0
 
 [node name="GameOverUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GameOverUI" parent="GameOverUI" instance=ExtResource("8_vgoth")]
 
