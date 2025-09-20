@@ -466,7 +466,6 @@ whisper_audio = NodePath("../Kid-laugh-scary")
 sanity_effect_rect = NodePath("../SanityEffectLayer/SanityEffectRect")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.0350194, 0.036488, 0.120756, 1)
 
 [node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map", "slow_map") groups=["surface_detector"]]
@@ -495,7 +494,6 @@ offset_right = -358.0
 offset_bottom = -71.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Setting" parent="CanvasLayer" instance=ExtResource("16_qr21i")]
 offset_left = -188.5
