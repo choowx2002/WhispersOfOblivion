@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://cx7e2rbbfxlek"]
+[gd_scene load_steps=42 format=4 uid="uid://bofn4oclsqw83"]
 
 [ext_resource type="TileSet" uid="uid://dsawmu4n5f4pv" path="res://assets/tilesets/CaveGround.tres" id="1_ni5gm"]
 [ext_resource type="Script" uid="uid://cnj6x368wx414" path="res://scenes/mazes/e_maze.gd" id="1_vrddb"]
@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://b5iodldk1ecs" path="res://assets/sounds/whispers.mp3" id="15_75xqg"]
 [ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="16_gaifs"]
 [ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="17_dvrt3"]
-[ext_resource type="PackedScene" uid="uid://cjrtqx27mexkm" path="res://Monster.tscn" id="18_2aimd"]
+[ext_resource type="PackedScene" uid="uid://dvcgx2ng5kfth" path="res://Monster.tscn" id="18_2aimd"]
 [ext_resource type="PackedScene" uid="uid://bkf2x5wnv3wyj" path="res://fireball.tscn" id="19_pj370"]
 [ext_resource type="PackedScene" uid="uid://bstrfrk1a744r" path="res://monster2.tscn" id="20_k2eme"]
 [ext_resource type="PackedScene" uid="uid://cassig1ii1f2p" path="res://monster_3.tscn" id="21_30rwg"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://daqcqikrg7ipn"]
+[gd_scene load_steps=48 format=4 uid="uid://daqcqikrg7ipn"]
 
 [ext_resource type="Script" uid="uid://c4uuegk0hkmxw" path="res://scenes/mazes/w_maze.gd" id="1_gp22u"]
 [ext_resource type="Texture2D" uid="uid://dqf76cv36enha" path="res://assets/tilesets/Lattia5.jpg" id="2_5mt6p"]
@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://b5iodldk1ecs" path="res://assets/sounds/whispers.mp3" id="19_m1bgt"]
 [ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="20_08qrs"]
 [ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="21_woroe"]
-[ext_resource type="PackedScene" uid="uid://bstrfrk1a744r" path="res://monster2.tscn" id="22_v5hr1"]
+[ext_resource type="PackedScene" uid="uid://bjpiketjiy7md" path="res://monster2.tscn" id="22_v5hr1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hux61"]
 resource_name = "floor"
@@ -151,7 +151,22 @@ parsed_collision_mask = 4294901761
 source_geometry_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j15nd"]
-size = Vector2(240, 143)
+size = Vector2(249, 249)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgp0t"]
+size = Vector2(152, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kasrl"]
+size = Vector2(882.409, 34.7299)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqa61"]
+size = Vector2(892, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2036"]
+size = Vector2(51, 525)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qw6d3"]
+size = Vector2(59, 568)
 
 [node name="WMaze" type="Node2D"]
 script = ExtResource("1_gp22u")
@@ -254,11 +269,11 @@ position = Vector2(1820, -1833)
 
 [node name="TestingBody" parent="." node_paths=PackedStringArray("whisper_audio", "sanity_effect_rect") instance=ExtResource("6_krb2h")]
 position = Vector2(1103, 1377)
+move_speed = 500
 whisper_audio = NodePath("../Whispers")
 sanity_effect_rect = NodePath("../SanityEffectLayer/SanityEffectRect")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.0352941, 0.0352941, 0.121569, 1)
 
 [node name="Sounds" type="Node" parent="."]
@@ -327,23 +342,111 @@ offset_right = 188.5
 offset_bottom = 200.5
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_woroe")
 
 [node name="PatrolArea" type="Area2D" parent="."]
-position = Vector2(1122, 1122)
+position = Vector2(1701, 1730)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea"]
-position = Vector2(90, 44.5)
+position = Vector2(92.5, 63.5)
 shape = SubResource("RectangleShape2D_j15nd")
 
-[node name="Monster" parent="." instance=ExtResource("22_v5hr1")]
-position = Vector2(1133, 1131)
+[node name="Monster" parent="." groups=["whisper_targets"] instance=ExtResource("22_v5hr1")]
+position = Vector2(1725, 1718)
+collision_mask = 1
 patrol_area_path = NodePath("../PatrolArea")
 
 [node name="PointLight2D" type="PointLight2D" parent="Monster"]
 range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("9_g03yh")
+
+[node name="PatrolArea2" type="Area2D" parent="."]
+position = Vector2(290, 237)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea2"]
+position = Vector2(13, 3.5)
+shape = SubResource("RectangleShape2D_dgp0t")
+
+[node name="Monster2" parent="." groups=["whisper_targets"] instance=ExtResource("22_v5hr1")]
+position = Vector2(283, 231)
+collision_mask = 1
+patrol_area_path = NodePath("../PatrolArea2")
+
+[node name="PointLight2D" type="PointLight2D" parent="Monster2"]
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("9_g03yh")
+
+[node name="PatrolArea3" type="Area2D" parent="."]
+position = Vector2(1721, 1120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea3"]
+position = Vector2(-299, 0.5)
+rotation = -3.14159
+scale = Vector2(0.747952, -1.52606)
+shape = SubResource("RectangleShape2D_kasrl")
+
+[node name="Monster3" parent="." groups=["whisper_targets"] instance=ExtResource("22_v5hr1")]
+position = Vector2(1721, 1109)
+collision_mask = 1
+patrol_area_path = NodePath("../PatrolArea3")
+
+[node name="PointLight2D" type="PointLight2D" parent="Monster3"]
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("9_g03yh")
+
+[node name="Monster4" parent="." groups=["whisper_targets"] instance=ExtResource("22_v5hr1")]
+position = Vector2(1030, 926)
+collision_mask = 1
+patrol_area_path = NodePath("../PatrolArea4")
+
+[node name="PointLight2D" type="PointLight2D" parent="Monster4"]
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("9_g03yh")
+
+[node name="PatrolArea4" type="Area2D" parent="."]
+position = Vector2(1030, 926)
+scale = Vector2(0.990485, 0.994039)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea4"]
+position = Vector2(418, 3)
+shape = SubResource("RectangleShape2D_tqa61")
+
+[node name="PatrolArea5" type="Area2D" parent="."]
+position = Vector2(1214, 162)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea5"]
+position = Vector2(1, 239)
+shape = SubResource("RectangleShape2D_u2036")
+
+[node name="Monster5" parent="." groups=["whisper_targets"] instance=ExtResource("22_v5hr1")]
+position = Vector2(1226, 156)
+collision_mask = 1
+patrol_area_path = NodePath("../PatrolArea5")
+
+[node name="PointLight2D" type="PointLight2D" parent="Monster5"]
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("9_g03yh")
+
+[node name="Monster6" parent="." groups=["whisper_targets"] instance=ExtResource("22_v5hr1")]
+position = Vector2(739, 157)
+collision_mask = 1
+patrol_area_path = NodePath("../PatrolArea6")
+
+[node name="PointLight2D" type="PointLight2D" parent="Monster6"]
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("9_g03yh")
+
+[node name="PatrolArea6" type="Area2D" parent="."]
+position = Vector2(717, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea6"]
+position = Vector2(19.5, 274)
+shape = SubResource("RectangleShape2D_qw6d3")
 
 [connection signal="body_entered" from="EscapeGate" to="EscapeGate" method="_on_body_entered"]
