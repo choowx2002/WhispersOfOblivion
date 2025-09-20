@@ -433,7 +433,7 @@ shape = SubResource("CircleShape2D_qr21i")
 position = Vector2(64, 1896)
 
 [node name="SpawnA" type="Marker2D" parent="RespawnPoints"]
-position = Vector2(474, -963)
+position = Vector2(1241, -767)
 
 [node name="SpawnB" type="Marker2D" parent="RespawnPoints"]
 position = Vector2(1, -1817)
