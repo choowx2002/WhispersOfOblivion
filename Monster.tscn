@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cjrtqx27mexkm"]
+[gd_scene load_steps=50 format=3 uid="uid://dvcgx2ng5kfth"]
 
 [ext_resource type="Script" uid="uid://dqmo5vi5dc0fi" path="res://scenes/Monster/betaScript.gd" id="1_qheve"]
 [ext_resource type="Texture2D" uid="uid://ddjxb1lr7emn6" path="res://assets/Monster/WestMonsterIdle-Sheet.png" id="1_ssiii"]

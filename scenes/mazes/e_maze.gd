@@ -16,7 +16,7 @@ func _ready():
 
 	var chosen_point = respawn_points[randi() % respawn_points.size()]
 	gameRespawnPoint = chosen_point.global_position
-	#player.global_position = chosen_point.global_position
+	player.global_position = chosen_point.global_position
 	
 
 	var playerCamera: Camera2D = player.find_child("Camera2D")

@@ -157,13 +157,13 @@ func _physics_process(_delta):
 		"slow":
 			external_multiplier = 0.3
 		"grass":
-			external_multiplier = 0.8
+			external_multiplier = 0.9
 		"ground":
 			external_multiplier = 1.0
 		"default":
 			external_multiplier = 1.0
 			
-	var speed_multiplier = stealth_multiplier * external_multiplier
+	var speed_multiplier = stealth_multiplier * external_multiplier * fireball_hit_multiplier
 	
 	# Move and animate
 	if input_vector.length() > 0:

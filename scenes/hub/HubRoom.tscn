@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="19_so866"]
 [ext_resource type="Texture2D" uid="uid://deb2kdj538xyn" path="res://assets/images/collectable_item_south.png" id="20_jnq1j"]
 [ext_resource type="Texture2D" uid="uid://culkeuk4k0uj2" path="res://assets/images/collectable_item_west.png" id="21_7e4qx"]
-[ext_resource type="PackedScene" path="res://scene_switch_animation.tscn" id="23_jnq1j"]
+[ext_resource type="PackedScene" uid="uid://dmpxl1g28inr5" path="res://scene_switch_animation.tscn" id="23_jnq1j"]
 [ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="24_7e4qx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kahi"]

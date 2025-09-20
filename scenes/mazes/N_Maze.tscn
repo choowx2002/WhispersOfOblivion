@@ -14,10 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="12_ugkmd"]
 [ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="13_ugkmd"]
 [ext_resource type="AudioStream" uid="uid://dg8lurhpsad52" path="res://assets/sounds/scary-whisper.mp3" id="14_mjy3e"]
-[ext_resource type="PackedScene" path="res://scene_switch_animation.tscn" id="15_ka4kr"]
+[ext_resource type="PackedScene" uid="uid://dmpxl1g28inr5" path="res://scene_switch_animation.tscn" id="15_ka4kr"]
 [ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="16_vlcrd"]
-[ext_resource type="PackedScene" uid="uid://cassig1ii1f2p" path="res://monster_3.tscn" id="17_6wuoq"]
-[ext_resource type="PackedScene" uid="uid://cjrtqx27mexkm" path="res://Monster.tscn" id="18_jxh6x"]
+[ext_resource type="PackedScene" uid="uid://d0pwxqji40w10" path="res://monster_3.tscn" id="17_6wuoq"]
+[ext_resource type="PackedScene" uid="uid://dvcgx2ng5kfth" path="res://Monster.tscn" id="18_jxh6x"]
 [ext_resource type="PackedScene" uid="uid://bkf2x5wnv3wyj" path="res://fireball.tscn" id="19_2ms43"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_urqrk"]
@@ -224,7 +224,6 @@ whisper_audio = NodePath("../Scary-whisper")
 sanity_effect_rect = NodePath("../SanityEffectLayer/SanityEffectRect")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.0352941, 0.0352941, 0.121569, 1)
 
 [node name="SurfaceDetector" type="Node2D" parent="." node_paths=PackedStringArray("ground_map", "slow_map") groups=["surface_detector"]]
@@ -301,7 +300,6 @@ grow_vertical = 2
 stream = ExtResource("14_mjy3e")
 
 [node name="SceneSwitchAnimation" parent="." instance=ExtResource("15_ka4kr")]
-anchors_preset = 0
 offset_left = 47.0
 offset_top = -28.0
 offset_right = 47.0
@@ -394,9 +392,10 @@ shape = SubResource("RectangleShape2D_ca8tr")
 
 [node name="Monster7" parent="." instance=ExtResource("18_jxh6x")]
 position = Vector2(1361, 726)
+patrol_area_path = NodePath("../PatrolArea7")
 
 [node name="PatrolArea7" type="Area2D" parent="."]
-position = Vector2(995, -183)
+position = Vector2(995, -185)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea7"]
 position = Vector2(321.375, 914)

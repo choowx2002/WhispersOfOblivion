@@ -15,12 +15,12 @@
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="13_xlx1c"]
 [ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="14_a11uw"]
 [ext_resource type="AudioStream" uid="uid://b5iodldk1ecs" path="res://assets/sounds/whispers.mp3" id="15_75xqg"]
-[ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="16_gaifs"]
+[ext_resource type="PackedScene" uid="uid://dmpxl1g28inr5" path="res://scene_switch_animation.tscn" id="16_gaifs"]
 [ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="17_dvrt3"]
 [ext_resource type="PackedScene" uid="uid://dvcgx2ng5kfth" path="res://Monster.tscn" id="18_2aimd"]
 [ext_resource type="PackedScene" uid="uid://bkf2x5wnv3wyj" path="res://fireball.tscn" id="19_pj370"]
 [ext_resource type="PackedScene" uid="uid://bstrfrk1a744r" path="res://monster2.tscn" id="20_k2eme"]
-[ext_resource type="PackedScene" uid="uid://cassig1ii1f2p" path="res://monster_3.tscn" id="21_30rwg"]
+[ext_resource type="PackedScene" uid="uid://d0pwxqji40w10" path="res://monster_3.tscn" id="21_30rwg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75xqg"]
 radius = 15.0
@@ -399,7 +399,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SceneSwitchAnimation" parent="." instance=ExtResource("16_gaifs")]
-anchors_preset = 0
 offset_left = -275.0
 offset_top = -130.0
 offset_right = 2518.0

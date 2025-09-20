@@ -19,9 +19,9 @@
 [ext_resource type="Script" uid="uid://d3tykobflynyk" path="res://utils/surface_detector.gd" id="15_qpqmv"]
 [ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="18_g03yh"]
 [ext_resource type="AudioStream" uid="uid://b5iodldk1ecs" path="res://assets/sounds/whispers.mp3" id="19_m1bgt"]
-[ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="20_08qrs"]
+[ext_resource type="PackedScene" uid="uid://dmpxl1g28inr5" path="res://scene_switch_animation.tscn" id="20_08qrs"]
 [ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="21_woroe"]
-[ext_resource type="PackedScene" uid="uid://bjpiketjiy7md" path="res://monster2.tscn" id="22_v5hr1"]
+[ext_resource type="PackedScene" uid="uid://bstrfrk1a744r" path="res://monster2.tscn" id="22_v5hr1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hux61"]
 resource_name = "floor"
@@ -269,7 +269,6 @@ position = Vector2(1820, -1833)
 
 [node name="TestingBody" parent="." node_paths=PackedStringArray("whisper_audio", "sanity_effect_rect") instance=ExtResource("6_krb2h")]
 position = Vector2(1103, 1377)
-move_speed = 500
 whisper_audio = NodePath("../Whispers")
 sanity_effect_rect = NodePath("../SanityEffectLayer/SanityEffectRect")
 
@@ -331,7 +330,6 @@ color = Color(1, 1, 1, 0.309804)
 stream = ExtResource("19_m1bgt")
 
 [node name="SceneSwitchAnimation" parent="." instance=ExtResource("20_08qrs")]
-anchors_preset = 0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

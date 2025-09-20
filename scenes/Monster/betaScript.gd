@@ -109,6 +109,7 @@ func _chase_player(delta: float) -> void:
 	global_position = global_position.move_toward(global_position + new_velocity, movement_delta)
 
 func _return_to_patrol(delta: float, can_see_player: bool) -> void:
+	navigation_agent_2d.set_target_position(patrol_area.global_position)
 	#if can see player while returning, chase state be handled in _physics_process
 	#continue returning movement here
 	var shape = patrol_area.get_node("CollisionShape2D")
