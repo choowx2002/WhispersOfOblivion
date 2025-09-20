@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bciwxifhnkyf2" path="res://assets/tilesets/2d_lights_and_shadows_neutral_point_light.webp" id="12_ugkmd"]
 [ext_resource type="Shader" uid="uid://brupv7yfbdocs" path="res://scenes/mazes/sanityEffect.gdshader" id="13_ugkmd"]
 [ext_resource type="AudioStream" uid="uid://dg8lurhpsad52" path="res://assets/sounds/scary-whisper.mp3" id="14_mjy3e"]
-[ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="15_ka4kr"]
+[ext_resource type="PackedScene" path="res://scene_switch_animation.tscn" id="15_ka4kr"]
 [ext_resource type="PackedScene" uid="uid://clhq4ymbirtkw" path="res://scenes/ui/setting.tscn" id="16_vlcrd"]
 [ext_resource type="PackedScene" uid="uid://cassig1ii1f2p" path="res://monster_3.tscn" id="17_6wuoq"]
 [ext_resource type="PackedScene" uid="uid://cjrtqx27mexkm" path="res://Monster.tscn" id="18_jxh6x"]

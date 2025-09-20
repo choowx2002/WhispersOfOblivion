@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cx52jjb23blcq" path="res://assets/player/Player_walk.png" id="5_tfrc8"]
 [ext_resource type="PackedScene" uid="uid://bas6orfqr7u7g" path="res://scenes/ui/sanity_container.tscn" id="7_53u1h"]
 [ext_resource type="PackedScene" uid="uid://buhc82qm3jdk3" path="res://scenes/ui/game_over_ui.tscn" id="8_vgoth"]
-[ext_resource type="PackedScene" uid="uid://ca7kle7s65n38" path="res://scene_switch_animation.tscn" id="9_tfrc8"]
+[ext_resource type="PackedScene" path="res://scene_switch_animation.tscn" id="9_tfrc8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgoth"]
 atlas = ExtResource("3_53u1h")
