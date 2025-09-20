@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Whispers of Oblivion"
-run/main_scene="uid://cx7e2rbbfxlek"
+run/main_scene="uid://ckpnpfqic2di7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
