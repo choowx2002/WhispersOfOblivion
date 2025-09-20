@@ -1,0 +1,11 @@
+Timer
+Sprite2D
+PointLight2D
+CollisionShape2D
+VisibleOnScreenNotifier2D
+CharacterBody2D
+Area2D
+NavigationRegion2D
+AudioStreamPlayer2D
+AnimatedSprite2D
+AnimatableBody2D
