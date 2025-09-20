@@ -6,8 +6,10 @@ extends CharacterBody2D
 var anim_sprite: AnimatedSprite2D # run animation
 var stealth_multiplier: float = 1.0
 var external_multiplier: float = 1.0
+var fireball_hit_multiplier: float = 1.0
 var surface_detector
 var step_timer := 0.0
+var fireball_timer: Timer
 var base_interval := 0.45
 var min_interval := 0.20
 var is_dead: bool = false # declare if player ded
