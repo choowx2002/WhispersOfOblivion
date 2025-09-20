@@ -5,6 +5,7 @@ extends Node2D
 @onready var player := $TestingBody
 
 var gameRespawnPoint
+
 func _ready():
 	SceneSwitchAnimation.get_parent().get_node("ColorRect").color.a = 255
 	SceneSwitchAnimation.play("FadeOut")

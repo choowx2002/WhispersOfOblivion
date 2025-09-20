@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dk4kwy1jcs4n6"
+path="res://.godot/imported/Monster1 sound effect.mp3-0d27b070654da175b6fbf726df1bb667.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Monster1 sound effect.mp3"
+dest_files=["res://.godot/imported/Monster1 sound effect.mp3-0d27b070654da175b6fbf726df1bb667.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

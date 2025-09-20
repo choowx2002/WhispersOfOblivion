@@ -410,6 +410,7 @@ animation = &"died"
 shape = SubResource("CircleShape2D_fon1v")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_ci0fc")
@@ -445,5 +446,7 @@ offset_left = -111.0
 offset_top = -83.0
 offset_right = 988.0
 offset_bottom = 658.0
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -1,33 +1,49 @@
 extends CharacterBody2D
 
-@export var move_speed := 100 # player movement base speed（frame/sec）
-@export var whisper_audio : AudioStreamPlayer
-@export var sanity_effect_rect: ColorRect
 var anim_sprite: AnimatedSprite2D # run animation
+@export var move_speed := 100 # player movement base speed（frame/sec）
 var stealth_multiplier: float = 1.0
 var external_multiplier: float = 1.0
+var fireball_hit_multiplier: float = 1.0
+
+@onready var step_audio := $StepAudio
+@onready var timer = $Timer
+var fireball_timer: Timer
+# 🟢 NEW: Variables for shock delay effect
+var shock_delay_timer: Timer
+var is_shocked: bool = false
+var delayed_input: Vector2 = Vector2.ZERO
+var current_input: Vector2 = Vector2.ZERO
+
 var surface_detector
 var step_timer := 0.0
 var base_interval := 0.45
 var min_interval := 0.20
 var is_dead: bool = false # declare if player ded
+
+@export var whisper_audio : AudioStreamPlayer
 var last_pulse_time: float = -10.0
 var pulse_interval: float = 10.0
+
+@export var sanity_effect_rect: ColorRect
+
+#signal healthChanged
+#@export var maxHealth: float = 3.0 # set maximum health to 3 unit
+#var currentHealth: float = maxHealth # current heath status
 var hit_count: int = 0
 var respawn_count: int = 0
+
+#@onready var heartsContainer = $HeartBar/HeartContainer
 var sanityTimer: Timer
 var maxSanity = 100.0
 var currentSanity = 100.0
-@onready var step_audio := $StepAudio
+
 @onready var sanityContainer = $Sanity/SanityContainer
 @onready var gameOverUI = $GameOverUI/GameOverUI
 @onready var sanityLabel = $Sanity/SanityLabel
 @onready var SceneSwitchAnimation = $SceneSwitchAnimation/AnimationPlayer
 @onready var interact_label = $"../CanvasLayer/InteractiveUI/InteractiveLabel"
 @onready var sprite = $AnimatedSprite2D
-
-signal died
-signal survived
 
 func _ready():
 	if GameState.start_time == 0.0:
@@ -62,6 +78,12 @@ func _ready():
 	fireball_timer.timeout.connect(_on_fireball_timer_timeout)
 	add_child(fireball_timer)
 	
+	# 🟢 NEW: Setup shock delay timer
+	shock_delay_timer = Timer.new()
+	shock_delay_timer.wait_time = 1.0  # 1 second delay
+	shock_delay_timer.one_shot = true
+	shock_delay_timer.timeout.connect(_on_shock_delay_timeout)
+	add_child(shock_delay_timer)
 	
 func _process(_delta):
 	var time = Time.get_ticks_msec() / 1000.0
@@ -96,7 +118,7 @@ func change_sanity(amount: float):
 	update_sanity_effect()
 		
 	if currentSanity <= 0:
-		die()
+		die_from_sanity()
 
 func update_sanity_effect():
 	if sanity_effect_rect == null:
@@ -123,6 +145,9 @@ func play_whisper():
 	#await get_tree().create_timer(3.0).timeout
 	#whisper_audio.stop()
 	
+func die_from_sanity():
+	show_game_over()
+	
 func _physics_process(_delta):
 	# run dead animation
 	if is_dead:
@@ -131,11 +156,20 @@ func _physics_process(_delta):
 		velocity = Vector2.ZERO
 		return
 	
-	# Get inputs
-	var input_vector := Vector2(
+	# 🟢 MODIFIED: Get inputs and handle shock delay
+	current_input = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
+	
+	var input_vector: Vector2
+	if is_shocked:
+		# 🟢 NEW: Use delayed input while shocked
+		input_vector = delayed_input
+	else:
+		# 🟢 NEW: Use current input normally and update delayed input
+		input_vector = current_input
+		delayed_input = current_input
 	
 	# Character facing
 	if input_vector.length() > 0:
@@ -148,6 +182,8 @@ func _physics_process(_delta):
 	var surface = "default"
 	if surface_detector:
 		surface = surface_detector.get_surface_type(global_position)
+		
+	#var 
 
 	# 默认外部倍率
 	external_multiplier = 1.0
@@ -161,7 +197,7 @@ func _physics_process(_delta):
 		"default":
 			external_multiplier = 1.0
 			
-	var speed_multiplier = stealth_multiplier * external_multiplier
+	var speed_multiplier = stealth_multiplier * external_multiplier * fireball_hit_multiplier
 	
 	# Move and animate
 	if input_vector.length() > 0:
@@ -185,27 +221,22 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	print("Hurtbox touched:", area.name)
 	if is_dead:
 		return
-	
 	if area.get_parent().is_in_group("Enemy"):  # check if enemy parent is in group
+		#currentHealth -= 1.0 # minus 1 heart while touched the hitbox
+		#healthChanged.emit(currentHealth) # show latest health status
+		#heartsContainer.updateHearts(currentHealth)
+		#if currentHealth <= 0:
 		hit_count += 1
 		var current_scene = get_tree().current_scene
-		var maze_key := ""
-		if current_scene and current_scene.has_method("get_maze_key"):
-			maze_key = current_scene.get_maze_key()
-		
-		# South Maze ending triggered
 		if current_scene and current_scene.name == "SMaze":
-			if GameState.has_picked_up_fragment(maze_key):
+			# SMaze get_maze_key()
+			var maze_key = current_scene.get_maze_key()
+			if GameState.has_collected_fragment(maze_key):
 				GameState.on_escape_completed(maze_key)
 				GameState.hits = hit_count
 				GameState.end_time = Time.get_ticks_msec() / 1000.0
-				emit_signal("survived")
-				
 				var target_scene = "res://scenes/Endings/truth_ending.tscn"
 				get_tree().call_deferred("change_scene_to_file", target_scene)
-				return
-			else:
-				die()
 				return
 		die()
 
@@ -219,11 +250,10 @@ func die() -> void:
 	await anim_sprite.animation_finished
 	change_sanity(-20)  # lose 20% on death
 	if currentSanity <= 0:
-		show_game_over()
+		die_from_sanity()
 	else:
 		respawn()
 	print("Player died.")
-
 func show_game_over():
 	if not is_instance_valid(gameOverUI):
 		push_error("gameOverUI path is wrong")
@@ -236,6 +266,18 @@ func show_game_over():
 	print("[Player] Game Over shown and tree paused")
 
 func respawn():
+	
+	#maxHealth += 1
+	
+	#if maxHealth >= 100:
+		#maxHealth = 3
+		#return
+		
+	#currentHealth = maxHealth
+	#print("Player respawn: current =", currentHealth, " max =", maxHealth)
+	#heartsContainer.setMaxHearts(maxHealth, currentHealth) # show heart ui
+	#heartsContainer.updateHearts(currentHealth) # update the current heart
+	
 	SceneSwitchAnimation.play("FadeOut")
 	var spawn_point = get_tree().current_scene.gameRespawnPoint
 	if spawn_point is Vector2:
@@ -277,3 +319,16 @@ func apply_fireball_slow():
 
 func _on_fireball_timer_timeout():
 	fireball_hit_multiplier = 1.0
+
+# 🟢 NEW: Shock function that triggers 1-second input delay
+func _shocked():
+	print("Player shocked! Input delayed for 1 second")
+	is_shocked = true
+	# Capture current input at the moment of shock
+	delayed_input = current_input
+	shock_delay_timer.start()
+
+# 🟢 NEW: Reset shock effect after delay
+func _on_shock_delay_timeout():
+	is_shocked = false
+	print("Shock delay ended, normal input resumed")
